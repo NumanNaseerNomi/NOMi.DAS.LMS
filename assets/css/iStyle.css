@@ -1,0 +1,262 @@
+@import "../plugins/bootstrap/css/bootstrap.min.css";
+@import "lightStyle.css";
+@import "darkStyle.css";
+@import "../plugins/fontawesome/css/fontawesome-all.min.css";
+
+
+.header-dark
+{
+  background: #323437;
+}
+
+.dropdown-toggle::after
+{
+  content: none;
+}
+
+.dropdown-menu {
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.dropdown-item
+{
+  margin: 0.3125rem 0;
+}
+
+#menuAccordion
+{
+  display: block;
+}
+
+
+
+
+
+/* Custom Scrollbar - start */
+
+/* width */
+::-webkit-scrollbar
+{
+  width: 0.25rem;
+}
+
+::-webkit-scrollbar:hover
+{
+  width: 0.375rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track
+{
+  box-shadow: inset 0 0 0.3125rem grey;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb
+{
+  background: rgba(4, 169, 245, .30);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+{
+  background: #038ac9;
+}
+
+/* Custom Scrollbar - end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+.mainContainor
+{
+  margin: 55px 5px 5px 60px;
+}
+
+.iNav,
+.iSidebar
+{
+  background-color: #323437;
+}
+
+.iNav ul,
+.iSidebar  ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.iSidebar  ul
+{
+  overflow: auto;
+}
+
+.iNav ul 
+{
+  top: 0;
+  width: 100%;
+  height: 44px;
+}
+
+.iNav li
+{
+  float: left;
+}
+
+.iNav a,
+.iSidebar a
+{
+  display: flex;
+  color: #adb7be;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size:1.5rem;
+}
+
+.iNav a:hover:not(.active)
+{
+  color: #fff;
+}
+
+.iNav a:hover:not(.active),
+.iNav .active
+{
+  background-color: rgba(0,0,0,.30);
+  padding-bottom: 8px;
+  border-bottom: 2px solid #04a9f5;
+}
+
+.iNav .iNavRight
+{
+  float: right;
+}
+
+/* The sidebar menu */
+/*
+.iSidebar  ul
+{
+  top: 44px;
+  width: 50px;
+  height: 100%;
+}
+
+.iSidebar a:hover:not(.active)
+{
+  color: #fff;
+}
+
+.iSidebar a:hover:not(.active),
+.iSidebar .active
+{
+  background-color: rgba(0,0,0,.30);
+  border-left: 2px solid #04a9f5;
+  padding-left: 8px;
+}
+
+/* Custom Dropright - start */
+/*
+.dropdown-menu.show:before {
+    display: none !important;
+}
+
+.dropdown-menu
+{
+  padding-top: 0px !important;
+}
+*
+.dropdown-header
+{
+  background: #46484c;
+  color: #adb7be;
+  margin: 0px 0px 10px 0px;
+  padding: 15px;
+}
+
+.dropdown a:hover:not(.active)
+{
+  color: #fff !important;
+}
+
+.dropdown a:hover:not(.active),
+.dropdown .active
+{
+  background-color: rgba(0,0,0,.30) !important;
+  border-left: 2px solid #04a9f5;
+  padding-left: 14px;
+}
+
+/* Custom Dropright - end */
+
+
+header a:hover:not(.active)
+{
+  color: #fff !important;
+}
+
+#menuAccordion:hover
+{
+  background-color: transparent !important;
+}
+
+#menuAccordion a:hover:not(.active)
+{
+  background-color: rgba(0,0,0,.30) !important;
+}
+
+#menuAccordion>a:hover:not(.active),
+#menuAccordion>a.active,
+#menuAccordion>a::after
+{
+  background-color: rgba(0,0,0,.30) !important;
+  border-left: 3px solid #04a9f5 !important;
+}
+
+
+#menuAccordion>.show
+{
+  border-left: 3px solid #04a9f5;
+}
+
+#menuAccordion ul
+{
+  padding-left: 0px;
+}
+
+#menuAccordion ul>li>a
+{
+  padding-left: 3.125rem;
+}
+
+
+
+
+.iProfileHead>img,
+.iProfileHead>.proImg
+{
+  width: 3.125rem;
+}
