@@ -106,3 +106,5 @@
       </nav>
     </header>
     <!-- Header end -->
+    <!-- [ Main Content ] start -->
+    <div class="container-fluid pt-5">
