@@ -213,7 +213,8 @@
 /* Custom Dropright - end */
 
 
-header a:hover:not(.active)
+header a:hover:not(.active),
+a:hover:not(.active)
 {
   color: #fff !important;
 }
