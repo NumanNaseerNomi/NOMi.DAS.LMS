@@ -1,3 +1,5 @@
+    </div>
+    <!-- [ Main Content ] end -->
     <!-- Footer start -->
     <footer>
       <!-- Optional JavaScript; choose one of the two! -->
