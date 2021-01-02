@@ -1,4 +1,5 @@
 <?php include 'assets\header.php'; ?>
+
 <div class="row">
   <div class="col-md-6 col-xl-4">
     <div class="card">
@@ -8,106 +9,255 @@
       <hr/ class="m-0">
       <div class="card-block p-3">
         <div class="row align-items-center justify-content-center">
-          
-          <div class="col-12">
+          <div class="col-9">
             <h4>Teacher Name</h4>
-            <p>Qualification</p>
-            <p>Institution</p>
+            <p class="m-0">Qualification</p>
+            <p class="m-0">Institution</p>
           </div>
-          <div class="col-12">
-            <h2 class="d-flex justify-content-center">4.5 <i class="fas fa-star f-12 m-l-10 text-c-yellow"></i></h2>
+          <div class="col-3">
+            <div class="d-flex">
+              <h3 class="m-0">99.9</h3>
+              <p class="m-0">%</p>
+            </div>
+            <p  class="m-0">Rating</p>
           </div>
-          
         </div>
         <hr/>
-        <div class="d-flex justify-content-around">
+        <div class="d-flex justify-content-around h3 m-0">
+          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <a class="" title="My Account" role="button"><h3><i class="fas fa-user"></i></h3></a>
-          <a class="" title="My Account" role="button"><h3><i class="fas fa-bullhorn"></i></h3></a>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="col-md-6 col-xl-4">
     <div class="card">
       <div class="card-header">
-        <h5>Project Rating</h5>
+        <h5>Computer Science</h5>
       </div>
-      <div class="card-block">
+      <hr/ class="m-0">
+      <div class="card-block p-3">
         <div class="row align-items-center justify-content-center">
-          <div class="col-6">
-            <h2 class="f-w-300 d-flex align-items-center float-left">4.3 <i class="fas fa-star f-12 m-l-10 text-c-yellow"></i></h2>
+          <div class="col-9">
+            <h4>Teacher Name</h4>
+            <p class="m-0">Qualification</p>
+            <p class="m-0">Institution</p>
           </div>
-          <div class="col-6">
-            <h6 class="f-w-300 d-flex  align-items-center float-right">0.4 <i class="fas fa-caret-up text-c-green f-24 m-l-10"></i></h6>
+          <div class="col-3">
+            <div class="d-flex">
+              <h3 class="m-0">99.9</h3>
+              <p class="m-0">%</p>
+            </div>
+            <p  class="m-0">Rating</p>
           </div>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-around h3 m-0">
+          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
         </div>
       </div>
     </div>
   </div>
+
   <div class="col-md-6 col-xl-4">
     <div class="card">
       <div class="card-header">
-        <h5>Project Rating</h5>
+        <h5>Computer Science</h5>
       </div>
-      <div class="card-block">
+      <hr/ class="m-0">
+      <div class="card-block p-3">
         <div class="row align-items-center justify-content-center">
-          <div class="col-6">
-            <h2 class="f-w-300 d-flex align-items-center float-left">4.3 <i class="fas fa-star f-12 m-l-10 text-c-yellow"></i></h2>
+          <div class="col-9">
+            <h4>Teacher Name</h4>
+            <p class="m-0">Qualification</p>
+            <p class="m-0">Institution</p>
           </div>
-          <div class="col-6">
-            <h6 class="f-w-300 d-flex  align-items-center float-right">0.4 <i class="fas fa-caret-up text-c-green f-24 m-l-10"></i></h6>
+          <div class="col-3">
+            <div class="d-flex">
+              <h3 class="m-0">99.9</h3>
+              <p class="m-0">%</p>
+            </div>
+            <p  class="m-0">Rating</p>
           </div>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-around h3 m-0">
+          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
         </div>
       </div>
     </div>
   </div>
+
   <div class="col-md-6 col-xl-4">
     <div class="card">
       <div class="card-header">
-        <h5>Project Rating</h5>
+        <h5>Computer Science</h5>
       </div>
-      <div class="card-block">
+      <hr/ class="m-0">
+      <div class="card-block p-3">
         <div class="row align-items-center justify-content-center">
-          <div class="col-6">
-            <h2 class="f-w-300 d-flex align-items-center float-left">4.3 <i class="fas fa-star f-12 m-l-10 text-c-yellow"></i></h2>
+          <div class="col-9">
+            <h4>Teacher Name</h4>
+            <p class="m-0">Qualification</p>
+            <p class="m-0">Institution</p>
           </div>
-          <div class="col-6">
-            <h6 class="f-w-300 d-flex  align-items-center float-right">0.4 <i class="fas fa-caret-up text-c-green f-24 m-l-10"></i></h6>
+          <div class="col-3">
+            <div class="d-flex">
+              <h3 class="m-0">99.9</h3>
+              <p class="m-0">%</p>
+            </div>
+            <p  class="m-0">Rating</p>
           </div>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-around h3 m-0">
+          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="col-md-6 col-xl-4">
+    <div class="card">
+      <div class="card-header">
+        <h5>Computer Science</h5>
+      </div>
+      <hr/ class="m-0">
+      <div class="card-block p-3">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-9">
+            <h4>Teacher Name</h4>
+            <p class="m-0">Qualification</p>
+            <p class="m-0">Institution</p>
+          </div>
+          <div class="col-3">
+            <div class="d-flex">
+              <h3 class="m-0">99.9</h3>
+              <p class="m-0">%</p>
+            </div>
+            <p  class="m-0">Rating</p>
+          </div>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-around h3 m-0">
+          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+    <div class="card">
+      <div class="card-header">
+        <h5>Computer Science</h5>
+      </div>
+      <hr/ class="m-0">
+      <div class="card-block p-3">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-9">
+            <h4>Teacher Name</h4>
+            <p class="m-0">Qualification</p>
+            <p class="m-0">Institution</p>
+          </div>
+          <div class="col-3">
+            <div class="d-flex">
+              <h3 class="m-0">99.9</h3>
+              <p class="m-0">%</p>
+            </div>
+            <p  class="m-0">Rating</p>
+          </div>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-around h3 m-0">
+          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+    <div class="card">
+      <div class="card-header">
+        <h5>Computer Science</h5>
+      </div>
+      <hr/ class="m-0">
+      <div class="card-block p-3">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-9">
+            <h4>Teacher Name</h4>
+            <p class="m-0">Qualification</p>
+            <p class="m-0">Institution</p>
+          </div>
+          <div class="col-3">
+            <div class="d-flex">
+              <h3 class="m-0">99.9</h3>
+              <p class="m-0">%</p>
+            </div>
+            <p  class="m-0">Rating</p>
+          </div>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-around h3 m-0">
+          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+    <div class="card">
+      <div class="card-header">
+        <h5>Computer Science</h5>
+      </div>
+      <hr/ class="m-0">
+      <div class="card-block p-3">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-9">
+            <h4>Teacher Name</h4>
+            <p class="m-0">Qualification</p>
+            <p class="m-0">Institution</p>
+          </div>
+          <div class="col-3">
+            <div class="d-flex">
+              <h3 class="m-0">99.9</h3>
+              <p class="m-0">%</p>
+            </div>
+            <p  class="m-0">Rating</p>
+          </div>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-around h3 m-0">
+          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
-<h1>Hello, world!</h1>
 
 <?php include 'assets\footer.php'; ?>
