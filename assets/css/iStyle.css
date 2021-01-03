@@ -7,6 +7,7 @@
 .header-dark
 {
   background: #323437;
+  box-shadow: 0 1px 20px 0 rgba(0,0,0,.2);
 }
 
 .dropdown-toggle::after
@@ -14,7 +15,8 @@
   content: none;
 }
 
-.dropdown-menu {
+.dropdown-menu
+{
   max-height: 90vh;
   overflow: auto;
 }
