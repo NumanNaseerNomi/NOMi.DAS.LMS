@@ -4,9 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">-->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous"> -->
+    <!-- CSS stylesheet -->
     <link rel="stylesheet" href="assets/css/iStyle.css">
     <title>Hello, world!</title>
   </head>
@@ -16,7 +14,7 @@
       <nav class="navbar p-0">
         <div class="container-fluid p-0">
           <div class="dropdown" id="preventDropdown">
-            <a class="nav-link dropdown-toggle navbar-brand" href="#" title="Menu" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
+            <a class="nav-link dropdown-toggle navbar-brand"  title="Menu" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bars"></i></a>
             <ul class="dropdown-menu menuDropdown" aria-labelledby="dropdownMenuLink">
               <li class="accordion" id="menuAccordion">
                 <a class="dropdown-item menuHeadingOne" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseOne" aria-expanded="true" aria-controls="menuCollapseOne"><i class="fas fa-bell"></i>Collapsible #1</a>
@@ -60,8 +58,8 @@
             </ul>
           </div>
           <div>
-            <a class="navbar-brand d-none d-sm-block" href="#"><b>DAR-E-ARQAM</b></a>
-            <a class="navbar-brand d-block d-sm-none" href="#"><b>DAS</b></a>
+            <a class="navbar-brand d-none d-sm-block" href=""><b>DAR-E-ARQAM</b></a>
+            <a class="navbar-brand d-block d-sm-none" href=""><b>DAS</b></a>
           </div>
           <div>
             <div class="btn-group">
