@@ -64,7 +64,7 @@
           <div>
             <div class="btn-group">
               <a class="dropdown-toggle navbar-brand" title="My TO-DOs" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-tasks"></i></a>
-              <ul class="dropdown-menu dropdown-menu-right">
+              <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -74,7 +74,7 @@
             </div>
             <div class="btn-group">
               <a class="dropdown-toggle navbar-brand" title="Notifications" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bell"></i></a>
-              <ul class="dropdown-menu dropdown-menu-right">
+              <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -84,7 +84,7 @@
             </div>
             <div class="btn-group">
               <a class="dropdown-toggle navbar-brand" title="My Account" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user"></i></a>
-              <ul class="dropdown-menu dropdown-menu-right">
+              <ul class="dropdown-menu dropdown-menu-end">
                 <li class="iProfileHead">
                   <a class="dropdown-item text-center m-0 p-0 iProfileHead" href="#" title="My Profile">
                     <img src="assets\icon\avatar-2.jpg" class="rounded" alt="Profile Image">
