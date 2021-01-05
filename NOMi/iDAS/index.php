@@ -10,63 +10,113 @@
     <!-- Font Awesome CSS File - Start -->
     <link rel="stylesheet" type="text/css" href="assets\plugins\fontAwesome\css\fontAwesomeAll.min.css">
     <!-- Font Awesome CSS File - End -->
-    <title>Hello, world!</title>
-    <?php define('DangerText','fs-1'); ?>
+    <style>
+    body
+    {
+    color: #adb7be!important;
+    background: #212224!important;
+    }
+    header,
+    .dropdown-menu
+    {
+    background: #393b3f!important;
+    }
+    .far
+    {
+    width: 25%!important;
+    text-align: center!important;
+    }
+    .far:hover
+    {
+    font-weight: 900;
+    }
+    h1 {background: #393b3f;}
+    </style>
+    <title>iDAS LMS</title>
+    <?php define('DangerText','fs-1 text-danger'); ?>
   </head>
   <body>
     <!-- Navigation Bar - Start -->
-    <header class="fixed-top p-0 fs-4    border-bottom shadow-sm">
+    <header class="fixed-top p-0 fs-4 shadow">
       <nav class="navbar p-0">
         <div class="container-fluid p-0">
           <div>
+            <!-- Side Navigation Bar - Start -->
             <div class="dropdown ms-2" id="preventDropdown">
               <a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
-              <div class="dropdown-menu dropdown-menu-start" aria-labelledby="menuDropdownButton">
-                <div><a class="dropdown-item" href="">Action</a></div>
-                <div><a class="dropdown-item" href="">Another action</a></div>
+              <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" aria-labelledby="menuDropdownButton">
+                <a class="dropdown-item" href=""><i class="far fa-home"></i>Home</a>
+                <a class="dropdown-item" href=""><i class="far fa-chart-bar"></i>Grade Book</a>
+                <a class="dropdown-item" href=""><i class="far fa-file-invoice-dollar"></i>Account Book</a>
+                <a class="dropdown-item" href=""><i class="far fa-calendar-alt"></i>Time Table</a>
                 <hr class="dropdown-divider"/>
                 <div class="accordion" id="menuAccordion">
-                  <a class="dropdown-item menuHeadingOne" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseOne" aria-expanded="true" aria-controls="menuCollapseOne"><i class="fas fa-bell"></i>Collapsible #1</a>
+                  <a class="dropdown-item menuHeadingOne" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseOne" aria-expanded="true" aria-controls="menuCollapseOne">-<i class="far fa-bell"></i>Collapsible #1</a>
                   <div id="menuCollapseOne" class="collapse" aria-labelledby="menuHeadingOne" data-bs-parent="#menuAccordion">
-                    <div><a class="dropdown-item active" href="">Action</a></div>
-                    <div><a class="dropdown-item" href="">Action</a></div>
+                    <a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
+                    <a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
+                    <a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
                   </div>
-                  <a class="dropdown-item menuHeadingTwo" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseTwo" aria-expanded="false" aria-controls="menuCollapseTwo"><i class="fas fa-user"></i>Collapsible #2</a>
+                  <a class="dropdown-item menuHeadingTwo" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseTwo" aria-expanded="false" aria-controls="menuCollapseTwo">-<i class="far fa-user"></i>Collapsible #2</a>
                   <div id="menuCollapseTwo" class="collapse" aria-labelledby="menuHeadingTwo" data-bs-parent="#menuAccordion">
-                    <a class="dropdown-item" href=""><i class="fas fa-user"></i> Action</a>
-                    <a class="dropdown-item" href=""><i class="fas fa-user"></i> Action</a>
-                    <a class="dropdown-item" href=""><i class="fas fa-language"></i> Action</a>
+                    <a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
+                    <a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
+                    <a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- Side Navigation Bar - End -->
           </div>
           <div>
-            <b class="d-none d-sm-block">DAR-E-ARQAM</b><b class="d-block d-sm-none">DAS</b>
+            <b class="d-none d-sm-block">DAR-E-ARQAM</b>
+            <b class="d-block d-sm-none">DAS</b>
           </div>
           <div>
+            <!-- My TO-DOs - Start -->
             <div class="btn-group me-2">
               <div class="dropdown">
                 <a title="My TO-DOs" role="button" id="myToDos" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-tasks"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="myToDos">
-                  <li><a class="dropdown-item" href="">Action</a></li>
-                  <li><a class="dropdown-item" href="">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="">Something else here</a></li>
-                </ul>
+                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myToDos">
+                  <a class="dropdown-item" href="">Action</a>
+                  <a class="dropdown-item" href="">Another action</a>
+                  <hr class="dropdown-divider"/>
+                  <a class="dropdown-item" href="">Something else here</a>
+                </div>
               </div>
             </div>
+            <!-- My TO-DOs - End -->
+            <!-- My Notifications - Start -->
             <div class="btn-group me-2">
               <div class="dropdown">
-                <a title="Notifications" role="button" id="Notifications" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bell"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="Notifications">
-                  <li><a class="dropdown-item" href="">Action</a></li>
-                  <li><a class="dropdown-item" href="">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="">Something else here</a></li>
-                </ul>
+                <a title="My Notifications" role="button" id="myNotifications" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bell"></i></a>
+                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myNotifications">
+                  <a class="dropdown-item" href="">Action</a>
+                  <a class="dropdown-item" href="">Another action</a>
+                  <hr class="dropdown-divider"/>
+                  <a class="dropdown-item" href="">Something else here</a>
+                </div>
               </div>
             </div>
+            <!-- My Notifications - End -->
+            <!-- Profile Setting - Start -->
+            <div class="btn-group me-2">
+              <div class="dropdown">
+                <a title="My Profile" role="button" id="myProfile" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user"></i></a>
+                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myProfile">
+                  <a class="dropdown-item text-center" href="" title="My Profile">
+                    <p class="m-0">#Name of user</p>
+                    <p class="small m-0">#Role</p>
+                    <p class="m-0">#if std class</p>
+                  </a>
+                  <hr class="dropdown-divider"/>
+                  <a class="dropdown-item" href=""><i class="far fa-cogs"></i>Settings</a>
+                  <hr class="dropdown-divider"/>
+                  <a class="dropdown-item" href=""><i class="far fa-power-off"></i>Log Out</a>
+                </div>
+              </div>
+            </div>
+            <!-- Profile Setting - End -->
           </div>
         </div>
       </nav>
@@ -74,7 +124,7 @@
     <!-- Navigation Bar - End -->
     <!-- Main Container - Start -->
     <div class="container-fluid pt-5">
-      <h1>Heading H1</h1>
+      <h1 class="" >Heading H1|||||||||||</h1>
     </div>
     <!-- Main Container - End -->
     <span class="<?php echo DangerText ?>"> Le Champion est Ici </span>
