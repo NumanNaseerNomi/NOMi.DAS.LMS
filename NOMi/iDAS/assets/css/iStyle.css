@@ -3,6 +3,14 @@ body {
     background: #212224;
 }
 
+.fcLightBlack { color: #adb7be; }
+.fcDarkBlack { color: #212224; }
+.fcLightGrey { color: #55585e; }
+
+.bgLightBlack { background-color: #adb7be; }
+.bgDarkBlack { background-color: #212224; }
+.bgLightGrey { background-color: #55585e; }
+
 a {
     color: #adb7be;
 }
