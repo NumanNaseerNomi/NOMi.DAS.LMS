@@ -1,110 +1,66 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS File - Start -->
-    <link rel="stylesheet" type="text/css" href="assets\plugins\bootstrap\css\bootstrap.min.css">
-    <!-- Bootstrap CSS File - End -->
-    <!-- Font Awesome CSS File - Start -->
-    <link rel="stylesheet" type="text/css" href="assets\plugins\fontAwesome\css\fontAwesomeAll.min.css">
-    <!-- Font Awesome CSS File - End -->
-    <link rel="stylesheet" type="text/css" href="assets\css\iStyle.css">
-    <title>iDAS LMS</title>
-    <?php define('DangerText','fs-1 text-danger'); ?>
-  </head>
-  <body>
-    <!-- Navigation Bar - Start -->
-    <header class="fixed-top p-0 fs-4 shadow">
-      <nav class="navbar p-0">
-        <div class="container-fluid p-0">
-          <div>
-            <!-- Side Navigation Bar - Start -->
-            <div class="dropdown ms-2" id="preventDropdown">
-              <a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
-              <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start shadow" aria-labelledby="menuDropdownButton">
-                <a class="dropdown-item" href=""><i class="far fa-home"></i>Home</a>
-                <a class="dropdown-item" href=""><i class="far fa-chart-bar"></i>Grade Book</a>
-                <a class="dropdown-item" href=""><i class="far fa-file-invoice-dollar"></i>Account Book</a>
-                <a class="dropdown-item" href=""><i class="far fa-calendar-alt"></i>Time Table</a>
-                <hr class="dropdown-divider"/>
-                <div class="accordion" id="menuAccordion">
-                  <a class="dropdown-item menuHeadingOne" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseOne" aria-expanded="true" aria-controls="menuCollapseOne">-<i class="far fa-bell"></i>Collapsible #1</a>
-                  <div id="menuCollapseOne" class="collapse" aria-labelledby="menuHeadingOne" data-bs-parent="#menuAccordion">
-                    <a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
-                    <a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
-                    <a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
-                  </div>
-                  <a class="dropdown-item menuHeadingTwo" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseTwo" aria-expanded="false" aria-controls="menuCollapseTwo">-<i class="far fa-user"></i>Collapsible #2</a>
-                  <div id="menuCollapseTwo" class="collapse" aria-labelledby="menuHeadingTwo" data-bs-parent="#menuAccordion">
-                    <a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
-                    <a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
-                    <a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Side Navigation Bar - End -->
-          </div>
-          <div>
-            <b class="d-none d-sm-block">DAR-E-ARQAM</b>
-            <b class="d-block d-sm-none">DAS</b>
-          </div>
-          <div>
-            <!-- My TO-DOs - Start -->
-            <div class="btn-group me-2">
-              <div class="dropdown">
-                <a title="My TO-DOs" role="button" id="myToDos" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-tasks"></i></a>
-                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myToDos">
-                  <a class="dropdown-item" href="">Action</a>
-                  <a class="dropdown-item" href="">Another action</a>
-                  <hr class="dropdown-divider"/>
-                  <a class="dropdown-item" href="">Something else here</a>
-                </div>
-              </div>
-            </div>
-            <!-- My TO-DOs - End -->
-            <!-- My Notifications - Start -->
-            <div class="btn-group me-2">
-              <div class="dropdown">
-                <a title="My Notifications" role="button" id="myNotifications" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bell"></i></a>
-                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myNotifications">
-                  <a class="dropdown-item" href="">Action</a>
-                  <a class="dropdown-item" href="">Another action</a>
-                  <hr class="dropdown-divider"/>
-                  <a class="dropdown-item" href="">Something else here</a>
-                </div>
-              </div>
-            </div>
-            <!-- My Notifications - End -->
-            <!-- Profile Setting - Start -->
-            <div class="btn-group me-2">
-              <div class="dropdown">
-                <a title="My Profile" role="button" id="myProfile" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user"></i></a>
-                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myProfile">
-                  <a class="dropdown-item text-center" href="" title="My Profile">
-                    <p class="m-0">#Name of user</p>
-                    <p class="small m-0">#Role</p>
-                    <p class="m-0">#if std class</p>
-                  </a>
-                  <hr class="dropdown-divider"/>
-                  <a class="dropdown-item" href=""><i class="far fa-cogs"></i>Settings</a>
-                  <hr class="dropdown-divider"/>
-                  <a class="dropdown-item" href=""><i class="far fa-power-off"></i>Log Out</a>
-                </div>
-              </div>
-            </div>
-            <!-- Profile Setting - End -->
+<?php require 'components\header.php'; ?>
+<?php require 'components\subjectCard.php'; ?>
+<div class="card">
+  <h4 class="m-3 mb-0">New Admission</h4>
+  <hr class="mb-0"/>
+  <div class="card-body">
+    <div class="">
+      <form class="row g-3">
+        <h5 class="text-center text-decoration-underline">Student Information</h5>
+        <div class="col-md-4">
+          <label for="nID" class="form-label">National Identity Number (CNIC, Birth Certificate, Other...)</label>
+          <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="nID" placeholder="34597-1234567-8" size="13" pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}" required>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault01" class="form-label">Student Name</label>
+          <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault01" required>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault02" class="form-label">Last Name</label>
+          <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault02" required>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefaultUsername" class="form-label">Username</label>
+          <div class="input-group">
+            <span class="input-group-text" id="inputGroupPrepend2">@</span>
+            <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
           </div>
         </div>
-      </nav>
-    </header>
-    <!-- Navigation Bar - End -->
-    <!-- Main Container - Start -->
-    <div class="container-fluid pt-5">
- <?php require 'components\subjectCard.php'; ?>
+        <div class="col-md-6">
+          <label for="validationDefault03" class="form-label">City</label>
+          <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault03" required>
+        </div>
+        <div class="col-md-3">
+          <label for="validationDefault04" class="form-label">State</label>
+          <select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault04" required>
+            <option selected disabled>Choose...</option>
+            <option>6546</option>
+            <option>alksdj</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="validationDefault05" class="form-label">Zip</label>
+          <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault05" required>
+        </div>
+        <div class="col-md-3">
+          <label for="DOB" class="form-label">Date of Birth</label>
+          <input type="date" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="DOB" required>
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input bgDarkBlack border-dark" type="checkbox" id="invalidCheck2" required>
+            <label class="form-check-label" for="invalidCheck2">
+              Agree to terms and conditions
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-outline-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+      <hr/>
     </div>
-    <!-- Main Container - End -->
-    <span class="<?php echo DangerText ?>"> Le Champion est Ici </span>
-    <?php require 'components\footer.php'; ?>
+  </div>
+</div>
+<br><br>
+<?php require 'components\footer.php'; ?>
