@@ -1,6 +1,5 @@
 <!-- Subject Cards - Start-->
 <div class="row">
-  <?php for ($i=0; $i < 8; $i++) { ?>
   <!-- Subject Card - Start-->
   <div class="col-md-6 col-xl-4 p-3">
     <div class="card">
@@ -31,8 +30,6 @@
       </div>
     </div>
   </div>
-
-<?php } ?>
   <!-- Subject Card - End-->
 </div>
 <!-- Subject Cards - Start-->
