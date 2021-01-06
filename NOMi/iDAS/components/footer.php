@@ -1,4 +1,5 @@
-    <!-- Footer - Start -->
+    </div>
+    <!-- Main Container - End -->    <!-- Footer - Start -->
     <footer>
       <!-- Bootstrap JavaScript File - Start -->
       <script type="text/javascript" src="assets\plugins\bootstrap\js\bootstrap.bundle.min.js"></script>
@@ -7,7 +8,7 @@
       // Prevents menu from closing when clicked inside
       document.getElementById("preventDropdown").addEventListener('click', function (event)
       {
-      event.stopPropagation();
+        event.stopPropagation();
       });
       </script>
     </footer>
