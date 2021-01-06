@@ -1,18 +1,18 @@
 body {
-    color: #adb7be;
-    background: #212224;
+    color: #adb7be !important;
+    background: #212224 !important;
 }
 
-.fcLightBlack { color: #adb7be; }
-.fcDarkBlack { color: #212224; }
-.fcLightGrey { color: #55585e; }
+.fcLightBlack { color: #adb7be !important; }
+.fcDarkBlack { color: #212224 !important; }
+.fcLightGrey { color: #55585e !important; }
 
-.bgLightBlack { background-color: #adb7be; }
-.bgDarkBlack { background-color: #212224; }
-.bgLightGrey { background-color: #55585e; }
+.bgLightBlack { background-color: #adb7be !important; }
+.bgDarkBlack { background-color: #212224 !important; }
+.bgLightGrey { background-color: #55585e !important; }
 
 a {
-    color: #adb7be;
+    color: #adb7be !important;
 }
 
 a:hover:not(.active) {
@@ -24,8 +24,8 @@ header, .card, .dropdown-menu {
 }
 
 .dropdown-menu {
-    max-height: 90vh;
-    overflow: auto;
+    max-height: 90vh !important;
+    overflow: auto !important;
 }
 
 .far {
@@ -34,7 +34,7 @@ header, .card, .dropdown-menu {
 }
 
 .far:hover {
-    font-weight: 900;
+    font-weight: 900 !important;
 }
 
 
