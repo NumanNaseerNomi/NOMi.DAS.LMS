@@ -10,28 +10,7 @@
     <!-- Font Awesome CSS File - Start -->
     <link rel="stylesheet" type="text/css" href="assets\plugins\fontAwesome\css\fontAwesomeAll.min.css">
     <!-- Font Awesome CSS File - End -->
-    <style>
-    body
-    {
-    color: #adb7be!important;
-    background: #212224!important;
-    }
-    header,
-    .dropdown-menu
-    {
-    background: #393b3f!important;
-    }
-    .far
-    {
-    width: 25%!important;
-    text-align: center!important;
-    }
-    .far:hover
-    {
-    font-weight: 900;
-    }
-    h1 {background: #393b3f;}
-    </style>
+    <link rel="stylesheet" type="text/css" href="assets\css\iStyle.css">
     <title>iDAS LMS</title>
     <?php define('DangerText','fs-1 text-danger'); ?>
   </head>
@@ -44,7 +23,7 @@
             <!-- Side Navigation Bar - Start -->
             <div class="dropdown ms-2" id="preventDropdown">
               <a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
-              <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" aria-labelledby="menuDropdownButton">
+              <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start shadow" aria-labelledby="menuDropdownButton">
                 <a class="dropdown-item" href=""><i class="far fa-home"></i>Home</a>
                 <a class="dropdown-item" href=""><i class="far fa-chart-bar"></i>Grade Book</a>
                 <a class="dropdown-item" href=""><i class="far fa-file-invoice-dollar"></i>Account Book</a>
@@ -77,7 +56,7 @@
             <div class="btn-group me-2">
               <div class="dropdown">
                 <a title="My TO-DOs" role="button" id="myToDos" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-tasks"></i></a>
-                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myToDos">
+                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myToDos">
                   <a class="dropdown-item" href="">Action</a>
                   <a class="dropdown-item" href="">Another action</a>
                   <hr class="dropdown-divider"/>
@@ -124,7 +103,41 @@
     <!-- Navigation Bar - End -->
     <!-- Main Container - Start -->
     <div class="container-fluid pt-5">
-      <h1 class="" >Heading H1|||||||||||</h1>
+      <!-- Subject Cards - Start-->
+      <div class="row">
+        <!-- Subject Card - Start-->
+        <div class="col-md-6 col-xl-4">
+          <div class="card">
+            <h4 class="m-3 mb-0">Computer Science</h4>
+            <hr class="mb-0"/>
+            <div class="card-body">
+              <div class="row align-items-center justify-content-center">
+                <div class="col-9">
+                  <h4>Teacher / Class Name</h4>
+                  <p class="m-0">Qualification / Section</p>
+                  <p class="m-0">Institution / Session</p>
+                </div>
+                <div class="col-3">
+                  <div class="d-flex">
+                    <h3 class="m-0">99.9</h3>
+                    <p class="m-0">%</p>
+                  </div>
+                  <p  class="m-0">Rating</p>
+                </div>
+              </div>
+              <hr/>
+              <div class="d-flex justify-content-around h3 m-0">
+                <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
+                <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
+                <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
+                <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Subject Card - End-->
+      </div>
+      <!-- Subject Cards - Start-->
     </div>
     <!-- Main Container - End -->
     <span class="<?php echo DangerText ?>"> Le Champion est Ici </span>
