@@ -6,15 +6,50 @@
   <div class="card-body">
     <div class="">
       <form class="row g-3">
-        <h5 class="text-center text-decoration-underline">Student Information</h5>
-        <div class="col-md-4">
-          <label for="nID" class="form-label">National Identity Number (CNIC, Birth Certificate, Other...)</label>
-          <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="nID" placeholder="34597-1234567-8" size="13" pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}" required>
+        <h5 class="text-center text-decoration-underline">Admission Information</h5>
+        <div class="col-md-6">
+          <label for="validationDefault04" class="form-label">Academic Year</label>
+          <select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault04" required>
+            <option selected disabled></option>
+            <option>2021-2022</option>
+            <option>2022-2023</option>
+          </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
+          <label for="validationDefault04" class="form-label">Class</label>
+          <select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault04" required>
+            <option selected disabled></option>
+            <option>PG</option>
+            <option>Prep</option>
+          </select>
+        </div>
+        <hr class="mb-0"/>
+        <h5 class="text-center text-decoration-underline">Student Information</h5>
+        <div class="col-md-3">
+          <label for="nID" class="form-label">National Identity Number</label>
+          <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="nID" placeholder="3459712345678" size="13" pattern="[0-9]{13}" required>
+        </div>
+        <div class="col-md-3">
           <label for="validationDefault01" class="form-label">Student Name</label>
           <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault01" required>
         </div>
+        <div class="col-md-2">
+          <label for="DOB" class="form-label">Date of Birth</label>
+          <input type="date" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="DOB" required>
+        </div>
+        <div class="col-md-1">
+          <label for="validationDefault04" class="form-label">Gender</label>
+          <select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault04" required>
+            <option selected disabled></option>
+            <option>Female</option>
+            <option>Male</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+            <label for="validationDefault04" class="form-label">Student Photo</label>
+            <input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack" accept=".jpg, .jpeg" id="inputGroupFile01">
+        </div>
+
         <div class="col-md-4">
           <label for="validationDefault02" class="form-label">Last Name</label>
           <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault02" required>
@@ -41,10 +76,6 @@
         <div class="col-md-3">
           <label for="validationDefault05" class="form-label">Zip</label>
           <input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="validationDefault05" required>
-        </div>
-        <div class="col-md-3">
-          <label for="DOB" class="form-label">Date of Birth</label>
-          <input type="date" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="DOB" required>
         </div>
         <div class="col-12">
           <div class="form-check">
