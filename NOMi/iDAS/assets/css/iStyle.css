@@ -1,0 +1,76 @@
+body {
+    color: #adb7be !important;
+    background: #212224 !important;
+}
+
+.fcLightBlack { color: #adb7be !important; }
+.fcDarkBlack { color: #212224 !important; }
+.fcLightGrey { color: #55585e !important; }
+
+.bgLightBlack { background-color: #adb7be !important; }
+.bgDarkBlack { background-color: #212224 !important; }
+.bgLightGrey { background-color: #55585e !important; }
+
+a {
+    color: #adb7be !important;
+}
+
+a:hover:not(.active) {
+    color: #fff !important;
+}
+
+header, .card, .dropdown-menu {
+    background: #323437 !important;
+}
+
+.dropdown-menu {
+    max-height: 90vh !important;
+    overflow: auto !important;
+}
+
+.far {
+    width: 25% !important;
+    text-align: center !important;
+}
+
+.far:hover {
+    font-weight: 900 !important;
+}
+
+
+
+
+
+/* Custom Scrollbar - start */
+
+/* width */
+::-webkit-scrollbar
+{
+  width: 0.15rem;
+}
+
+::-webkit-scrollbar:hover
+{
+  width: 0.375rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track
+{
+ // box-shadow: inset 0 0 0.3125rem grey;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb
+{
+ // background: rgba(4, 169, 245, .30);
+  box-shadow: inset 0 0 0.3125rem grey;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover
+{
+  background: #038ac9;
+}
+
+/* Custom Scrollbar - end */
