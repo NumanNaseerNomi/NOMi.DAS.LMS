@@ -2,22 +2,22 @@
 	<h4 class="m-3 mb-0">New Admission</h4>
 	<hr class="mb-0"/>
 	<div class="card-body">
-		<form class="row g-3">
+		<form class="row g-3 needs-validation">
 			<h5 class="text-center text-decoration-underline">Admission Information</h5>
 			<div class="col-md-6">
 				<label for="academicYear" class="form-label">Academic Year *</label>
 				<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="academicYear" required>
 					<option selected disabled></option>
-					<option>2021-2022</option>
-					<option>2022-2023</option>
+					<option value="2021-2022">2021-2022</option>
+					<option value="2022-2023">2022-2023</option>
 				</select>
 			</div>
 			<div class="col-md-6">
 				<label for="class" class="form-label">Class *</label>
 				<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="class" required>
 					<option selected disabled></option>
-					<option>PG</option>
-					<option>Prep</option>
+					<option value="PG">PG</option>
+					<option value="Prep">Prep</option>
 				</select>
 			</div>
 			<hr class="mb-0"/>
@@ -64,9 +64,9 @@
 							<label for="fatherQualification" class="form-label">Qualification</label>
 							<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="fatherQualification">
 								<option selected disabled></option>
-								<option>None</option>
-								<option>Under Matric</option>
-								<option>Matric</option>
+								<option value="">None</option>
+								<option value="">Under Matric</option>
+								<option value="">Matric</option>
 							</select>
 						</div>
 						<div class="col-md-3">
@@ -108,9 +108,9 @@
 							<label for="motherQualification" class="form-label">Qualification</label>
 							<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="motherQualification">
 								<option selected disabled></option>
-								<option>None</option>
-								<option>Under Matric</option>
-								<option>Matric</option>
+								<option value="">None</option>
+								<option value="">Under Matric</option>
+								<option value="">Matric</option>
 							</select>
 						</div>
 						<div class="col-md-3">
@@ -141,9 +141,9 @@
 						<label class="btn btn-outline-secondary" for="guardianOther">Other</label>
 						<select class="form-select bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianRelationship" required>
 							<option selected disabled></option>
-							<option>Uncle</option>
-							<option>Ant</option>
-							<option>Matric</option>
+							<option value="">Uncle</option>
+							<option value="">Ant</option>
+							<option value="">Matric</option>
 						</select>
 					</div>
 				</div>
@@ -169,9 +169,9 @@
 						<label for="guardianQualification" class="form-label">Qualification</label>
 						<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianQualification">
 							<option selected disabled></option>
-							<option>None</option>
-							<option>Under Matric</option>
-							<option>Matric</option>
+							<option value="">None</option>
+							<option value="">Under Matric</option>
+							<option value="">Matric</option>
 						</select>
 					</div>
 					<div class="col-md-3">
