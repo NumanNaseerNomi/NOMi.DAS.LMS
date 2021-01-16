@@ -34,14 +34,6 @@
 				<label for="studentDOB" class="form-label">Date of Birth *</label>
 				<input type="date" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="studentDOB" required>
 			</div>
-		<!--	<div class="col-md-1">
-				<label for="studentGender" class="form-label">Gender</label>
-				<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack" id="studentGender" required>
-					<option selected disabled></option>
-					<option>Female</option>
-					<option>Male</option>
-				</select>
-			</div> -->
 			<div class="col-md-3">
 				<label for="studentPhoto" class="form-label">Student Photo *</label>
 				<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack" accept=".jpg, .jpeg" id="studentPhoto" required>
@@ -60,11 +52,6 @@
 							<label for="fatherName" class="form-label">Father's Name *</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="fatherName" required>
 						</div>
-				<!--		<div class="col-md-2">
-							<label for="fatherDOB" class="form-label">Date of Birth</label>
-							<input type="date" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="fatherDOB" required>
-						</div> -->
-						
 						<div class="col-md-3">
 							<label for="fatherMobileNumber" class="form-label">Mobile Number</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="fatherMobileNumber">
@@ -94,10 +81,6 @@
 							<label for="fatherOrganization" class="form-label">Organization</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="fatherOrganization">
 						</div>
-				<!--		<div class="col-md-3">
-							<label for="fatherIncome" class="form-label">Annual Income (Rs.)</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="fatherIncome" required>
-						</div> -->
 					</div>
 				</div>
 			</div>
@@ -113,11 +96,6 @@
 							<label for="motherName" class="form-label">Mother's Name *</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="motherName" required>
 						</div>
-				<!--		<div class="col-md-2">
-							<label for="motherDOB" class="form-label">Date of Birth</label>
-							<input type="date" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="motherDOB" required>
-						</div> -->
-						
 						<div class="col-md-3">
 							<label for="motherMobileNumber" class="form-label">Mobile Number</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="motherMobileNumber">
@@ -147,95 +125,76 @@
 							<label for="motherOrganization" class="form-label">Organization</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="motherOrganization">
 						</div>
-				<!--		<div class="col-md-3">
-							<label for="motherIncome" class="form-label">Annual Income (Rs.)</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="motherIncome" required>
-						</div> -->
 					</div>
 				</div>
 			</div>
 			<hr class="mb-0"/>
 			<h5 class="text-center text-decoration-underline">Guardian Information</h5>
-			<div class="row">
-				<div class="col">
+				<div class="col-md-6">
 					<label class="form-check-label">Guardian: * &emsp;</label>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input bgDarkBlack" type="radio" name="guardianOptions" id="guardianFather" value="1" onclick="disableGroup('guardianFather', 'isGuardian');" required>
-						<label class="form-check-label" for="guardianFather">Father</label>
+					<div class="input-group input-group-sm">
+						<input type="radio" class="btn-check" name="guardianOptions" id="guardianFather" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianFather', 'isGuardian', true);" required>
+						<label class="btn btn-outline-secondary" for="guardianFather">Father</label>
+						<input type="radio" class="btn-check" name="guardianOptions" id="guardianMother" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianMother', 'isGuardian', true);">
+						<label class="btn btn-outline-secondary" for="guardianMother">Mother</label>
+						<input type="radio" class="btn-check" name="guardianOptions" id="guardianOther" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianOther', 'isGuardian', false);">
+						<label class="btn btn-outline-secondary" for="guardianOther">Other</label>
+						<select class="form-select bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianRelationship" required>
+							<option selected disabled></option>
+							<option>Uncle</option>
+							<option>Ant</option>
+							<option>Matric</option>
+						</select>
 					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input bgDarkBlack" type="radio" name="guardianOptions" id="guardianMother" value="0" onclick="disableGroup('guardianMother', 'isGuardian');">
-						<label class="form-check-label" for="guardianMother">Mother</label>
+				</div>
+			<div class="collapse show" id="collapseGuardian">
+				<div class="row g-3">
+					<div class="col-md-3">
+						<label for="guardianNID" class="form-label">National ID Number *</label>
+						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianNID" placeholder="3459712345678" size="13" pattern="[0-9]{13}" required>
 					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input bgDarkBlack" type="radio" name="guardianOptions" id="guardianOther">
-						<label class="form-check-label" for="guardianOther">Other</label>
+					<div class="col-md-3">
+						<label for="guardianName" class="form-label">Guardian's Name *</label>
+						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianName" required>
+					</div>
+					<div class="col-md-3">
+						<label for="guardianMobileNumber" class="form-label">Mobile Number</label>
+						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianMobileNumber">
+					</div>
+					<div class="col-md-3">
+						<label for="guardianPhoto" class="form-label">Guardian Photo</label>
+						<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian" accept=".jpg, .jpeg" id="guardianPhoto">
+					</div>
+					<div class="col-md-3">
+						<label for="guardianQualification" class="form-label">Qualification</label>
+						<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianQualification">
+							<option selected disabled></option>
+							<option>None</option>
+							<option>Under Matric</option>
+							<option>Matric</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label for="guardianOccupation" class="form-label">Occupation</label>
+						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianOccupation">
+					</div>
+					<div class="col-md-3">
+						<label for="guardianOccupation" class="form-label">Designation</label>
+						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianOccupation">
+					</div>
+					<div class="col-md-3">
+						<label for="guardianOrganization" class="form-label">Organization</label>
+						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianOrganization">
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3">
-				<label for="guardianNID" class="form-label">National ID Number *</label>
-				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianNID" placeholder="3459712345678" size="13" pattern="[0-9]{13}" required>
-			</div>
-			<div class="col-md-3">
-				<label for="guardianName" class="form-label">Guardian's Name *</label>
-				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianName" required>
-			</div>
-	<!--		<div class="col-md-2">
-				<label for="guardianDOB" class="form-label">Date of Birth</label>
-				<input type="date" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianDOB" required>
-			</div> -->
-			
-			<div class="col-md-3">
-				<label for="guardianMobileNumber" class="form-label">Mobile Number</label>
-				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianMobileNumber">
-			</div>
-			<div class="col-md-3">
-				<label for="guardianPhoto" class="form-label">Guardian Photo</label>
-				<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian" accept=".jpg, .jpeg" id="guardianPhoto">
-			</div>
-			<div class="col-md-2">
-				<label for="guardianRelationship" class="form-label">Relationship *</label>
-				<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianRelationship" required>
-					<option selected disabled></option>
-					<option>Uncle</option>
-					<option>Ant</option>
-					<option>Matric</option>
-				</select>
-			</div>
-			<div class="col-md-2">
-				<label for="guardianQualification" class="form-label">Qualification</label>
-				<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianQualification">
-					<option selected disabled></option>
-					<option>None</option>
-					<option>Under Matric</option>
-					<option>Matric</option>
-				</select>
-			</div>
-			
-			<div class="col-md-2">
-				<label for="guardianOccupation" class="form-label">Occupation</label>
-				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianOccupation">
-			</div>
-			<div class="col-md-3">
-				<label for="guardianOccupation" class="form-label">Designation</label>
-				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianOccupation">
-			</div>
-			<div class="col-md-3">
-				<label for="guardianOrganization" class="form-label">Organization</label>
-				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianOrganization">
-			</div>
-	<!--		<div class="col-md-2">
-				<label for="guardianIncome" class="form-label">Annual Income (Rs.)</label>
-				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="guardianIncome" required>
-			</div> -->
 			<hr class="mb-0"/>
 			<h5 class="text-center text-decoration-underline">Address information</h5>
 			<div class="card shadow border-dark">
 				<div class="card-body">
 					<div class="row g-3">
 						<h6 class="text-muted">Permanent Address</h6>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<label for="permanentAddress" class="form-label">Permanent Address *</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="permanentAddress" required>
 						</div>
@@ -251,7 +210,7 @@
 							<label for="permanentCountry" class="form-label">Country *</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="permanentCountry" required>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<label for="permanentContactNumber" class="form-label">Contact Number</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="permanentContactNumber">
 						</div>
@@ -260,33 +219,35 @@
 			</div>
 			<div class="card shadow border-dark">
 				<div class="card-body">
-					<div class="row g-3">
-						<h6 class="text-muted">Current Address</h6>
-						<div class="col-12">
-							<div class="form-check">
-								<input class="form-check-input bgDarkBlack border-dark" type="checkbox" id="asPermanent" onclick="disableGroup('asPermanent', 'isPermanent');">
-								<label class="form-check-label" for="asPermanent">Same as Permanent Address *</label>
+					<h6 class="text-muted">Current Address</h6>
+					<div class="col-12">
+						<div class="form-check">
+							<input class="form-check-input bgDarkBlack border-dark" type="checkbox" id="asPermanent" data-bs-toggle="collapse" data-bs-target="#collapseCurrentAddress" aria-expanded="true" aria-controls="collapseCurrentAddress" onclick="disableGroup('asPermanent', 'isPermanent', true);">
+							<label class="form-check-label" for="asPermanent">Same as Permanent Address *</label>
+						</div>
+					</div>
+					<div class="collapse show" id="collapseCurrentAddress">
+						<div class="row g-3">
+							<div class="col-md-3">
+								<label for="currentAddress" class="form-label">Current Address *</label>
+								<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentAddress" required>
 							</div>
-						</div>
-						<div class="col-md-3">
-							<label for="currentAddress" class="form-label">Current Address *</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentAddress" required>
-						</div>
-						<div class="col-md-2">
-							<label for="currentCity" class="form-label">City *</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentCity" required>
-						</div>
-						<div class="col-md-2">
-							<label for="currentState" class="form-label">State *</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentState" required>
-						</div>
-						<div class="col-md-2">
-							<label for="currentCountry" class="form-label">Country *</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentCountry" required>
-						</div>
-						<div class="col-md-3">
-							<label for="currentContactNumber" class="form-label">Contact Number</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentContactNumber">
+							<div class="col-md-2">
+								<label for="currentCity" class="form-label">City *</label>
+								<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentCity" required>
+							</div>
+							<div class="col-md-2">
+								<label for="currentState" class="form-label">State *</label>
+								<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentState" required>
+							</div>
+							<div class="col-md-2">
+								<label for="currentCountry" class="form-label">Country *</label>
+								<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentCountry" required>
+							</div>
+							<div class="col-md-3">
+								<label for="currentContactNumber" class="form-label">Contact Number</label>
+								<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isPermanent" id="currentContactNumber">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -297,23 +258,34 @@
 		</form>
 	</div>
 </div>
-
-
 <script type="text/javascript">
-function disableGroup(myOption, myOptions)
+function disableGroup(myOption, myOptions, onCheck)
 {
 	var myOptionElement = document.getElementById(myOption);
 	var myOptionElements = document.getElementsByClassName(myOptions);
-
 	for (var i = 0; i < myOptionElements.length; i++)
 	{
-		if (myOptionElement.checked)
+		if (onCheck == true)
 		{
-			myOptionElements[i].disabled = true;
+			if (myOptionElement.checked)
+			{
+				myOptionElements[i].disabled = true;
+			}
+			else
+			{
+				myOptionElements[i].disabled = false;
+			}
 		}
 		else
 		{
-			myOptionElements[i].disabled = false;
+			if (myOptionElement.checked)
+			{
+				myOptionElements[i].disabled = false;
+			}
+			else
+			{
+				myOptionElements[i].disabled = true;
+			}
 		}
 	}
 }
