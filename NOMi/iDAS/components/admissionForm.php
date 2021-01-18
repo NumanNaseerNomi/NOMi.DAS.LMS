@@ -133,21 +133,21 @@
 			<div class="col-md-6">
 				<label class="form-check-label">Guardian: * &emsp;</label>
 				<div class="input-group input-group-sm">
-					<input type="radio" class="btn-check requiredFatherNID" name="guardianOptions" id="guardianFather" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianFather', 'isGuardian');" required disabled>
+					<input type="radio" class="btn-check requiredFatherNID" name="guardianOptions" id="guardianFather" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="false" aria-controls="collapseGuardian" onclick="disableGroup('guardianFather', 'isGuardian');" required disabled>
 					<label class="btn btn-outline-secondary" for="guardianFather">Father</label>
-					<input type="radio" class="btn-check requiredMotherNID" name="guardianOptions" id="guardianMother" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianMother', 'isGuardian');" disabled>
+					<input type="radio" class="btn-check requiredMotherNID" name="guardianOptions" id="guardianMother" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="false" aria-controls="collapseGuardian" onclick="disableGroup('guardianMother', 'isGuardian');" disabled>
 					<label class="btn btn-outline-secondary" for="guardianMother">Mother</label>
-					<input type="radio" class="btn-check requiredStudentNID" name="guardianOptions" id="guardianOther" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" disabled>
+					<input type="radio" class="btn-check requiredStudentNID" name="guardianOptions" id="guardianOther" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="false" aria-controls="collapseGuardian" onclick="disableGroup('guardianMother', 'isGuardian', false);" disabled>
 					<label class="btn btn-outline-secondary" for="guardianOther">Other</label>
-					<select class="form-select bgDarkBlack border-dark fcLightBlack requiredStudentNID" id="guardianRelationship" onfocus="this.form.guardianOther.checked = true" onchange="disableOnInvalid('guardianRelationship','requiredGuardianRelationship');" required disabled>
-						<option selected disabled></option>
+					<select class="form-select bgDarkBlack border-dark fcLightBlack requiredStudentNID" id="guardianRelationship" onclick="disableGroup('guardianMother', 'isGuardian'); false" onfocus="this.form.guardianOther.checked = true" onchange="disableOnInvalid('guardianRelationship','requiredGuardianRelationship');" required disabled>
+						<option selected disabled>Select Relationship...</option>
 						<option value="">Uncle</option>
 						<option value="">Ant</option>
 						<option value="">Matric</option>
 					</select>
 				</div>
 			</div>
-			<div class="collapse show" id="collapseGuardian">
+			<div class="collapse" id="collapseGuardian">
 				<div class="row g-3">
 					<div class="col-md-3">
 						<label for="guardianNID" class="form-label">National ID Number *</label>
@@ -223,7 +223,7 @@
 					<div class="col-12">
 						<div class="form-check">
 							<input class="form-check-input bgDarkBlack border-dark requiredPermanentAddress" type="checkbox" id="asPermanent" data-bs-toggle="collapse" data-bs-target="#collapseCurrentAddress" aria-expanded="false" aria-controls="collapseCurrentAddress" onclick="disableGroup('asPermanent', 'isPermanent', false);" disabled>
-							<label class="form-check-label" for="asPermanent">Current Address *</label>
+							<label class="form-check-label" for="asPermanent"> Add Current Address</label>
 						</div>
 					</div>
 					<div class="collapse" id="collapseCurrentAddress">
