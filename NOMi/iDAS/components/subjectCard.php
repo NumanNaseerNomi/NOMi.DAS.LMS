@@ -22,10 +22,10 @@
         </div>
         <hr/>
         <div class="d-flex justify-content-around h3 m-0">
-          <a title="ClassWork" role="button" href=""><i class="fas fa-chalkboard-teacher"></i></a>
-          <a title="HomeWork" role="button" href=""><i class="fas fa-book-reader"></i></a>
-          <a title="Discussion Board" role="button" href=""><i class="fas fa-comments"></i></a>
-          <a title="Announcements" role="button" href=""><i class="fas fa-bullhorn"></i></a>
+          <a title="ClassWork" role="button" href=""><i class="far fa-chalkboard-teacher"></i></a>
+          <a title="HomeWork" role="button" href=""><i class="far fa-book-reader"></i></a>
+          <a title="Discussion Board" role="button" href=""><i class="far fa-comments"></i></a>
+          <a title="Announcements" role="button" href=""><i class="far fa-bullhorn"></i></a>
         </div>
       </div>
     </div>
