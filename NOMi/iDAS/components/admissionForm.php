@@ -130,23 +130,23 @@
 			</div>
 			<hr class="mb-0"/>
 			<h5 class="text-center text-decoration-underline">Guardian Information</h5>
-				<div class="col-md-6">
-					<label class="form-check-label">Guardian: * &emsp;</label>
-					<div class="input-group input-group-sm">
-						<input type="radio" class="btn-check" name="guardianOptions" id="guardianFather" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianFather', 'isGuardian', true);" required>
-						<label class="btn btn-outline-secondary" for="guardianFather">Father</label>
-						<input type="radio" class="btn-check" name="guardianOptions" id="guardianMother" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianMother', 'isGuardian', true);">
-						<label class="btn btn-outline-secondary" for="guardianMother">Mother</label>
-						<input type="radio" class="btn-check" name="guardianOptions" id="guardianOther" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianOther', 'isGuardian', false);">
-						<label class="btn btn-outline-secondary" for="guardianOther">Other</label>
-						<select class="form-select bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianRelationship" required>
-							<option selected disabled></option>
-							<option value="">Uncle</option>
-							<option value="">Ant</option>
-							<option value="">Matric</option>
-						</select>
-					</div>
+			<div class="col-md-6">
+				<label class="form-check-label">Guardian: * &emsp;</label>
+				<div class="input-group input-group-sm">
+					<input type="radio" class="btn-check" name="guardianOptions" id="guardianFather" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianFather', 'isGuardian', true);" required>
+					<label class="btn btn-outline-secondary" for="guardianFather">Father</label>
+					<input type="radio" class="btn-check" name="guardianOptions" id="guardianMother" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianMother', 'isGuardian', true);">
+					<label class="btn btn-outline-secondary" for="guardianMother">Mother</label>
+					<input type="radio" class="btn-check" name="guardianOptions" id="guardianOther" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="true" aria-controls="collapseGuardian" onclick="disableGroup('guardianOther', 'isGuardian', false);">
+					<label class="btn btn-outline-secondary" for="guardianOther">Other</label>
+					<select class="form-select bgDarkBlack border-dark fcLightBlack isGuardian" id="guardianRelationship" required>
+						<option selected disabled></option>
+						<option value="">Uncle</option>
+						<option value="">Ant</option>
+						<option value="">Matric</option>
+					</select>
 				</div>
+			</div>
 			<div class="collapse show" id="collapseGuardian">
 				<div class="row g-3">
 					<div class="col-md-3">
@@ -258,6 +258,7 @@
 		</form>
 	</div>
 </div>
+
 <script type="text/javascript">
 function disableGroup(myOption, myOptions, onCheck)
 {
