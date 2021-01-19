@@ -243,7 +243,7 @@
 					</div>
 				</div>
 			</div>
-			<button class="btn btn-outline-primary btn-sm float-end" type="submit">Submit form</button>
+			<button class="btn btn-outline-primary btn-sm float-end" type="submit">Submit</button>
 		</form>
 	</div>
 </div>
