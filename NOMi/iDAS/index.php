@@ -1,4 +1,5 @@
-<?php require 'components\header.php'; ?>
-<?php require 'components\subjectCard.php'; ?>
-<?php require 'components\admissionForm.php'; ?>
-<?php require 'components\footer.php'; ?>
+<?php require 'components\header.php'; ?> <hr>
+<?php require 'components\subjectCard.php'; ?> <hr>
+<?php require 'components\admissionForm.php'; ?> <hr>
+<?php require 'components\login.php'; ?> <hr>
+<?php require 'components\footer.php'; ?> <hr>
