@@ -27,7 +27,7 @@
 				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="studentNID" placeholder="3459712345678" size="13" pattern="[0-9]{13}" onchange="disableOnInvalid('studentNID','requiredStudentNID');" required>
 			</div>
 			<div class="col-md-3">
-				<label for="studentName" class="form-label">Student Name *</label>
+				<label for="studentName" class="form-label">Name *</label>
 				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredStudentNID" id="studentName" required disabled>
 			</div>
 			<div class="col-md-3">
@@ -35,7 +35,7 @@
 				<input type="date" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredStudentNID" id="studentDOB" required disabled>
 			</div>
 			<div class="col-md-3">
-				<label for="studentPhoto" class="form-label">Student Photo *</label>
+				<label for="studentPhoto" class="form-label">Photo *</label>
 				<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack requiredStudentNID" accept=".jpg, .jpeg" id="studentPhoto" required disabled>
 			</div>
 			<hr class="mb-0"/>
@@ -49,16 +49,12 @@
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredStudentNID" id="fatherNID" placeholder="3459712345678" size="13" pattern="[0-9]{13}" onchange="disableOnInvalid('fatherNID','requiredFatherNID');" required disabled>
 						</div>
 						<div class="col-md-3">
-							<label for="fatherName" class="form-label">Father's Name *</label>
+							<label for="fatherName" class="form-label">Name *</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredFatherNID" id="fatherName" required disabled>
 						</div>
 						<div class="col-md-3">
 							<label for="fatherMobileNumber" class="form-label">Mobile Number</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredFatherNID" id="fatherMobileNumber"  disabled>
-						</div>
-						<div class="col-md-3">
-							<label for="fatherPhoto" class="form-label">Father Photo</label>
-							<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack requiredFatherNID" accept=".jpg, .jpeg" id="fatherPhoto"  disabled>
 						</div>
 						<div class="col-md-3">
 							<label for="fatherQualification" class="form-label">Qualification</label>
@@ -74,12 +70,12 @@
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredFatherNID" id="fatherOccupation" disabled>
 						</div>
 						<div class="col-md-3">
-							<label for="fatherDesignation" class="form-label">Designation</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredFatherNID" id="fatherDesignation" disabled>
-						</div>
-						<div class="col-md-3">
 							<label for="fatherOrganization" class="form-label">Organization</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredFatherNID" id="fatherOrganization" disabled>
+						</div>
+						<div class="col-md-6">
+							<label for="fatherPhoto" class="form-label">Photo</label>
+							<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack requiredFatherNID" accept=".jpg, .jpeg" id="fatherPhoto"  disabled>
 						</div>
 					</div>
 				</div>
@@ -93,16 +89,12 @@
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredStudentNID" id="motherNID" placeholder="3459712345678" size="13" pattern="[0-9]{13}" onchange="disableOnInvalid('motherNID','requiredMotherNID');" required disabled>
 						</div>
 						<div class="col-md-3">
-							<label for="motherName" class="form-label">Mother's Name *</label>
+							<label for="motherName" class="form-label">Name *</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredMotherNID" id="motherName" required disabled>
 						</div>
 						<div class="col-md-3">
 							<label for="motherMobileNumber" class="form-label">Mobile Number</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredMotherNID" id="motherMobileNumber" disabled>
-						</div>
-						<div class="col-md-3">
-							<label for="motherPhoto" class="form-label">Mother Photo</label>
-							<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack requiredMotherNID" accept=".jpg, .jpeg" id="motherPhoto" disabled>
 						</div>
 						<div class="col-md-3">
 							<label for="motherQualification" class="form-label">Qualification</label>
@@ -118,12 +110,12 @@
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredMotherNID" id="motherOccupation" disabled>
 						</div>
 						<div class="col-md-3">
-							<label for="motherDesignation" class="form-label">Designation</label>
-							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredMotherNID" id="motherDesignation" disabled>
-						</div>
-						<div class="col-md-3">
 							<label for="motherOrganization" class="form-label">Organization</label>
 							<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack requiredMotherNID" id="motherOrganization" disabled>
+						</div>
+						<div class="col-md-6">
+							<label for="motherPhoto" class="form-label">Photo</label>
+							<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack requiredMotherNID" accept=".jpg, .jpeg" id="motherPhoto" disabled>
 						</div>
 					</div>
 				</div>
@@ -131,20 +123,14 @@
 			<hr class="mb-0"/>
 			<h5 class="text-center text-decoration-underline">Guardian Information</h5>
 			<div class="col-md-6">
-				<label class="form-check-label">Guardian: * &emsp;</label>
 				<div class="input-group input-group-sm">
+					<label class="form-check-label pb-0">Guardian: * &emsp;</label>
 					<input type="radio" class="btn-check requiredFatherNID" name="guardianOptions" id="guardianFather" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="false" aria-controls="collapseGuardian" onclick="disableGroup('guardianFather', 'isGuardian');" required disabled>
 					<label class="btn btn-outline-secondary" for="guardianFather">Father</label>
 					<input type="radio" class="btn-check requiredMotherNID" name="guardianOptions" id="guardianMother" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="false" aria-controls="collapseGuardian" onclick="disableGroup('guardianMother', 'isGuardian');" disabled>
 					<label class="btn btn-outline-secondary" for="guardianMother">Mother</label>
-					<input type="radio" class="btn-check requiredStudentNID" name="guardianOptions" id="guardianOther" data-bs-toggle="collapse" data-bs-target="#collapseGuardian" aria-expanded="false" aria-controls="collapseGuardian" onclick="disableGroup('guardianMother', 'isGuardian', false);" disabled>
+					<input type="radio" class="btn-check requiredStudentNID" name="guardianOptions" id="guardianOther" onclick="disableGroup('guardianMother', 'isGuardian');" onchange="if (this.form.guardianOther.checked == true) {document.getElementById('collapseGuardian').classList.add('show');}" disabled>
 					<label class="btn btn-outline-secondary" for="guardianOther">Other</label>
-					<select class="form-select bgDarkBlack border-dark fcLightBlack requiredStudentNID" id="guardianRelationship" onclick="disableGroup('guardianMother', 'isGuardian'); false" onfocus="this.form.guardianOther.checked = true" onchange="disableOnInvalid('guardianRelationship','requiredGuardianRelationship');" required disabled>
-						<option selected disabled>Select Relationship...</option>
-						<option value="">Uncle</option>
-						<option value="">Ant</option>
-						<option value="">Matric</option>
-					</select>
 				</div>
 			</div>
 			<div class="collapse" id="collapseGuardian">
@@ -154,16 +140,21 @@
 						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" id="guardianNID" placeholder="3459712345678" size="13" pattern="[0-9]{13}" required disabled>
 					</div>
 					<div class="col-md-3">
-						<label for="guardianName" class="form-label">Guardian's Name *</label>
+						<label for="guardianName" class="form-label">Name *</label>
 						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" id="guardianName" required disabled>
+					</div>
+					<div  class="col-md-3">
+						<label for="guardianRelationship" class="form-label">Relationship *</label>
+						<select class="form-select form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" id="guardianRelationship" required disabled>
+							<option selected disabled></option>
+							<option value="">Uncle</option>
+							<option value="">Ant</option>
+							<option value="">Matric</option>
+						</select>
 					</div>
 					<div class="col-md-3">
 						<label for="guardianMobileNumber" class="form-label">Mobile Number</label>
 						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" id="guardianMobileNumber" disabled>
-					</div>
-					<div class="col-md-3">
-						<label for="guardianPhoto" class="form-label">Guardian Photo</label>
-						<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" accept=".jpg, .jpeg" id="guardianPhoto" disabled>
 					</div>
 					<div class="col-md-3">
 						<label for="guardianQualification" class="form-label">Qualification</label>
@@ -179,12 +170,12 @@
 						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" id="guardianOccupation" disabled>
 					</div>
 					<div class="col-md-3">
-						<label for="guardianOccupation" class="form-label">Designation</label>
-						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" id="guardianOccupation" disabled>
-					</div>
-					<div class="col-md-3">
 						<label for="guardianOrganization" class="form-label">Organization</label>
 						<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" id="guardianOrganization" disabled>
+					</div>
+					<div class="col-md-3">
+						<label for="guardianPhoto" class="form-label">Photo</label>
+						<input type="file" class="custom-file-input form-control form-select-sm bgDarkBlack border-dark fcLightBlack isGuardian requiredGuardianRelationship" accept=".jpg, .jpeg" id="guardianPhoto" disabled>
 					</div>
 				</div>
 			</div>
@@ -252,13 +243,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-12">
-				<button class="btn btn-outline-primary btn-sm float-end" type="submit">Submit form</button>
-			</div>
+			<button class="btn btn-outline-primary btn-sm float-end" type="submit">Submit form</button>
 		</form>
 	</div>
 </div>
-
 <script type="text/javascript">
 function disableGroup(inputObj, targerObjs, isTrue = true)
 {
@@ -290,8 +278,6 @@ function disableGroup(inputObj, targerObjs, isTrue = true)
 		}
 	}
 }
-
-
 function disableOnInvalid(inputObj, targerObjs, isTrue = true)
 {
 	var inputObject = document.getElementById(inputObj);
@@ -322,5 +308,4 @@ function disableOnInvalid(inputObj, targerObjs, isTrue = true)
 		}
 	}
 }
-
 </script>
