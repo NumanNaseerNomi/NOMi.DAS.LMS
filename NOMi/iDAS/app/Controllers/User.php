@@ -23,7 +23,7 @@ class User extends BaseController
 			}
 			else
 			{
-				return redirect()->to('/login')->withInput();
+				return redirect()->back()->withInput();
 			}
 		}
 
