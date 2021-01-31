@@ -4,6 +4,8 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return view('welcome_message');
+		echo view('components/header');
+	//	echo view('components/login');
+		echo view('components/footer');
 	}
 }

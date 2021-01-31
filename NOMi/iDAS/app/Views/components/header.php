@@ -20,10 +20,11 @@
 				<div class="container-fluid p-0">
 					<div>
 						<!-- Side Navigation Bar - Start -->
+						<?php if (isLoggedIn()) { ?>
 						<div class="dropdown ms-2" id="preventDropdown">
 							<a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
 							<div class="dropdown-menu dropdown-menu-dark dropdown-menu-start shadow" aria-labelledby="menuDropdownButton">
-								<a class="dropdown-item" href=""><i class="far fa-home"></i>Home</a>
+								<a class="dropdown-item" href="/"><i class="far fa-home"></i>Home</a>
 								<a class="dropdown-item" href=""><i class="far fa-chart-bar"></i>Grade Book</a>
 								<a class="dropdown-item" href=""><i class="far fa-file-invoice-dollar"></i>Account Book</a>
 								<a class="dropdown-item" href=""><i class="far fa-calendar-alt"></i>Time Table</a>
@@ -44,14 +45,18 @@
 								</div>  -->
 							</div>
 						</div>
+						<?php } ?>
 						<!-- Side Navigation Bar - End -->
 					</div>
 					<div>
-						<b class="d-none d-sm-block">DAR-E-ARQAM</b>
-						<b class="d-block d-sm-none">DAS</b>
+						<a class="text-decoration-none" href="/">
+							<b class="d-none d-sm-block">DAR-E-ARQAM</b>
+							<b class="d-block d-sm-none">DAS</b>
+						</a>
 					</div>
 					<div>
 						<!-- My TO-DOs - Start -->
+						<?php if (isLoggedIn()) { ?>
 						<div class="btn-group me-2">
 							<div class="dropdown">
 								<a title="My TO-DOs" role="button" id="myToDos" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-tasks"></i></a>
@@ -90,10 +95,11 @@
 									<hr class="dropdown-divider"/>
 									<a class="dropdown-item" href=""><i class="far fa-cogs"></i>Settings</a>
 									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href=""><i class="far fa-power-off"></i>Log Out</a>
+									<a class="dropdown-item" href="logout"><i class="far fa-power-off"></i>Log Out</a>
 								</div>
 							</div>
 						</div>
+						<?php } ?>
 						<!-- Profile Setting - End -->
 					</div>
 				</div>

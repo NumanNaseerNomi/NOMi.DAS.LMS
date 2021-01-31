@@ -6,7 +6,9 @@ class User extends BaseController
 {
 	public function index()
 	{
-		return view('welcome_message');
+		echo view('components/header');
+	//	echo view('components/login');
+		echo view('components/footer');
 	}
 
 	public function login()
@@ -14,71 +16,36 @@ class User extends BaseController
 		if ($this->request->getMethod() == 'post')
 		{
 			$userModel = new UserModel();
-
 			$user = $userModel->login($this->request->getPost());
 
 			if ($user)
 			{
-				return redirect()->to('/dashbord');
+				$sessionData =
+				[
+				    'userID'	=> $user->id,
+				    'userName'	=> $user->userName
+				];
+
+				$this->session->set('iDarEArqamUser', $sessionData);
+				$this->session->setFlashData('success', 'LoggedIn Successfully..!'); //dd($this->session->get('iDarEArqamUser'));
+				return redirect()->to('/');
 			}
 			else
 			{
+				$this->session->setFlashData('danger', 'Incorrect User Name or Password..!');
 				return redirect()->back()->withInput();
 			}
 		}
-
 		echo view('components/header');
 		echo view('components/login');
-	//	var_dump(password_hash('NOMi@1', PASSWORD_DEFAULT));
 		echo view('components/footer');
+			//	var_dump(password_hash('NOMi@1', PASSWORD_DEFAULT));
 	}
-/*
-	public function userLogin()
+
+	public function logout()
 	{
-		$userName = $this->request->getPost('userName');
-		$userPassword = $this->request->getPost('userPassword');
-
-		$user = $this->userModel->authenticate($this->request->getPost());
-
-		if ($user)
-		{
-			$this->session->set('user', $user);
-			$this->session->setFlashData('message', 'Login Successfully!');
-			return redirect()->to('/');
-		}
-		else
-		{
-			$this->session->setFlashData('error', 'Incorrect User Name or Password');
-			return redirect()->to('login')->withInput();
-		}
-
-		
-/*
-		if ($this->request->getMethod() == 'post')
-		{
-			$rules =
-			[
-				'userName'		=> 'required',
-				'userPassword'	=> 'required|validateUser[userName,userPassword]',
-			];
-
-			$errors =
-			[
-				'userPassword'	=>
-				[
-					'validateUser'	=>	'User Name of Password don\'t match'
-				]
-			]
-
-			if (! $this->validate($rules, $errors))
-			{
-				$data['validation'] = $this->validator;
-			}
-			else
-			{
-				$model = new UserModel();
-			}
-		}
-		
-	} */
+		$this->session->remove('iDarEArqamUser');
+		$this->session->setFlashData('success', 'LoggedOut Successfully..!');
+		return redirect()->to('login');
+	}
 }

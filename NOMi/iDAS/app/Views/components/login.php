@@ -14,7 +14,7 @@
 				<label for="userPassword" class="form-label">Password</label>
 				<input type="password" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userPassword" name="userPassword" placeholder="NumanNaseerNomi" required />
 			</div>
-			<div class="d-grid gap-2">
+			<div class="d-grid">
 				<button type="submit" class="btn btn-outline-primary btn-sm mb-3">Login</button>
 			</div>
 			<p class="text-muted m-0">Forgot password? <a href="">Reset</a></p>
