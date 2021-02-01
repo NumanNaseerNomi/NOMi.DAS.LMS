@@ -4,27 +4,27 @@
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Bootstrap CSS File - Start -->
+		<!-- NOMi - Bootstrap CSS File - Start -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/plugins/bootstrap/css/bootstrap.min.css') ?>">
-		<!-- Bootstrap CSS File - End -->
-		<!-- Font Awesome CSS File - Start -->
+		<!-- NOMi - Bootstrap CSS File - End -->
+		<!-- NOMi - Font Awesome CSS File - Start -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/plugins/fontAwesome/css/fontAwesomeAll.min.css') ?>">
-		<!-- Font Awesome CSS File - End -->
+		<!-- NOMi - Font Awesome CSS File - End -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/iStyle.css') ?>">
 		<title>iDAS LMS</title>
 	</head>
 	<body>
-		<!-- Navigation Bar - Start -->
+		<!-- NOMi - Navigation Bar - Start -->
 		<header class="fixed-top p-0 fs-4 shadow">
 			<nav class="navbar p-0">
 				<div class="container-fluid p-0">
 					<div>
-						<!-- Side Navigation Bar - Start -->
+						<!-- NOMi - Side Navigation Bar - Start -->
 						<?php if (isLoggedIn()) { ?>
 						<div class="dropdown ms-2" id="preventDropdown">
 							<a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
 							<div class="dropdown-menu dropdown-menu-dark dropdown-menu-start shadow" aria-labelledby="menuDropdownButton">
-								<a class="dropdown-item" href="/"><i class="far fa-home"></i>Home</a>
+								<a class="dropdown-item" href="<?php echo base_url('/') ?>"><i class="far fa-home"></i>Home</a>
 								<a class="dropdown-item" href=""><i class="far fa-chart-bar"></i>Grade Book</a>
 								<a class="dropdown-item" href=""><i class="far fa-file-invoice-dollar"></i>Account Book</a>
 								<a class="dropdown-item" href=""><i class="far fa-calendar-alt"></i>Time Table</a>
@@ -46,16 +46,16 @@
 							</div>
 						</div>
 						<?php } ?>
-						<!-- Side Navigation Bar - End -->
+						<!-- NOMi - Side Navigation Bar - End -->
 					</div>
 					<div>
-						<a class="text-decoration-none" href="/">
+						<a class="text-decoration-none" href="<?php echo base_url('/') ?>">
 							<b class="d-none d-sm-block">DAR-E-ARQAM</b>
 							<b class="d-block d-sm-none">DAS</b>
 						</a>
 					</div>
 					<div>
-						<!-- My TO-DOs - Start -->
+						<!-- NOMi - My TO-DOs - Start -->
 						<?php if (isLoggedIn()) { ?>
 						<div class="btn-group me-2">
 							<div class="dropdown">
@@ -68,8 +68,8 @@
 								</div>
 							</div>
 						</div>
-						<!-- My TO-DOs - End -->
-						<!-- My Notifications - Start -->
+						<!-- NOMi - My TO-DOs - End -->
+						<!-- NOMi - My Notifications - Start -->
 						<div class="btn-group me-2">
 							<div class="dropdown">
 								<a title="My Notifications" role="button" id="myNotifications" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bell"></i></a>
@@ -81,8 +81,8 @@
 								</div>
 							</div>
 						</div>
-						<!-- My Notifications - End -->
-						<!-- Profile Setting - Start -->
+						<!-- NOMi - My Notifications - End -->
+						<!-- NOMi - Profile Setting - Start -->
 						<div class="btn-group me-2">
 							<div class="dropdown">
 								<a title="My Profile" role="button" id="myProfile" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user"></i></a>
@@ -95,16 +95,16 @@
 									<hr class="dropdown-divider"/>
 									<a class="dropdown-item" href=""><i class="far fa-cogs"></i>Settings</a>
 									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="logout"><i class="far fa-power-off"></i>Log Out</a>
+									<a class="dropdown-item" href="<?php echo base_url('logout') ?>"><i class="far fa-power-off"></i>Log Out</a>
 								</div>
 							</div>
 						</div>
 						<?php } ?>
-						<!-- Profile Setting - End -->
+						<!-- NOMi - Profile Setting - End -->
 					</div>
 				</div>
 			</nav>
 		</header>
-		<!-- Navigation Bar - End -->
-		<!-- Main Container - Start -->
+		<!-- NOMi - Navigation Bar - End -->
+		<!-- NOMi - Main Container - Start -->
 		<div class="container-fluid pt-5">
