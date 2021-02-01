@@ -4,22 +4,17 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-	protected $table = 'users';
+	protected $table			= 'users';
+	protected $returnType		= 'object';
+	protected $allowedFields	= ['userName', 'userPassword'];
 
 	public function login($userData)
 	{
-		$user = $this->getWhere(['userName' => $userData['userName']])->getRow();
+		$user = $this->getWhere(['userName' => $userData->userName])->getRow();
 
-		if ($user)
+		if ($user && password_verify($userData->userPassword, $user->userPassword))
     	{
-    		$verifyPassword = password_verify($userData['userPassword'], $user->userPassword);
-
-    		if ($verifyPassword)
-    		{
-    			return $user;
-    		}
-
-    		return false;
+    		return $user;
     	}
     	else
     	{
