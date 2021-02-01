@@ -5,7 +5,7 @@ use Config\Services;
 function isLoggedIn()
 {
 	$session = session();
-	if ($session->has('iDarEArqamUser'))
+	if ($session->has('iDASUser'))
 	{
 		return true;
 	}

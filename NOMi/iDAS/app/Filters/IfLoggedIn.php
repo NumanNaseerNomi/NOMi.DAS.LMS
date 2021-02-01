@@ -10,13 +10,13 @@ class IfLoggedIn implements FilterInterface
 	public function before(RequestInterface $request, $arguments = null)
 	{
 		$session = session();
-		if ($session->has('iDarEArqamUser'))
+		if ($session->has('iDASUser'))
 		{
 			return true;
 		}
 		else
 		{
-			$session->setFlashData('danger', 'You are not LoggedIn..!');
+			$session->setFlashData('danger', 'You are not Logged In..!');
 			return redirect()->to('login');
 		}
 	}
