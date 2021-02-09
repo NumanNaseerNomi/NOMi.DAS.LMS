@@ -10,7 +10,7 @@ class IfNotLoggedIn implements FilterInterface
 	public function before(RequestInterface $request, $arguments = null)
 	{
 		$session = session();
-		if ($session->has('iDASUser'))
+		if ($session->has('iDASUser') && $session->get('iDASUser')->isLoggedIn)
 		{
 			$session->setFlashData('info', 'You are already Logged In..!');
 			return redirect()->to('/');
