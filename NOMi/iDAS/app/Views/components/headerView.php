@@ -108,3 +108,39 @@
 		<!-- NOMi - Navigation Bar - End -->
 		<!-- NOMi - Main Container - Start -->
 		<div class="container-fluid pt-5">
+
+
+
+
+
+<?php /* 
+<!-- NOMi - sessionTimeOutModal modal - Start -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sessionTimeOutModal">
+Launch static backdrop modal
+</button>
+<!-- NOMi - Modal -->
+<div class="modal fade" id="sessionTimeOutModal" tabindex="-1" aria-labelledby="sessionTimeOutModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content shadow">
+			<div class="modal-body">
+				<h5 class="modal-title" id="sessionTimeOutModalLabel">Your Session has been Expired..!</h5>
+				<hr/>
+				<div class="mb-3">
+					<label for="userName" class="form-label">User Name</label>
+					<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userName" name="userName" placeholder="numan.naseer.nomi" required />
+				</div>
+				<div class="mb-3">
+					<label for="userPassword" class="form-label">Enter Your Password</label>
+					<input type="password" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userPassword" name="userPassword" placeholder="NumanNaseerNomi" required />
+				</div>
+				<hr/>
+				<div class="d-flex gap-2 justify-content-end">
+					<a href="<?php echo base_url('logout') ?>"><button type="button" class="btn btn-outline-danger btn-sm">Logout</button></a>
+					<a href=""><button type="button" class="btn btn-outline-primary btn-sm">Stay Connected</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- NOMi - sessionTimeOutModal modal - End -->
+*/ ?>
