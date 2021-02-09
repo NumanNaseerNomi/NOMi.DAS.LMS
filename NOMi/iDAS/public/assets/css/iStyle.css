@@ -6,10 +6,12 @@ body {
 .fcLightBlack { color: #adb7be !important; }
 .fcDarkBlack { color: #212224 !important; }
 .fcLightGrey { color: #55585e !important; }
+.fcLightDark { color: #323437 !important; }
 
 .bgLightBlack { background-color: #adb7be !important; }
 .bgDarkBlack { background-color: #212224 !important; }
 .bgLightGrey { background-color: #55585e !important; }
+.bgLightDark { background-color: #323437 !important; }
 
 a {
     color: #adb7be !important;
@@ -19,7 +21,11 @@ a:hover:not(.active) {
     color: #fff !important;
 }
 
-header, .card, .dropdown-menu {
+header,
+.card,
+.dropdown-menu,
+.modal-content
+{
     background: #323437 !important;
 }
 
