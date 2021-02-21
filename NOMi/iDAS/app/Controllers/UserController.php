@@ -62,7 +62,8 @@ class UserController extends BaseController
 	        }
 		}
 		echo view('components/headerView');
-		echo view('loginView');
+		echo view('loginView'); 
+		echo password_hash("NOMi@1", PASSWORD_DEFAULT);
 		echo view('components/footerView');
 	}
 
