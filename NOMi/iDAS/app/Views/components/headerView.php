@@ -12,6 +12,7 @@
 		<!-- NOMi - Font Awesome CSS File - End -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/iStyle.css') ?>">
 		<title>iDAS LMS</title>
+		<?php $session = session(); ?>
 	</head>
 	<body>
 		<!-- NOMi - Navigation Bar - Start -->
@@ -89,13 +90,14 @@
 								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myProfile">
 									<a class="dropdown-item text-center" href="" title="My Profile">
 										<p class="m-0">#Name of user</p>
-										<p class="small m-0">#Role</p>
+										<p class="small m-0"><?php echo '@' . $session->iDASUser->userName; ?></p>
+										<p class="small m-0"><?php //echo $session->iDASUser->userRoleName; ?></p>
 										<p class="m-0">#if std class</p>
 									</a>
 									<hr class="dropdown-divider"/>
 									<a class="dropdown-item" href=""><i class="far fa-cogs"></i>Settings</a>
 									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="<?php echo base_url('logout') ?>"><i class="far fa-power-off"></i>Log Out</a>
+									<a class="dropdown-item" href="<?php echo base_url('logout'); ?>"><i class="far fa-power-off"></i>Log Out</a>
 								</div>
 							</div>
 						</div>

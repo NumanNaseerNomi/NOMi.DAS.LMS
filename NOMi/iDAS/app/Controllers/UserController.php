@@ -1,9 +1,11 @@
 <?php namespace App\Controllers;
 
-use App\Models\UserModel;
+use App\Models\UsersModel;
+use App\Models\UserRolesModel;
 
 class UserController extends BaseController
 {
+	public $iDASData = [];
 	public function index()
 	{
 		echo view('components/headerView');
@@ -13,12 +15,13 @@ class UserController extends BaseController
 
 	public function login()
 	{
+
 		if ($this->request->getMethod() == 'post')
 		{
 			if (! $this->validate(
 				[
-					'userName' => ['label' => 'User Name', 'rules' => 'required'],
-    				'userPassword' => ['label' => 'Password', 'rules' => 'required|min_length[6]|differs[userName]'],
+					'userName'		=> ['label' => 'User Name', 'rules' => 'required'],
+    				'userPassword'	=> ['label' => 'Password', 'rules' => 'required|min_length[6]|differs[userName]'],
 				]))
 	        {
 	        	$validationErrors = (Object)$this->validator->getErrors();
@@ -26,21 +29,30 @@ class UserController extends BaseController
 	        }
 	        else
 	        {
-	        	$userModel = new UserModel();
-				$user = $userModel->login((object)$this->request->getPost());
+	        	$usersModel	= new UsersModel();
+				$user		= $usersModel->login((object)$this->request->getPost());
 
 				if ($user)
 				{
+					$userRolesModel	= new UserRolesModel();
+					$userRoleName	= $userRolesModel->getUserRoleName($user->userRoleID); //dd($userRoleName->role);
+
 					$sessionData =
 					[
-					    'userID'	=> $user->id,
-					    'userName'	=> $user->userName,
-					    'isLoggedIn'=> true,
+					    'userID'		=> $user->id,
+					    'userName'		=> $user->userName,
+					    'userRoleID'	=> $user->userRoleID, //$userRoleName->role,
+					    'isLoggedIn'	=> true,
+					];
+
+					$iDASData =
+					[
+						'sessionData'	=> $sessionData,
 					];
 
 					$this->session->set('iDASUser', (object)$sessionData);
 					$this->session->setFlashData('success', 'Logged In Successfully..!');
-					return redirect()->to('/');
+					return redirect()->to(base_url('/'));
 				}
 				else
 				{
@@ -58,6 +70,6 @@ class UserController extends BaseController
 	{
 		$this->session->remove('iDASUser');
 		$this->session->setFlashData('success', 'Logged Out Successfully..!');
-		return redirect()->to('login');
+		return redirect()->to(base_url('login'));
 	}
 }
