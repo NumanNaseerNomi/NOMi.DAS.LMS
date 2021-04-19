@@ -2,7 +2,7 @@
 
 use App\Models\UserRolesModel;
 
-class HomeController extends BaseController
+class GradeBookController extends BaseController
 {
 	public function index()
 	{
@@ -19,8 +19,7 @@ class HomeController extends BaseController
 			case "student":	//	Student Home Page
 			{
 				echo view('components/HeaderView');
-				echo view('components/SubjectCardView');
-				echo "u r a student";
+				echo view('components/GradeBookView');
 				echo view('components/FooterView');
 				break;
 			}
@@ -39,12 +38,5 @@ class HomeController extends BaseController
 				break;
 			}
 		}
-	}
-
-	public function tempComingSoon()
-	{
-		echo view('components/HeaderView');
-		echo "Comong Soon...";
-		echo view('components/FooterView');
 	}
 }

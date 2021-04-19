@@ -10,11 +10,11 @@ class UserRolesModel extends Model
 
 	public function getUserRoleName($userRoleID)
 	{
-		$roleName = $this->getWhere(['id' => $userRoleID])->getRow();
+		$userRole = $this->getWhere(['id' => $userRoleID])->getRow();
 
-		if ($roleName)
+		if ($userRole)
     	{
-    		return $roleName;
+    		return $userRole->role;
     	}
     	else
     	{

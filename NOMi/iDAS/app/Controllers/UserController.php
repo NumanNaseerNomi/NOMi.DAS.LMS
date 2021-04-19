@@ -6,11 +6,12 @@ use App\Models\UserRolesModel;
 class UserController extends BaseController
 {
 	public $iDASData = [];
+	
 	public function index()
 	{
-		echo view('components/headerView');
+		echo view('components/HeaderView');
 
-		echo view('components/footerView');
+		echo view('components/FooterView');
 	}
 
 	public function login()
@@ -34,14 +35,14 @@ class UserController extends BaseController
 
 				if ($user)
 				{
-					$userRolesModel	= new UserRolesModel();
-					$userRoleName	= $userRolesModel->getUserRoleName($user->userRoleID); //dd($userRoleName->role);
+					//$userRolesModel	= new UserRolesModel();
+					//$userRoleName	= $userRolesModel->getUserRoleName($user->userRoleID); dd($userRoleName);
 
 					$sessionData =
 					[
 					    'userID'		=> $user->id,
 					    'userName'		=> $user->userName,
-					    'userRoleID'	=> $user->userRoleID, //$userRoleName->role,
+					    'userRoleID'	=> $user->userRoleID,
 					    'isLoggedIn'	=> true,
 					];
 
@@ -61,16 +62,16 @@ class UserController extends BaseController
 				}
 	        }
 		}
-		echo view('components/headerView');
-		echo view('loginView'); 
-		echo password_hash("NOMi@1", PASSWORD_DEFAULT);
-		echo view('components/footerView');
+		echo view('components/HeaderView');
+		echo view('LoginView'); 
+		//echo password_hash("NOMi@1", PASSWORD_DEFAULT);
+		echo view('components/FooterView');
 	}
 
 	public function logout()
 	{
 		$this->session->remove('iDASUser');
 		$this->session->setFlashData('success', 'Logged Out Successfully..!');
-		return redirect()->to(base_url('login'));
+		return redirect()->to(base_url('Login'));
 	}
 }

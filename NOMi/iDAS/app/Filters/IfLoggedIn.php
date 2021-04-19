@@ -17,7 +17,7 @@ class IfLoggedIn implements FilterInterface
 		else
 		{
 			$session->setFlashData('danger', 'You are not Logged In..!');
-			return redirect()->to('login');
+			return redirect()->to('Login');
 		}
 	}
 

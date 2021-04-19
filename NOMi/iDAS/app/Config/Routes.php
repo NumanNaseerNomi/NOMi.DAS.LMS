@@ -30,9 +30,17 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+$routes->match(['get', 'post'],'Login', 'UserController::login', ['filter' => 'IfNotLoggedIn']);
+$routes->get('Logout', 'UserController::logout');
+
 $routes->get('/', 'HomeController::index');
-$routes->match(['get', 'post'],'login', 'UserController::login', ['filter' => 'IfNotLoggedIn']);
-$routes->get('logout', 'UserController::logout');
+$routes->get('GradeBook', 'GradeBookController::index');
+$routes->get('AccountBook', 'HomeController::tempComingSoon');
+$routes->get('TimeTable', 'HomeController::tempComingSoon');
+
+$routes->get('Profile', 'HomeController::tempComingSoon');
+$routes->get('Settings', 'HomeController::tempComingSoon');
 
 /**
  * --------------------------------------------------------------------
