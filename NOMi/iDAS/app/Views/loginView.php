@@ -1,5 +1,5 @@
 <div  class="d-flex justify-content-center">
-	<form class="card mb-3" action="<?php echo base_url('login') ?>" method="post" style="width: 16rem">
+	<form class="card mb-3" action="<?php echo base_url('Login') ?>" method="post" style="width: 16rem">
 		<div class="card-body">
 			<div class="text-center">
 				<i class="far fa-user-unlock fa-2x mb-2"></i>
