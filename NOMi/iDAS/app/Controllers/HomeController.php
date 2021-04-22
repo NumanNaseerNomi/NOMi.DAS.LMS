@@ -20,14 +20,20 @@ class HomeController extends BaseController
 			{
 				echo view('components/HeaderView');
 				echo view('components/SubjectCardView');
-				echo "u r a student";
 				echo view('components/FooterView');
 				break;
 			}
-			case "parents": // Parents Home Page
+			case "parent": // Parents Home Page
 			{
 				echo view('components/HeaderView');
 				echo "u r a Parent";
+				echo view('components/FooterView');
+				break;
+			}
+			case "staff": // Staff Home Page
+			{
+				echo view('components/HeaderView');
+				echo "u r a Staff";
 				echo view('components/FooterView');
 				break;
 			}
