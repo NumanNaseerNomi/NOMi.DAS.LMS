@@ -32,15 +32,27 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 
 $routes->match(['get', 'post'],'Login', 'UserController::login', ['filter' => 'IfNotLoggedIn']);
-$routes->get('Logout', 'UserController::logout');
 
+
+/* NOMi - Side Navigation Bar Routes - Start */
 $routes->get('/', 'HomeController::index');
 $routes->get('GradeBook', 'GradeBookController::index');
 $routes->get('AccountBook', 'HomeController::tempComingSoon');
 $routes->get('TimeTable', 'HomeController::tempComingSoon');
+/* NOMi - Side Navigation Bar Routes - End */
 
+/* NOMi - Profile Setting Routes - Start */
 $routes->get('Profile', 'HomeController::tempComingSoon');
 $routes->get('Settings', 'HomeController::tempComingSoon');
+$routes->get('Logout', 'UserController::logout');
+/* NOMi - Profile Setting Routes - End */
+
+/* NOMi - Subject Card Routes - Start */
+$routes->get('ClassWork', 'HomeController::tempComingSoon');
+$routes->get('HomeWork', 'HomeController::tempComingSoon');
+$routes->get('DiscussionBoard', 'HomeController::tempComingSoon');
+$routes->get('Announcements', 'HomeController::tempComingSoon');
+/* NOMi - Subject Card Routes - End */
 
 /**
  * --------------------------------------------------------------------
