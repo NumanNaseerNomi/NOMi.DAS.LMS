@@ -49,15 +49,17 @@ header,
 
 /* Custom Scrollbar - start */
 
-/* width */
+/* width & height */
 ::-webkit-scrollbar
 {
   width: 0.15rem;
+  height: 0.15rem;
 }
 
 ::-webkit-scrollbar:hover
 {
   width: 0.375rem;
+  height: 0.375rem;
 }
 
 /* Track */
