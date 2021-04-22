@@ -11,6 +11,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/plugins/fontAwesome/css/fontAwesomeAll.min.css') ?>">
 		<!-- NOMi - Font Awesome CSS File - End -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/iStyle.css') ?>">
+		<!-- NOMi - Chart.js File - Start -->
+		<script type="text/javascript" src="<?php echo base_url('/assets/plugins/chartJS/js/chart.min.js') ?>"></script>
+		<!-- NOMi - Chart.js File - End -->
 		<title>iDAS LMS</title>
 		<?php $session = session(); ?>
 	</head>
@@ -26,23 +29,23 @@
 							<a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
 							<div class="dropdown-menu dropdown-menu-dark dropdown-menu-start shadow" aria-labelledby="menuDropdownButton">
 								<a class="dropdown-item" href="<?php echo base_url('/') ?>"><i class="far fa-home"></i>Home</a>
-								<a class="dropdown-item" href=""><i class="far fa-chart-bar"></i>Grade Book</a>
-								<a class="dropdown-item" href=""><i class="far fa-file-invoice-dollar"></i>Account Book</a>
-								<a class="dropdown-item" href=""><i class="far fa-calendar-alt"></i>Time Table</a>
-							<!-- 	<hr class="dropdown-divider"/>
+								<a class="dropdown-item" href="<?php echo base_url('GradeBook'); ?>"><i class="far fa-chart-bar"></i>Grade Book</a>
+								<a class="dropdown-item" href="<?php echo base_url('AccountBook'); ?>"><i class="far fa-file-invoice-dollar"></i>Account Book</a>
+								<a class="dropdown-item" href="<?php echo base_url('TimeTable'); ?>"><i class="far fa-calendar-alt"></i>Time Table</a>
+								<!-- 	<hr class="dropdown-divider"/>
 								<div class="accordion" id="menuAccordion">
-									<a class="dropdown-item menuHeadingOne" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseOne" aria-expanded="true" aria-controls="menuCollapseOne">-<i class="far fa-bell"></i>Collapsible #1</a>
-									<div id="menuCollapseOne" class="collapse" aria-labelledby="menuHeadingOne" data-bs-parent="#menuAccordion">
-										<a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
-										<a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
-										<a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
-									</div>
-									<a class="dropdown-item menuHeadingTwo" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseTwo" aria-expanded="false" aria-controls="menuCollapseTwo">-<i class="far fa-user"></i>Collapsible #2</a>
-									<div id="menuCollapseTwo" class="collapse" aria-labelledby="menuHeadingTwo" data-bs-parent="#menuAccordion">
-										<a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
-										<a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
-										<a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
-									</div>
+										<a class="dropdown-item menuHeadingOne" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseOne" aria-expanded="true" aria-controls="menuCollapseOne">-<i class="far fa-bell"></i>Collapsible #1</a>
+										<div id="menuCollapseOne" class="collapse" aria-labelledby="menuHeadingOne" data-bs-parent="#menuAccordion">
+												<a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
+												<a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
+												<a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
+										</div>
+										<a class="dropdown-item menuHeadingTwo" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapseTwo" aria-expanded="false" aria-controls="menuCollapseTwo">-<i class="far fa-user"></i>Collapsible #2</a>
+										<div id="menuCollapseTwo" class="collapse" aria-labelledby="menuHeadingTwo" data-bs-parent="#menuAccordion">
+												<a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
+												<a class="dropdown-item" href="">--<i class="far fa-user"></i>Action</a>
+												<a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
+										</div>
 								</div>  -->
 							</div>
 						</div>
@@ -88,16 +91,16 @@
 							<div class="dropdown">
 								<a title="My Profile" role="button" id="myProfile" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user"></i></a>
 								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myProfile">
-									<a class="dropdown-item text-center" href="" title="My Profile">
+									<a class="dropdown-item text-center" href="<?php echo base_url('Profile'); ?>" title="My Profile">
 										<p class="m-0">#Name of user</p>
 										<p class="small m-0"><?php echo '@' . $session->iDASUser->userName; ?></p>
 										<p class="small m-0"><?php //echo $session->iDASUser->userRoleName; ?></p>
 										<p class="m-0">#if std class</p>
 									</a>
 									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href=""><i class="far fa-cogs"></i>Settings</a>
+									<a class="dropdown-item" href="<?php echo base_url('Settings'); ?>"><i class="far fa-cogs"></i>Settings</a>
 									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="<?php echo base_url('logout'); ?>"><i class="far fa-power-off"></i>Log Out</a>
+									<a class="dropdown-item" href="<?php echo base_url('Logout'); ?>"><i class="far fa-power-off"></i>Log Out</a>
 								</div>
 							</div>
 						</div>
@@ -110,39 +113,34 @@
 		<!-- NOMi - Navigation Bar - End -->
 		<!-- NOMi - Main Container - Start -->
 		<div class="container-fluid pt-5">
-
-
-
-
-
-<?php /* 
-<!-- NOMi - sessionTimeOutModal modal - Start -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sessionTimeOutModal">
-Launch static backdrop modal
-</button>
-<!-- NOMi - Modal -->
-<div class="modal fade" id="sessionTimeOutModal" tabindex="-1" aria-labelledby="sessionTimeOutModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content shadow">
-			<div class="modal-body">
-				<h5 class="modal-title" id="sessionTimeOutModalLabel">Your Session has been Expired..!</h5>
-				<hr/>
-				<div class="mb-3">
-					<label for="userName" class="form-label">User Name</label>
-					<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userName" name="userName" placeholder="numan.naseer.nomi" required />
-				</div>
-				<div class="mb-3">
-					<label for="userPassword" class="form-label">Enter Your Password</label>
-					<input type="password" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userPassword" name="userPassword" placeholder="NumanNaseerNomi" required />
-				</div>
-				<hr/>
-				<div class="d-flex gap-2 justify-content-end">
-					<a href="<?php echo base_url('logout') ?>"><button type="button" class="btn btn-outline-danger btn-sm">Logout</button></a>
-					<a href=""><button type="button" class="btn btn-outline-primary btn-sm">Stay Connected</button></a>
+			<?php /*
+			<!-- NOMi - sessionTimeOutModal modal - Start -->
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sessionTimeOutModal">
+			Launch static backdrop modal
+			</button>
+			<!-- NOMi - Modal -->
+			<div class="modal fade" id="sessionTimeOutModal" tabindex="-1" aria-labelledby="sessionTimeOutModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content shadow">
+						<div class="modal-body">
+							<h5 class="modal-title" id="sessionTimeOutModalLabel">Your Session has been Expired..!</h5>
+							<hr/>
+							<div class="mb-3">
+								<label for="userName" class="form-label">User Name</label>
+								<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userName" name="userName" placeholder="numan.naseer.nomi" required />
+							</div>
+							<div class="mb-3">
+								<label for="userPassword" class="form-label">Enter Your Password</label>
+								<input type="password" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userPassword" name="userPassword" placeholder="NumanNaseerNomi" required />
+							</div>
+							<hr/>
+							<div class="d-flex gap-2 justify-content-end">
+								<a href="<?php echo base_url('logout') ?>"><button type="button" class="btn btn-outline-danger btn-sm">Logout</button></a>
+								<a href=""><button type="button" class="btn btn-outline-primary btn-sm">Stay Connected</button></a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</div>
-<!-- NOMi - sessionTimeOutModal modal - End -->
-*/ ?>
+			<!-- NOMi - sessionTimeOutModal modal - End -->
+			*/ ?>
