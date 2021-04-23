@@ -3,6 +3,8 @@
 use App\Models\UsersModel;
 use App\Models\UserCandidatesModel;
 use App\Models\StudentsModel;
+use App\Models\StaffModel;
+use App\Models\ParentsModel;
 
 use App\Models\UserRolesModel;
 
@@ -38,48 +40,6 @@ class UserController extends BaseController
 
 				if ($user)
 				{
-					//$userRolesModel	= new UserRolesModel();
-					//$userRoleName	= $userRolesModel->getUserRoleName($user->userRoleID); dd($userRoleName);
-/*
-					$userCandidatesModel	= new UserCandidatesModel();
-					$userCandidate		= $userCandidatesModel->getUserCandidate($user->userCandidateID); //dd($userCandidate);
-
-					//$name;
-
-					if ($userCandidate)
-			    	{
-			    		if ($userCandidate->staffID != null)
-			    		{
-			    			return "Staff";
-			    		}
-			    		else if ($userCandidate->studentsID != null)
-			    		{
-			    			$studentsModel	= new StudentsModel();
-							$student		= $studentsModel->getStudent($userCandidate->studentsID); //dd($student);
-
-							$name = $student->name;
-			    		}
-			    		else if ($userCandidate->parentsID != null)
-			    		{
-			    			return "Parents";
-			    		}
-			    	}
-
-					$sessionData =
-					[
-					    'userID'		=> $user->id,
-					    'userName'		=> $user->userName,
-					    'name'			=> $name,
-					    'userRoleID'	=> $user->userRoleID,
-					    'isLoggedIn'	=> true,
-					];
-
-					$iDASData =
-					[
-						'sessionData'	=> $sessionData,
-					];
-
-					$this->session->set('iDASUser', (object)$sessionData); */
 					$this->headerInfo($user);
 					$this->session->setFlashData('success', 'Logged In Successfully..!');
 					return redirect()->to(base_url('/'));
@@ -113,16 +73,21 @@ class UserController extends BaseController
 		{
 			if ($userCandidate->staffID != null)
 			{
-				return "Staff";
+				$staffModel	= new StaffModel();
+				$staff		= $staffModel->getStaff($userCandidate->staffID);
+				$name		= $staff->name;
 			}
 			else if ($userCandidate->studentsID != null)
 			{
 				$studentsModel	= new StudentsModel();
-				$student		= $studentsModel->getStudent($userCandidate->studentsID); //dd($student);
+				$student		= $studentsModel->getStudent($userCandidate->studentsID);
+				$name			= $student->name;
 			}
 			else if ($userCandidate->parentsID != null)
 			{
-				return "Parents";
+				$parentsModel	= new ParentsModel();
+				$parent			= $parentsModel->getParent($userCandidate->parentsID);
+				$name			= $parent->name;
 			}
 		}
 
@@ -130,7 +95,7 @@ class UserController extends BaseController
 		[
 			'userID'		=> $user->id,
 			'userName'		=> $user->userName,
-			'name'			=> $student->name,
+			'name'			=> $name,
 			'userRoleID'	=> $user->userRoleID,
 			'isLoggedIn'	=> true,
 		];
