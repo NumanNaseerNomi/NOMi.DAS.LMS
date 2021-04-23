@@ -47,6 +47,8 @@
 												<a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
 										</div>
 								</div>  -->
+								<hr class="dropdown-divider"/>
+								<p class="small m-0 text-center"><a class="text-decoration-none" href="https://www.fb.com/numan.naseer.nomi" target="_blank"><strong>NOMi</strong></a> - iDAS.1.0.0</p>
 							</div>
 						</div>
 						<?php } ?>
