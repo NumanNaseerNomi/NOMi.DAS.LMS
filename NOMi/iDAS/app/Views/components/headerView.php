@@ -92,7 +92,7 @@
 								<a title="My Profile" role="button" id="myProfile" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user"></i></a>
 								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myProfile">
 									<a class="dropdown-item text-center" href="<?php echo base_url('Profile'); ?>" title="My Profile">
-										<p class="m-0">#Name of user</p>
+										<p class="m-0"><?php echo $session->iDASUser->name; ?></p>
 										<p class="small m-0"><?php echo '@' . $session->iDASUser->userName; ?></p>
 										<p class="small m-0"><?php //echo $session->iDASUser->userRoleName; ?></p>
 										<p class="m-0">#if std class</p>
