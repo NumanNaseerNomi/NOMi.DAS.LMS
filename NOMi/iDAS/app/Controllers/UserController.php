@@ -1,6 +1,9 @@
 <?php namespace App\Controllers;
 
 use App\Models\UsersModel;
+use App\Models\UserCandidatesModel;
+use App\Models\StudentsModel;
+
 use App\Models\UserRolesModel;
 
 class UserController extends BaseController
@@ -31,17 +34,42 @@ class UserController extends BaseController
 	        else
 	        {
 	        	$usersModel	= new UsersModel();
-				$user		= $usersModel->login((object)$this->request->getPost());
+				$user		= $usersModel->login((object)$this->request->getPost()); //dd($user);
 
 				if ($user)
 				{
 					//$userRolesModel	= new UserRolesModel();
 					//$userRoleName	= $userRolesModel->getUserRoleName($user->userRoleID); dd($userRoleName);
+/*
+					$userCandidatesModel	= new UserCandidatesModel();
+					$userCandidate		= $userCandidatesModel->getUserCandidate($user->userCandidateID); //dd($userCandidate);
+
+					//$name;
+
+					if ($userCandidate)
+			    	{
+			    		if ($userCandidate->staffID != null)
+			    		{
+			    			return "Staff";
+			    		}
+			    		else if ($userCandidate->studentsID != null)
+			    		{
+			    			$studentsModel	= new StudentsModel();
+							$student		= $studentsModel->getStudent($userCandidate->studentsID); //dd($student);
+
+							$name = $student->name;
+			    		}
+			    		else if ($userCandidate->parentsID != null)
+			    		{
+			    			return "Parents";
+			    		}
+			    	}
 
 					$sessionData =
 					[
 					    'userID'		=> $user->id,
 					    'userName'		=> $user->userName,
+					    'name'			=> $name,
 					    'userRoleID'	=> $user->userRoleID,
 					    'isLoggedIn'	=> true,
 					];
@@ -51,7 +79,8 @@ class UserController extends BaseController
 						'sessionData'	=> $sessionData,
 					];
 
-					$this->session->set('iDASUser', (object)$sessionData);
+					$this->session->set('iDASUser', (object)$sessionData); */
+					$this->headerInfo($user);
 					$this->session->setFlashData('success', 'Logged In Successfully..!');
 					return redirect()->to(base_url('/'));
 				}
@@ -73,5 +102,44 @@ class UserController extends BaseController
 		$this->session->remove('iDASUser');
 		$this->session->setFlashData('success', 'Logged Out Successfully..!');
 		return redirect()->to(base_url('Login'));
+	}
+
+	private function headerInfo($user)
+	{
+		$userCandidatesModel	= new UserCandidatesModel();
+		$userCandidate			= $userCandidatesModel->getUserCandidate($user->userCandidateID);
+
+		if ($userCandidate)
+		{
+			if ($userCandidate->staffID != null)
+			{
+				return "Staff";
+			}
+			else if ($userCandidate->studentsID != null)
+			{
+				$studentsModel	= new StudentsModel();
+				$student		= $studentsModel->getStudent($userCandidate->studentsID); //dd($student);
+			}
+			else if ($userCandidate->parentsID != null)
+			{
+				return "Parents";
+			}
+		}
+
+		$sessionData =
+		[
+			'userID'		=> $user->id,
+			'userName'		=> $user->userName,
+			'name'			=> $student->name,
+			'userRoleID'	=> $user->userRoleID,
+			'isLoggedIn'	=> true,
+		];
+
+		$iDASData =
+		[
+			'sessionData'	=> $sessionData,
+		];
+
+		$this->session->set('iDASUser', (object)$sessionData);
 	}
 }
