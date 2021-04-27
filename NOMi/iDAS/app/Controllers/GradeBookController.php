@@ -7,14 +7,14 @@ class GradeBookController extends BaseController
 	public function index()
 	{
 		$userRolesModel	= new UserRolesModel();
-		$userRoleName	= $userRolesModel->getUserRoleName($this->session->iDASUser->userRoleID); //dd($userRoleName);
+		$userRole	= $userRolesModel->getUserRole($this->session->iDASUser->userRoleId);
 
 		//public $iDASData = [];
 
-		//$userRoleID = 1;
-		//$this->session->iDASUser->userRoleID;
+		//$userRoleId = 1;
+		//$this->session->iDASUser->userRoleId;
 
-		switch (strtolower($userRoleName))
+		switch (strtolower($userRole->role))
 		{
 			case "student":	//	Student Home Page
 			{
