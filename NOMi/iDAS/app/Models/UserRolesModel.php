@@ -8,18 +8,17 @@ class UserRolesModel extends Model
 	protected $returnType		= 'object';
 	protected $allowedFields	= ['role'];
 
-	public function getUserRoleName($userRoleID)
+	public function getUserRole($userRoleID)
 	{
 		$userRole = $this->getWhere(['id' => $userRoleID])->getRow();
 
 		if ($userRole)
     	{
-    		return $userRole->role;
+    		return $userRole;
     	}
     	else
     	{
     		return false;
     	}
 	}
-
 }
