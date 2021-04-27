@@ -67,43 +67,43 @@ class UserController extends BaseController
 	private function headerInfo($user)
 	{
 		$userCandidatesModel	= new UserCandidatesModel();
-		$userCandidate			= $userCandidatesModel->getUserCandidate($user->userCandidateID);
+		$userCandidate			= $userCandidatesModel->getUserCandidate($user->userCandidateId);
 
 		if ($userCandidate)
 		{
-			if ($userCandidate->staffID != null)
+			if ($userCandidate->staffId != null)
 			{
 				$staffModel	= new StaffModel();
-				$staff		= $staffModel->getStaff($userCandidate->staffID);
+				$staff		= $staffModel->getStaff($userCandidate->staffId);
 				$name		= $staff->name;
 			}
-			else if ($userCandidate->studentsID != null)
+			else if ($userCandidate->studentsId != null)
 			{
 				$studentsModel	= new StudentsModel();
-				$student		= $studentsModel->getStudent($userCandidate->studentsID);
+				$student		= $studentsModel->getStudent($userCandidate->studentsId);
 				$name			= $student->name;
 			}
-			else if ($userCandidate->parentsID != null)
+			else if ($userCandidate->parentsId != null)
 			{
 				$parentsModel	= new ParentsModel();
-				$parent			= $parentsModel->getParent($userCandidate->parentsID);
+				$parent			= $parentsModel->getParent($userCandidate->parentsId);
 				$name			= $parent->name;
 			}
 		}
 
 		$sessionData =
 		[
-			'userID'		=> $user->id,
+			'userId'		=> $user->id,
 			'userName'		=> $user->userName,
 			'name'			=> $name,
-			'userRoleID'	=> $user->userRoleID,
+			'userRoleId'	=> $user->userRoleId,
 			'isLoggedIn'	=> true,
 		];
 
-		$iDASData =
-		[
-			'sessionData'	=> $sessionData,
-		];
+		// $iDASData =
+		// [
+		// 	'sessionData'	=> $sessionData,
+		// ];
 
 		$this->session->set('iDASUser', (object)$sessionData);
 	}
