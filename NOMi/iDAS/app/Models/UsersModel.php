@@ -6,7 +6,7 @@ class UsersModel extends Model
 {
 	protected $table			= 'users';
 	protected $returnType		= 'object';
-	protected $allowedFields	= ['userName', 'userPassword'];
+	// protected $allowedFields	= ['userName', 'userPassword'];
 
 	public function login($userData)
 	{
@@ -22,9 +22,9 @@ class UsersModel extends Model
     	}
 	}
 
-    public function getUser($userID)
+    public function getUserById($userId)
     {
-        $user = $this->getWhere(['id' => $userID])->getRow();
+        $user = $this->getWhere(['id' => $userId])->getRow();
 
         if ($user)
         {
@@ -50,45 +50,45 @@ class UsersModel extends Model
         }
     }
 
-	public function getUserName($userID)
-	{
-		$user = $this->getWhere(['id' => $userID])->getRow();
+	// public function getUserName($userId)
+	// {
+	// 	$user = $this->getWhere(['id' => $userId])->getRow();
 
-		if ($user)
-    	{
-    		return $user->userName;
-    	}
-    	else
-    	{
-    		return false;
-    	}
-	}
+	// 	if ($user)
+ //    	{
+ //    		return $user->userName;
+ //    	}
+ //    	else
+ //    	{
+ //    		return false;
+ //    	}
+	// }
 
-	public function getUserRoleID($userID)
-	{
-		$user = $this->getWhere(['id' => $userID])->getRow();
+	// public function getUserRoleID($userId)
+	// {
+	// 	$user = $this->getWhere(['id' => $userId])->getRow();
 
-		if ($user)
-    	{
-    		return $user->userRoleID;
-    	}
-    	else
-    	{
-    		return false;
-    	}
-	}
+	// 	if ($user)
+ //    	{
+ //    		return $user->userRoleID;
+ //    	}
+ //    	else
+ //    	{
+ //    		return false;
+ //    	}
+	// }
 
-	public function getUserCandidateID($userID)
-	{
-		$user = $this->getWhere(['id' => $userID])->getRow();
+	// public function getUserCandidateID($userId)
+	// {
+	// 	$user = $this->getWhere(['id' => $userId])->getRow();
 
-		if ($user)
-    	{
-    		return $user->userCandidateID;
-    	}
-    	else
-    	{
-    		return false;
-    	}
-	}
+	// 	if ($user)
+ //    	{
+ //    		return $user->userCandidateID;
+ //    	}
+ //    	else
+ //    	{
+ //    		return false;
+ //    	}
+	// }
 }
