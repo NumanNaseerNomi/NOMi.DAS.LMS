@@ -6,11 +6,11 @@ class CampusSessionsModel extends Model
 {
 	protected $table			= 'campus_sessions';
 	protected $returnType		= 'object';
-	protected $allowedFields	= ['sessionID', 'campusID'];
+	// protected $allowedFields	= ['sessionId', 'campusId'];
 
-    public function getCampusSession($campusSessionID)
+    public function getCampusSession($campusSessionId)
     {
-        $campusSession = $this->getWhere(['id' => $campusSessionID])->getRow();
+        $campusSession = $this->getWhere(['id' => $campusSessionId])->getRow();
 
         if ($campusSession)
         {
@@ -29,6 +29,34 @@ class CampusSessionsModel extends Model
         if ($campusSessions)
         {
             return $campusSessions;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function getSessionsByCampusId($campusId)
+    {
+        $sessionsByCampusId = $this->getWhere(['campusId' => $campusId])->getResult();
+
+        if ($sessionsByCampusId)
+        {
+            return $sessionsByCampusId;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function getActiveSessionByCampusId($campusId)
+    {
+        $activeSessionByCampusId = $this->getWhere(['campusId' => $campusId, 'isActive' => true])->getRow();
+
+        if ($activeSessionByCampusId)
+        {
+            return $activeSessionByCampusId;
         }
         else
         {
