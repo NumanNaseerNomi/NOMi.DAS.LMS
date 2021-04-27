@@ -8,9 +8,9 @@ class UserCandidatesModel extends Model
 	protected $returnType		= 'object';
 	protected $allowedFields	= ['staffID', 'studentsID', 'parentsID'];
 
-	public function getUserCandidate($userCandidateID)
+	public function getUserCandidate($userCandidateId)
 	{
-		$userCandidate = $this->getWhere(['id' => $userCandidateID])->getRow();
+		$userCandidate = $this->getWhere(['id' => $userCandidateId])->getRow();
 
 		if ($userCandidate)
     	{
@@ -36,9 +36,9 @@ class UserCandidatesModel extends Model
         }
     }
 
-	public function getUserCandidateType($userCandidateID)
+	public function getUserCandidateType($userCandidateId)
 	{
-		$userCandidate = $this->getWhere(['id' => $userCandidateID])->getRow();
+		$userCandidate = $this->getWhere(['id' => $userCandidateId])->getRow();
 
 		if ($userCandidate)
     	{
@@ -61,9 +61,9 @@ class UserCandidatesModel extends Model
     	}
 	}
 
-	public function getUserCandidateID($userCandidateID)
+	public function getUserCandidateID($userCandidateId)
 	{
-		$userCandidate = $this->getWhere(['id' => $userCandidateID])->getRow();
+		$userCandidate = $this->getWhere(['id' => $userCandidateId])->getRow();
 
 		if ($userCandidate)
     	{
