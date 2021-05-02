@@ -6,15 +6,15 @@ class SubjectsModel extends Model
 {
 	protected $table			= 'subjects';
 	protected $returnType		= 'object';
-	protected $allowedFields	= ['session'];
+	// protected $allowedFields	= [''];
 
-    public function getSubject($subjectID)
+    public function getSubjectById($id)
     {
-        $subject = $this->getWhere(['id' => $subjectID])->getRow();
+        $subjectById = $this->getWhere(['id' => $id])->getRow();
 
-        if ($subject)
+        if ($subjectById)
         {
-            return $subject;
+            return $subjectById;
         }
         else
         {
