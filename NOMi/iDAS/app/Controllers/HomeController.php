@@ -12,37 +12,15 @@ use App\Models\CampusSessionClassSectionsModel;
 use App\Models\CampusSessionClassSectionStudentsModel;
 use App\Models\CampusSessionClassSectionSubjectsModel;
 use App\Models\SubjectsModel;
-
-//use App\Models\CampusesModel;
-//use App\Models\ClassesModel;
-//use App\Models\GuardiansModel;
-//use App\Models\SectionsModel;
-//use App\Models\SessionsModel;
-
-//use App\Models\CampusClassesModel;
-// use App\Models\ClassSubjectsModel;
 use App\Models\CampusSessionClassSectionSubjectTeachersModel;
 use App\Models\StaffModel;
-
-
 
 class HomeController extends BaseController
 {
 	public function index()
 	{
 		$userRolesModel	= new UserRolesModel();
-		$userRole	= $userRolesModel->getUserRole($this->session->iDASUser->userRoleId); //dd($userRole);
-
-		//$userCandidatesModel	= new UsersModel();
-		//$userCandidates	= $userCandidatesModel->getUsers(); //dd($userCandidates);
-
-		$userCandidatesModel	= new CampusStudentsModel();
-		//$userCandidates	= $userCandidatesModel->getStudentsByCampusID(1); dd($userCandidates);
-
-		//public $iDASData = [];
-
-		//$userRoleID = 1;
-		//$this->session->iDASUser->userRoleId;
+		$userRole	= $userRolesModel->getUserRole($this->session->iDASUser->userRoleId);
 
 		switch (strtolower($userRole->role))
 		{
@@ -101,13 +79,11 @@ class HomeController extends BaseController
 		for ($i = 0; $i < sizeof($classesByCampusSessionId); $i++)
 		{
 			$sessionClasses[$i] = $classesByCampusSessionId[$i]->id;
-			// echo $i . " sessionClasses : after" . $sessionClasses[$i] . " , befor :" . $classesByCampusSessionId[$i]->id . "<br>";
 		}
 
 		for ($i = 0; $i < sizeof($campusSessionClassesByStudentId); $i++)
 		{
 			$studentClasses[$i] = $campusSessionClassesByStudentId[$i]->campusSessionClassId;
-			// echo $i . " : studentClasses after" . $studentClasses[$i] . " , befor :" . $campusSessionClassesByStudentId[$i]->campusSessionClassId . "<br>";
 		}
 
 		for ($i = 0; $i < sizeof($campusSessionClassesByStudentId); $i++)
@@ -116,8 +92,7 @@ class HomeController extends BaseController
 			{
 				if ($studentClasses[$i] == $sessionClasses[$j])
 				{
-					// echo "found :".  $i . ":" . $j;
-					$classBySessionId = $classesByCampusSessionId[$j]; //$campusSessionClassesByStudentId[$i];
+					$classBySessionId = $classesByCampusSessionId[$j];
 				}
 			}
 		}
@@ -133,13 +108,11 @@ class HomeController extends BaseController
 		for ($i = 0; $i < sizeof($sectionsByCampusSessionClassId); $i++)
 		{
 			$classSectionsId[$i] = $sectionsByCampusSessionClassId[$i]->id;
-			// echo $i . " classSectionsId : after " . $classSectionsId[$i] . " , befor :" . $sectionsByCampusSessionClassId[$i]->id . "<br>";
 		}
 
 		for ($i = 0; $i < sizeof($campusSessionClassSectionByStudentId); $i++)
 		{
 			$studentSectionsId[$i] = $campusSessionClassSectionByStudentId[$i]->campusSessionClassSectionId;
-			// echo $i . " : studentSectionsId after " . $studentSectionsId[$i] . " , befor :" . $campusSessionClassSectionByStudentId[$i]->campusSessionClassSectionId . "<br>";
 		}
 
 		for ($i = 0; $i < sizeof($campusSessionClassSectionByStudentId); $i++)
@@ -148,26 +121,12 @@ class HomeController extends BaseController
 			{
 				if ($studentSectionsId[$i] == $classSectionsId[$j])
 				{
-					// echo "found :".  $i . ":" . $j;
 					$sectionByClassId = $sectionsByCampusSessionClassId[$j];
 				}
 			}
 		}
 
 		$sectionId = $sectionByClassId->sectionId;
-		
-		
-		
-		// $campusSessionClassSectionSubjectStudentsModel = new CampusSessionClassSectionSubjectStudentsModel();
-		// $subjectsByStudentId = $campusSessionClassSectionSubjectStudentsModel->getCampusSessionClassSectionSubjectsByStudentId($studentId);
-
-		// $classSubjectsModel = new ClassSubjectsModel();
-		// $subjectsByClassId = $classSubjectsModel->getSubjectsByClassId($classId);
-
-		// for ($i = 0; $i < sizeof($subjectsByClassId); $i++)
-		// {
-		// 	$classSubjectsId[$i] = $subjectsByClassId[$i]->subjectId;
-		// }
 
 		$campusSessionClassSectionSubjectsModel = new CampusSessionClassSectionSubjectsModel();
 		$subjectsByCampusSessionClassSectionId = $campusSessionClassSectionSubjectsModel->getSubjectsByCampusSessionClassSectionId($sectionId);
@@ -178,22 +137,25 @@ class HomeController extends BaseController
 
 		for ($i = 0; $i < sizeof($subjectsByCampusSessionClassSectionId); $i++)
 		{
-			$subjects[$i]	= $subjectsModel->getSubjectById($subjectsByCampusSessionClassSectionId[$i]->subjectId);
 			$staffByCampusSessionClassSectionSubjectId[$i] = $CampusSessionClassSectionSubjectTeachersModel->getStaffByCampusSessionClassSectionSubjectId($subjectsByCampusSessionClassSectionId[$i]->id);
-			$teachers[$i] = $StaffModel->getStaffById($staffByCampusSessionClassSectionSubjectId[$i]->staffId);
+		}
+
+		for ($i = 0; $i < sizeof($subjectsByCampusSessionClassSectionId); $i++)
+		{
+			for ($j = 0; $j < sizeof($staffByCampusSessionClassSectionSubjectId); $j++)
+			{
+				if ($subjectsByCampusSessionClassSectionId[$i]->id == $staffByCampusSessionClassSectionSubjectId[$j]->campusSessionClassSectionSubjectId)
+				{
+					$subjects[$i] = $subjectsModel->getSubjectById($subjectsByCampusSessionClassSectionId[$i]->subjectId);
+					$teachers[$j] = $StaffModel->getStaffById($staffByCampusSessionClassSectionSubjectId[$j]->staffId);
+
+					$subjectDedails[$i] = [$subjects[$i], $teachers[$j]];
+				}
+			}
 		}
 
 		// array_multisort( array_column($subjects, "code"), SORT_ASC, $subjects);
-		$data["subjects"] = $subjects;
-		$data["teachers"] = $teachers;
-
-		
-		
-
-
-
-		// dd($teachers);
-		// $activeSessionID = $classesByCampusSessionId->sessionID; 
+		$data["subjectDedails"] = $subjectDedails; 
 
 		echo view('components/HeaderView', $data);
 		echo view('components/SubjectCardView');
