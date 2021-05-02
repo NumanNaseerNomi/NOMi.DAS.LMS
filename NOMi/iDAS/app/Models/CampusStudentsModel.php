@@ -6,11 +6,11 @@ class CampusStudentsModel extends Model
 {
 	protected $table			= 'campus_students';
 	protected $returnType		= 'object';
-	protected $allowedFields	= ['studentID', 'campusID'];
+	// protected $allowedFields	= ['studentID', 'campusID'];
 
-    public function getCampusStudent($campusStudentID)
+    public function getCampusStudentById($campusStudentId)
     {
-        $campusStudent = $this->getWhere(['id' => $campusStudentID])->getRow();
+        $campusStudent = $this->getWhere(['id' => $campusStudentId])->getRow();
 
         if ($campusStudent)
         {
@@ -36,13 +36,13 @@ class CampusStudentsModel extends Model
         }
     }
 
-    public function getStudentsByCampusID($campusID)
+    public function getStudentsByCampusId($campusId)
     {
-        $studentsByCampusID = $this->getWhere(['campusID' => $campusID])->getResult();
+        $studentsByCampusId = $this->getWhere(['campusId' => $campusId])->getResult();
 
-        if ($studentsByCampusID)
+        if ($studentsByCampusId)
         {
-            return $studentsByCampusID;
+            return $studentsByCampusId;
         }
         else
         {
@@ -50,13 +50,13 @@ class CampusStudentsModel extends Model
         }
     }
 
-    public function getCampusByStudentID($studentID)
+    public function getCampusByStudentId($studentId)
     {
-        $campusByStudentID = $this->getWhere(['studentID' => $studentID])->getRow();
+        $campusByStudentId = $this->getWhere(['studentId' => $studentId])->getRow();
 
-        if ($campusByStudentID)
+        if ($campusByStudentId)
         {
-            return $campusByStudentID;
+            return $campusByStudentId;
         }
         else
         {
