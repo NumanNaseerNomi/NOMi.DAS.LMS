@@ -1,16 +1,15 @@
 <!-- NOMi - Subject Cards - Start-->
 <div class="row">
-  <!-- NOMi - Subject Card - Start-->
+  <!-- NOMi - Subject Card - Start--><?php for ($i = 0; $i < sizeof($subjects); $i++) { ?>
   <div class="col-md-6 col-xl-4 p-3">
     <div class="card">
-      <h4 class="m-3 mb-0">Computer Science</h4>
+      <h4 class="m-3 mb-0"><?php echo $subjects[$i]->code . " - " . $subjects[$i]->name; ?></h4>
       <hr class="mb-0"/>
       <div class="card-body">
         <div class="row align-items-center justify-content-center">
           <div class="col-9">
-            <h4>Teacher / Class Name</h4>
-            <p class="m-0">Qualification / Section</p>
-            <p class="m-0">Institution / Session</p>
+            <h4><?php echo $teachers[$i]->name; ?></h4>
+            <p class="m-0">Qualification / Session</p>
           </div>
           <div class="col-3">
             <div class="d-flex">
@@ -30,6 +29,9 @@
       </div>
     </div>
   </div>
+<?php }  ?>
   <!-- NOMi - Subject Card - End-->
 </div>
 <!-- NOMi - Subject Cards - Start-->
+
+
