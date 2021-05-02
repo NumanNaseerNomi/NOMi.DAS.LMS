@@ -6,7 +6,7 @@ class ClassSubjectsModel extends Model
 {
 	protected $table			= 'class_subjects';
 	protected $returnType		= 'object';
-	protected $allowedFields	= ['classID', 'subjectID'];
+	protected $allowedFields	= ['classId', 'subjectId'];
 
     public function getClassSubject($classSubjectID)
     {
@@ -29,6 +29,20 @@ class ClassSubjectsModel extends Model
         if ($classSubjects)
         {
             return $classSubjects;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function getSubjectsByClassId($classId)
+    {
+        $subjectsByClassId = $this->getWhere(['classId' => $classId])->getResult();
+
+        if ($subjectsByClassId)
+        {
+            return $subjectsByClassId;
         }
         else
         {
