@@ -8,7 +8,7 @@ class UserCandidatesModel extends Model
 	protected $returnType		= 'object';
 	protected $allowedFields	= ['staffID', 'studentsID', 'parentsID'];
 
-	public function getUserCandidate($userCandidateId)
+	public function getUserCandidateById($userCandidateId)
 	{
 		$userCandidate = $this->getWhere(['id' => $userCandidateId])->getRow();
 
