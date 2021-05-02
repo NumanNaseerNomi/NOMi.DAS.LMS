@@ -67,14 +67,14 @@ class UserController extends BaseController
 	private function headerInfo($user)
 	{
 		$userCandidatesModel	= new UserCandidatesModel();
-		$userCandidate			= $userCandidatesModel->getUserCandidate($user->userCandidateId);
+		$userCandidate			= $userCandidatesModel->getUserCandidateById($user->userCandidateId);
 
 		if ($userCandidate)
 		{
 			if ($userCandidate->staffId != null)
 			{
 				$staffModel	= new StaffModel();
-				$staff		= $staffModel->getStaff($userCandidate->staffId);
+				$staff		= $staffModel->getStaffById($userCandidate->staffId);
 				$name		= $staff->name;
 			}
 			else if ($userCandidate->studentsId != null)
