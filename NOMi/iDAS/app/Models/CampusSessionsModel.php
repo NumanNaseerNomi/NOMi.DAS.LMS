@@ -8,7 +8,7 @@ class CampusSessionsModel extends Model
 	protected $returnType		= 'object';
 	// protected $allowedFields	= ['sessionId', 'campusId'];
 
-    public function getCampusSession($campusSessionId)
+    public function getCampusSessionById($campusSessionId)
     {
         $campusSession = $this->getWhere(['id' => $campusSessionId])->getRow();
 
