@@ -49,4 +49,28 @@ class CampusSessionClassesModel extends Model
             return false;
         }
     }
+
+
+
+//     public function getClassesByCampusSessionId($campusSessionId)
+//     {
+//       //  $db      = \Config\Database::connect();
+// $builder = $this->db->table($table);        // 'mytablename' is the name of your table
+
+// $builder->select('id');       // names of your columns
+// $builder->where(['campusSessionId' => $campusSessionId]);                // where clause
+// $query = $builder->get()->getResult();
+
+
+//         $campusSessionClasses = $this->select('id')->where(['campusSessionId' => $campusSessionId])->getCompiledSelect();
+
+//         if ($query)
+//         {
+//             return $query;
+//         }
+//         else
+//         {
+//             return false;
+//         }
+//     }
 }
