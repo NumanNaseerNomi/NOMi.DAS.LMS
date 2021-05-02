@@ -6,11 +6,11 @@ class CampusSessionClassSectionSubjectsModel extends Model
 {
 	protected $table			= 'campus_session_class_section_subjects';
 	protected $returnType		= 'object';
-	protected $allowedFields	= ['campusSessionClassSectionID', 'subjectID'];
+	// protected $allowedFields	= ['campusSessionClassSectionId', 'subjectId'];
 
-    public function getCampusSessionClassSectionSubject($campusSessionClassSectionSubjectID)
+    public function getCampusSessionClassSectionSubject($campusSessionClassSectionSubjectId)
     {
-        $campusSessionClassSectionSubject = $this->getWhere(['id' => $campusSessionClassSectionSubjectID])->getRow();
+        $campusSessionClassSectionSubject = $this->getWhere(['id' => $campusSessionClassSectionSubjectId])->getRow();
 
         if ($campusSessionClassSectionSubject)
         {
@@ -29,6 +29,34 @@ class CampusSessionClassSectionSubjectsModel extends Model
         if ($campusSessionClassSectionSubjects)
         {
             return $campusSessionClassSectionSubjects;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function getSubjectsByCampusSessionClassSectionId($campusSessionClassSectionId)
+    {
+        $subjectsByCampusSessionClassSectionId = $this->getWhere(['campusSessionClassSectionId' => $campusSessionClassSectionId])->getResult();
+
+        if ($subjectsByCampusSessionClassSectionId)
+        {
+            return $subjectsByCampusSessionClassSectionId;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function getCampusSessionClassSectionBySubjectId($subjectId)
+    {
+        $subjectsByCampusSessionClassSubjectId = $this->getWhere(['subjectId' => $subjectId])->getResult();
+
+        if ($subjectsByCampusSessionClassSubjectId)
+        {
+            return $subjectsByCampusSessionClassSubjectId;
         }
         else
         {
