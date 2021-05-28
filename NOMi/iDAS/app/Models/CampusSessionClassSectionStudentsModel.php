@@ -8,55 +8,13 @@ class CampusSessionClassSectionStudentsModel extends Model
 	protected $returnType		= 'object';
 	// protected $allowedFields	= ['campusSessionClassSectionId', 'studentId'];
 
-    public function getCampusSessionClassSectionSubjectById($campusSessionClassSectionStudentId)
+    public function getCampusSessionClassSectionsByStudentId($studentId)
     {
-        $campusSessionClassSectionStudentById = $this->getWhere(['id' => $campusSessionClassSectionStudentId])->getRow();
+        $campusSessionClassSectionsByStudentId = $this->getWhere(['studentId' => $studentId])->getResult();
 
-        if ($campusSessionClassSectionStudentById)
+        if ($campusSessionClassSectionsByStudentId)
         {
-            return $campusSessionClassSectionStudentById;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public function getCampusSessionClassSectionStudents()
-    {
-        $campusSessionClassSectionStudents = $this->get()->getResult();
-
-        if ($campusSessionClassSectionStudents)
-        {
-            return $campusSessionClassSectionStudents;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public function getStudentsByCampusSessionClassSectionId($campusSessionClassSectionId)
-    {
-        $studentsByCampusSessionClassSectionId = $this->getWhere(['campusSessionClassSectionId' => $campusSessionClassSectionId])->getResult();
-
-        if ($studentsByCampusSessionClassSectionId)
-        {
-            return $studentsByCampusSessionClassSectionId;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public function getCampusSessionClassSectionByStudentId($studentId)
-    {
-        $campusSessionClassSectionByStudentId = $this->getWhere(['studentId' => $studentId])->getResult();
-
-        if ($campusSessionClassSectionByStudentId)
-        {
-            return $campusSessionClassSectionByStudentId;
+            return $campusSessionClassSectionsByStudentId;
         }
         else
         {

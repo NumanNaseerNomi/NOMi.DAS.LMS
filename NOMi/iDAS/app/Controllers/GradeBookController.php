@@ -2,25 +2,33 @@
 
 use App\Models\UserRolesModel;
 
+use App\Models\UsersModel;
+use App\Models\UserCandidatesModel;
+use App\Models\CampusSessionClassStudentsModel;
+use App\Models\CampusSessionClassesModel;
+use App\Models\CampusSessionClassSectionsModel;
+use App\Models\ClassesModel;
+use App\Models\CampusSessionClassSectionStudentsModel;
+use App\Models\CampusSessionClassSectionExamsModel;
+use App\Models\SubjectsModel;
+use App\Models\CampusSessionClassSectionExamSubjectStudentsMarksModel;
+use App\Models\CampusSessionClassSectionExamSubjectsModel;
+use App\Models\ExamsModel;
+use App\Models\CampusSessionClassSectionExamSubjectMaxMarksModel;
+use App\Models\ResultGradingSchemeModel;
+
 class GradeBookController extends BaseController
 {
 	public function index()
 	{
 		$userRolesModel	= new UserRolesModel();
-		$userRole	= $userRolesModel->getUserRole($this->session->iDASUser->userRoleId);
-
-		//public $iDASData = [];
-
-		//$userRoleId = 1;
-		//$this->session->iDASUser->userRoleId;
+		$userRole	= $userRolesModel->getUserRoleById($this->session->iDASUser->userRoleId);
 
 		switch (strtolower($userRole->role))
 		{
-			case "student":	//	Student Home Page
+			case "student":	//	Student Grade Book Page
 			{
-				echo view('components/HeaderView');
-				echo view('components/GradeBookView');
-				echo view('components/FooterView');
+				$this->studentGradeBook();
 				break;
 			}
 			case "parent": // Parents Home Page
@@ -45,5 +53,112 @@ class GradeBookController extends BaseController
 				break;
 			}
 		}
+	}
+
+	private function studentGradeBook()
+	{
+		$usersModel	= new UsersModel();
+		$user	= $usersModel->getUserById($this->session->iDASUser->userId);
+
+		$userCandidatesModel = new UserCandidatesModel();
+		$userCandidate = $userCandidatesModel->getUserCandidateById($user->userCandidateId);
+		$studentId = $userCandidate->studentsId;
+
+		$campusSessionClassSectionExamSubjectStudentsMarksModel = new CampusSessionClassSectionExamSubjectStudentsMarksModel();
+		$campusSessionClassSectionExamSubjectStudentsMarks = $campusSessionClassSectionExamSubjectStudentsMarksModel->getCampusSessionClassSectionExamSubjectMarksByStudentId($studentId);
+
+		$totalMaxMarks = $totalObtainedMarks = 0.0;
+
+		for ($i = 0; $i < sizeof($campusSessionClassSectionExamSubjectStudentsMarks); $i++)
+		{
+			$campusSessionClassSectionExamSubjectsModel = new CampusSessionClassSectionExamSubjectsModel();
+			$campusSessionClassSectionExamSubject = $campusSessionClassSectionExamSubjectsModel->getCampusSessionClassSectionExamSubjectById($campusSessionClassSectionExamSubjectStudentsMarks[$i]->campusSessionClassSectionExamSubjectId);
+
+			$campusSessionClassSectionExamsModel = new CampusSessionClassSectionExamsModel();
+			$campusSessionClassSectionExam = $campusSessionClassSectionExamsModel->getCampusSessionClassSectionExamById($campusSessionClassSectionExamSubject->campusSessionClassSectionExamId);
+
+			$campusSessionClassSectionsModel = new CampusSessionClassSectionsModel();
+			$campusSessionClassSection = $campusSessionClassSectionsModel->getCampusSessionClassSectionById($campusSessionClassSectionExam->campusSessionClassSectionId);
+
+			$examsModel = new ExamsModel();
+			$exam = $examsModel->getExamById($campusSessionClassSectionExam->examId);
+
+			$campusSessionClassesModel = new CampusSessionClassesModel();
+			$campusSessionClass = $campusSessionClassesModel->getCampusSessionClassById($campusSessionClassSection->campusSessionClassId);
+
+			$classesModel = new ClassesModel();
+			$class = $classesModel->getClassById($campusSessionClass->classId);
+
+			$CampusSessionClassSectionExamSubjectMaxMarksModel = new CampusSessionClassSectionExamSubjectMaxMarksModel();
+			$campusSessionClassSectionExamSubjectMaxMarksModel = $CampusSessionClassSectionExamSubjectMaxMarksModel->getMaxMarksByCampusSessionClassSectionExamSubjectId($campusSessionClassSectionExamSubject->id);
+
+			$subjectsModel = new SubjectsModel();
+			$resultGradingSchemeModel = new ResultGradingSchemeModel();
+
+			$obtainedMarks = (double)$campusSessionClassSectionExamSubjectStudentsMarks[$i]->marks;
+			$obtainedMarks = round($obtainedMarks);
+
+			$maxMarks = (double)$campusSessionClassSectionExamSubjectMaxMarksModel->maxMarks;
+			$maxMarks = round($maxMarks);
+
+			$percentage = ($obtainedMarks/$maxMarks)*100;
+			$percentage = round($percentage);
+
+			$totalObtainedMarks += $obtainedMarks;
+			$totalMaxMarks += $maxMarks;
+
+
+			$resultDetails[$i] =
+			[
+				"obtainedMarks"		=> $obtainedMarks,
+				"maxMarks"			=> $maxMarks,
+				"percentage"		=> $percentage,
+				"grade"				=> $resultGradingSchemeModel->getGradeByMarks($percentage)->grade,
+				"subjectCode"		=> $subjectsModel->getSubjectById($campusSessionClassSectionExamSubject->subjectId)->code,
+				"examId"			=> $campusSessionClassSectionExam->id,
+				"examDescription"	=> $campusSessionClassSectionExam->description,
+				"examName"			=> $exam->name,
+				"classId"			=> $class->id,
+				"className"			=> $class->class,
+				"classOrder"		=> $class->priorityOrder
+			];
+		}
+
+		$totalPercentage = ($totalObtainedMarks/$totalMaxMarks)*100;
+
+		$totalResultDetails =
+		[
+			"obtainedMarks"	=> round($totalObtainedMarks),
+			"maxMarks"		=> round($totalMaxMarks),
+			"percentage"	=> round($totalPercentage),
+			"grade"			=> $resultGradingSchemeModel->getGradeByMarks($totalPercentage)->grade
+		];
+
+		$tempClassesList = array_unique(array_column($resultDetails, 'classId'));
+		$classesList = array_intersect_key($resultDetails, $tempClassesList);
+		array_multisort(array_column($classesList, "classOrder"), SORT_ASC, $classesList);
+
+		$tempExamsList = array_unique(array_column($resultDetails, 'examId'));
+		$examsList = array_intersect_key($resultDetails, $tempExamsList);
+		array_multisort(array_column($examsList, "examId"), SORT_ASC, $examsList);
+
+		$data =
+		[
+			"resultDetails" => $resultDetails,
+			"totalResultDetails" => $totalResultDetails,
+			"classesList" => $classesList,
+			"examsList" => $examsList,
+			"resultGradingScheme" => $this->getResultGradingScheme()
+		];
+
+		echo view('components/HeaderView', $data);
+		echo view('components/GradeBookView');
+		echo view('components/FooterView');
+	}
+
+	private function getResultGradingScheme()
+	{
+		$resultGradingSchemeModel = new ResultGradingSchemeModel();
+		return $resultGradingSchemeModel->getResultGradingScheme();
 	}
 }

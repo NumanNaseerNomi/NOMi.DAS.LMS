@@ -8,27 +8,13 @@ class CampusSessionClassesModel extends Model
 	protected $returnType		= 'object';
 	// protected $allowedFields	= ['campusSessionId', 'classId'];
 
-    public function getCampusSessionClass($campusSessionClassId)
+    public function getCampusSessionClassById($id)
     {
-        $campusSessionClass = $this->getWhere(['id' => $campusSessionClassId])->getRow();
+        $campusSessionClassById = $this->getWhere(['id' => $id])->getRow();
 
-        if ($campusSessionClass)
+        if ($campusSessionClassById)
         {
-            return $campusSessionClass;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public function getCampusSessionClasses()
-    {
-        $campusSessionClasses = $this->get()->getResult();
-
-        if ($campusSessionClasses)
-        {
-            return $campusSessionClasses;
+            return $campusSessionClassById;
         }
         else
         {
@@ -49,28 +35,4 @@ class CampusSessionClassesModel extends Model
             return false;
         }
     }
-
-
-
-//     public function getClassesByCampusSessionId($campusSessionId)
-//     {
-//       //  $db      = \Config\Database::connect();
-// $builder = $this->db->table($table);        // 'mytablename' is the name of your table
-
-// $builder->select('id');       // names of your columns
-// $builder->where(['campusSessionId' => $campusSessionId]);                // where clause
-// $query = $builder->get()->getResult();
-
-
-//         $campusSessionClasses = $this->select('id')->where(['campusSessionId' => $campusSessionId])->getCompiledSelect();
-
-//         if ($query)
-//         {
-//             return $query;
-//         }
-//         else
-//         {
-//             return false;
-//         }
-//     }
 }

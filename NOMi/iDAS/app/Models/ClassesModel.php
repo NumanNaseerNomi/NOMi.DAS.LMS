@@ -6,29 +6,15 @@ class ClassesModel extends Model
 {
 	protected $table			= 'classes';
 	protected $returnType		= 'object';
-	protected $allowedFields	= ['class'];
+	// protected $allowedFields	= ['class'];
 
-    public function getClass($classID)
+    public function getClassById($id)
     {
-        $class = $this->getWhere(['id' => $classID])->getRow();
+        $classById = $this->getWhere(['id' => $id])->getRow();
 
-        if ($class)
+        if ($classById)
         {
-            return $class;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public function getClasses()
-    {
-        $classes = $this->get()->getResult();
-
-        if ($classes)
-        {
-            return $classes;
+            return $classById;
         }
         else
         {

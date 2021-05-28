@@ -20,7 +20,7 @@ class HomeController extends BaseController
 	public function index()
 	{
 		$userRolesModel	= new UserRolesModel();
-		$userRole	= $userRolesModel->getUserRole($this->session->iDASUser->userRoleId);
+		$userRole	= $userRolesModel->getUserRoleById($this->session->iDASUser->userRoleId);
 
 		switch (strtolower($userRole->role))
 		{
@@ -103,7 +103,7 @@ class HomeController extends BaseController
 		$sectionsByCampusSessionClassId = $campusSessionClassSectionsModel->getSectionsByCampusSessionClassId($classBySessionId->id);
 
 		$campusSessionClassSectionStudentsModel = new CampusSessionClassSectionStudentsModel();
-		$campusSessionClassSectionByStudentId = $campusSessionClassSectionStudentsModel->getCampusSessionClassSectionByStudentId($studentId);
+		$campusSessionClassSectionByStudentId = $campusSessionClassSectionStudentsModel->getCampusSessionClassSectionsByStudentId($studentId);
 
 		for ($i = 0; $i < sizeof($sectionsByCampusSessionClassId); $i++)
 		{
@@ -153,8 +153,7 @@ class HomeController extends BaseController
 				}
 			}
 		}
-
-		// array_multisort( array_column($subjects, "code"), SORT_ASC, $subjects);
+		
 		$data["subjectDedails"] = $subjectDedails; 
 
 		echo view('components/HeaderView', $data);
@@ -165,7 +164,7 @@ class HomeController extends BaseController
 	public function tempComingSoon()
 	{
 		echo view('components/HeaderView');
-		echo "Comong Soon...";
+		echo "<h1>Coming Soon...</h1>";
 		echo view('components/FooterView');
 	}
 }

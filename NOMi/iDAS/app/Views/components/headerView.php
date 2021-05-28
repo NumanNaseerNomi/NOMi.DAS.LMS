@@ -96,8 +96,8 @@
 									<a class="dropdown-item text-center" href="<?php echo base_url('Profile'); ?>" title="My Profile">
 										<p class="m-0"><?php echo $session->iDASUser->name; ?></p>
 										<p class="small m-0"><?php echo '@' . $session->iDASUser->userName; ?></p>
-										<p class="small m-0"><?php //echo $session->iDASUser->userRoleName; ?></p>
-										<p class="m-0">#if std class</p>
+										<!-- <p class="small m-0"><?php //echo $session->iDASUser->userRoleName; ?></p> -->
+										<!-- <p class="m-0">#if std class</p> -->
 									</a>
 									<hr class="dropdown-divider"/>
 									<a class="dropdown-item" href="<?php echo base_url('Settings'); ?>"><i class="far fa-cogs"></i>Settings</a>

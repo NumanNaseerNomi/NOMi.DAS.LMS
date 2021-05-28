@@ -80,13 +80,13 @@ class UserController extends BaseController
 			else if ($userCandidate->studentsId != null)
 			{
 				$studentsModel	= new StudentsModel();
-				$student		= $studentsModel->getStudent($userCandidate->studentsId);
+				$student		= $studentsModel->getStudentById($userCandidate->studentsId);
 				$name			= $student->name;
 			}
 			else if ($userCandidate->parentsId != null)
 			{
 				$parentsModel	= new ParentsModel();
-				$parent			= $parentsModel->getParent($userCandidate->parentsId);
+				$parent			= $parentsModel->getParentById($userCandidate->parentsId);
 				$name			= $parent->name;
 			}
 		}
@@ -99,12 +99,7 @@ class UserController extends BaseController
 			'userRoleId'	=> $user->userRoleId,
 			'isLoggedIn'	=> true,
 		];
-
-		// $iDASData =
-		// [
-		// 	'sessionData'	=> $sessionData,
-		// ];
-
+		
 		$this->session->set('iDASUser', (object)$sessionData);
 	}
 }

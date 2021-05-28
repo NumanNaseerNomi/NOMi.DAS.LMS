@@ -8,34 +8,20 @@ class CampusSessionClassSectionsModel extends Model
 	protected $returnType		= 'object';
 	// protected $allowedFields	= ['campusSessionClassId', 'sectionId'];
 
-    public function getCampusSessionClassSection($campusSessionClassSectionId)
+    public function getCampusSessionClassSectionById($id)
     {
-        $campusSessionClassSection = $this->getWhere(['id' => $campusSessionClassSectionId])->getRow();
+        $campusSessionClassSectionById = $this->getWhere(['id' => $id])->getRow();
 
-        if ($campusSessionClassSection)
+        if ($campusSessionClassSectionById)
         {
-            return $campusSessionClassSection;
+            return $campusSessionClassSectionById;
         }
         else
         {
             return false;
         }
     }
-
-    public function getCampusSessionClassSections()
-    {
-        $campusSessionClassSections = $this->get()->getResult();
-
-        if ($campusSessionClassSections)
-        {
-            return $campusSessionClassSections;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
+    
     public function getSectionsByCampusSessionClassId($campusSessionClassId)
     {
         $campusSessionClassSections = $this->getWhere(['campusSessionClassId' => $campusSessionClassId])->getResult();

@@ -21,18 +21,4 @@ class SubjectsModel extends Model
             return false;
         }
     }
-
-    public function getSubjects()
-    {
-        $subjects = $this->get()->getResult();
-
-        if ($subjects)
-        {
-            return $subjects;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }

@@ -10,11 +10,11 @@
           <div class="row align-items-center justify-content-center fw-bold">
             <div class="col-9">
               <p class="fs-4 m-0"><?php echo $subjectDedails[$i][1]->name; ?></p>
-              <p class="m-0">Qualification / Session</p>
+              <p class="m-0"><?php echo $subjectDedails[$i][1]->qualification; ?></p>
             </div>
             <div class="col-3">
               <div class="d-flex">
-                <p class="fs-4 m-0">99.9</p>
+                <p class="fs-4 m-0">N/A</p>
                 <p class="m-0">%</p>
               </div>
               <p class="m-0">Rating</p>
