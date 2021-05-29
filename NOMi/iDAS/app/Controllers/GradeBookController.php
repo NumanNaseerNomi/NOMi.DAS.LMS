@@ -1,14 +1,11 @@
 <?php namespace App\Controllers;
 
 use App\Models\UserRolesModel;
-
 use App\Models\UsersModel;
 use App\Models\UserCandidatesModel;
-use App\Models\CampusSessionClassStudentsModel;
 use App\Models\CampusSessionClassesModel;
 use App\Models\CampusSessionClassSectionsModel;
 use App\Models\ClassesModel;
-use App\Models\CampusSessionClassSectionStudentsModel;
 use App\Models\CampusSessionClassSectionExamsModel;
 use App\Models\SubjectsModel;
 use App\Models\CampusSessionClassSectionExamSubjectStudentsMarksModel;
@@ -67,8 +64,6 @@ class GradeBookController extends BaseController
 		$campusSessionClassSectionExamSubjectStudentsMarksModel = new CampusSessionClassSectionExamSubjectStudentsMarksModel();
 		$campusSessionClassSectionExamSubjectStudentsMarks = $campusSessionClassSectionExamSubjectStudentsMarksModel->getCampusSessionClassSectionExamSubjectMarksByStudentId($studentId);
 
-		$totalMaxMarks = $totalObtainedMarks = 0.0;
-
 		for ($i = 0; $i < sizeof($campusSessionClassSectionExamSubjectStudentsMarks); $i++)
 		{
 			$campusSessionClassSectionExamSubjectsModel = new CampusSessionClassSectionExamSubjectsModel();
@@ -89,8 +84,8 @@ class GradeBookController extends BaseController
 			$classesModel = new ClassesModel();
 			$class = $classesModel->getClassById($campusSessionClass->classId);
 
-			$CampusSessionClassSectionExamSubjectMaxMarksModel = new CampusSessionClassSectionExamSubjectMaxMarksModel();
-			$campusSessionClassSectionExamSubjectMaxMarksModel = $CampusSessionClassSectionExamSubjectMaxMarksModel->getMaxMarksByCampusSessionClassSectionExamSubjectId($campusSessionClassSectionExamSubject->id);
+			$campusSessionClassSectionExamSubjectMaxMarksModel = new CampusSessionClassSectionExamSubjectMaxMarksModel();
+			$campusSessionClassSectionExamSubjectMaxMarks = $campusSessionClassSectionExamSubjectMaxMarksModel->getMaxMarksByCampusSessionClassSectionExamSubjectId($campusSessionClassSectionExamSubject->id);
 
 			$subjectsModel = new SubjectsModel();
 			$resultGradingSchemeModel = new ResultGradingSchemeModel();
@@ -98,15 +93,11 @@ class GradeBookController extends BaseController
 			$obtainedMarks = (double)$campusSessionClassSectionExamSubjectStudentsMarks[$i]->marks;
 			$obtainedMarks = round($obtainedMarks);
 
-			$maxMarks = (double)$campusSessionClassSectionExamSubjectMaxMarksModel->maxMarks;
+			$maxMarks = (double)$campusSessionClassSectionExamSubjectMaxMarks->maxMarks;
 			$maxMarks = round($maxMarks);
 
 			$percentage = ($obtainedMarks/$maxMarks)*100;
 			$percentage = round($percentage);
-
-			$totalObtainedMarks += $obtainedMarks;
-			$totalMaxMarks += $maxMarks;
-
 
 			$resultDetails[$i] =
 			[
@@ -124,16 +115,6 @@ class GradeBookController extends BaseController
 			];
 		}
 
-		$totalPercentage = ($totalObtainedMarks/$totalMaxMarks)*100;
-
-		$totalResultDetails =
-		[
-			"obtainedMarks"	=> round($totalObtainedMarks),
-			"maxMarks"		=> round($totalMaxMarks),
-			"percentage"	=> round($totalPercentage),
-			"grade"			=> $resultGradingSchemeModel->getGradeByMarks($totalPercentage)->grade
-		];
-
 		$tempClassesList = array_unique(array_column($resultDetails, 'classId'));
 		$classesList = array_intersect_key($resultDetails, $tempClassesList);
 		array_multisort(array_column($classesList, "classOrder"), SORT_ASC, $classesList);
@@ -145,14 +126,13 @@ class GradeBookController extends BaseController
 		$data =
 		[
 			"resultDetails" => $resultDetails,
-			"totalResultDetails" => $totalResultDetails,
 			"classesList" => $classesList,
 			"examsList" => $examsList,
 			"resultGradingScheme" => $this->getResultGradingScheme()
 		];
 
 		echo view('components/HeaderView', $data);
-		echo view('components/GradeBookView');
+		echo view('GradeBookView');
 		echo view('components/FooterView');
 	}
 
