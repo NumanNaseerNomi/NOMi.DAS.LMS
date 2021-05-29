@@ -55,7 +55,7 @@ class GradeBookController extends BaseController
 	private function studentGradeBook()
 	{
 		$usersModel	= new UsersModel();
-		$user	= $usersModel->getUserById($this->session->iDASUser->userId);
+		$user = $usersModel->getUserById($this->session->iDASUser->userId);
 
 		$userCandidatesModel = new UserCandidatesModel();
 		$userCandidate = $userCandidatesModel->getUserCandidateById($user->userCandidateId);
@@ -90,14 +90,9 @@ class GradeBookController extends BaseController
 			$subjectsModel = new SubjectsModel();
 			$resultGradingSchemeModel = new ResultGradingSchemeModel();
 
-			$obtainedMarks = (double)$campusSessionClassSectionExamSubjectStudentsMarks[$i]->marks;
-			$obtainedMarks = round($obtainedMarks);
-
-			$maxMarks = (double)$campusSessionClassSectionExamSubjectMaxMarks->maxMarks;
-			$maxMarks = round($maxMarks);
-
-			$percentage = ($obtainedMarks/$maxMarks)*100;
-			$percentage = round($percentage);
+			$obtainedMarks	= round($campusSessionClassSectionExamSubjectStudentsMarks[$i]->marks);
+			$maxMarks		= round($campusSessionClassSectionExamSubjectMaxMarks->maxMarks);
+			$percentage		= round(($obtainedMarks/$maxMarks)*100);
 
 			$resultDetails[$i] =
 			[
