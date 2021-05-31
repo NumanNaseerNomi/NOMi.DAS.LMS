@@ -94,7 +94,7 @@ class GradeBookController extends BaseController
 			$maxMarks		= round($campusSessionClassSectionExamSubjectMaxMarks->maxMarks);
 			$percentage		= round(($obtainedMarks/$maxMarks)*100);
 
-			$resultDetails[$i] =
+			$allResultDetails[$i] =
 			[
 				"obtainedMarks"		=> $obtainedMarks,
 				"maxMarks"			=> $maxMarks,
@@ -102,12 +102,23 @@ class GradeBookController extends BaseController
 				"grade"				=> $resultGradingSchemeModel->getGradeByMarks($percentage)->grade,
 				"subjectCode"		=> $subjectsModel->getSubjectById($campusSessionClassSectionExamSubject->subjectId)->code,
 				"examId"			=> $campusSessionClassSectionExam->id,
+				"resultDateTime"	=> $campusSessionClassSectionExam->resultDateTime,
 				"examDescription"	=> $campusSessionClassSectionExam->description,
 				"examName"			=> $exam->name,
 				"classId"			=> $class->id,
 				"className"			=> $class->class,
 				"classOrder"		=> $class->priorityOrder
 			];
+		}
+
+		$resultDetailsArrayIndex = 0;
+
+		for ($i = 0; $i < sizeof($allResultDetails); $i++)
+		{
+			if ($allResultDetails[$i]['resultDateTime'] <= date("Y-m-d H:i:s"))
+			{
+				$resultDetails[$resultDetailsArrayIndex++] = $allResultDetails[$i];
+			}
 		}
 
 		$tempClassesList = array_unique(array_column($resultDetails, 'classId'));
@@ -120,10 +131,10 @@ class GradeBookController extends BaseController
 
 		$data =
 		[
-			"resultDetails" => $resultDetails,
-			"classesList" => $classesList,
-			"examsList" => $examsList,
-			"resultGradingScheme" => $this->getResultGradingScheme()
+			"resultDetails"			=> $resultDetails,
+			"classesList"			=> $classesList,
+			"examsList"				=> $examsList,
+			"resultGradingScheme"	=> $this->getResultGradingScheme()
 		];
 
 		echo view('components/HeaderView', $data);
