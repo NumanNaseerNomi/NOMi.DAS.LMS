@@ -27,7 +27,7 @@ class UserController extends BaseController
 			if (! $this->validate(
 				[
 					'userName'		=> ['label' => 'User Name', 'rules' => 'required'],
-    				'userPassword'	=> ['label' => 'Password', 'rules' => 'required|min_length[6]|differs[userName]'],
+    				'userPinCode'	=> ['label' => 'User Pin Code', 'rules' => 'required|numeric|exact_length[6]']
 				]))
 	        {
 	        	$validationErrors = (Object)$this->validator->getErrors();
@@ -36,7 +36,7 @@ class UserController extends BaseController
 	        else
 	        {
 	        	$usersModel	= new UsersModel();
-				$user		= $usersModel->login((object)$this->request->getPost()); //dd($user);
+				$user		= $usersModel->login((object)$this->request->getPost());
 
 				if ($user)
 				{
@@ -52,8 +52,8 @@ class UserController extends BaseController
 	        }
 		}
 		echo view('components/HeaderView');
-		echo view('LoginView'); 
-		//echo password_hash("NOMi@1", PASSWORD_DEFAULT);
+		echo view('LoginView');
+		// echo password_hash("123456", PASSWORD_DEFAULT);
 		echo view('components/FooterView');
 	}
 

@@ -6,13 +6,13 @@ class UsersModel extends Model
 {
 	protected $table			= 'users';
 	protected $returnType		= 'object';
-	// protected $allowedFields	= ['userName', 'userPassword'];
+	// protected $allowedFields	= ['userName', 'userPinCode'];
 
 	public function login($userData)
 	{
 		$user = $this->getWhere(['userName' => $userData->userName])->getRow();
-
-		if ($user && password_verify($userData->userPassword, $user->userPassword))
+        
+        if ($user && password_verify($userData->userPinCode, $user->userPinCode))
     	{
     		return $user;
     	}

@@ -5,15 +5,16 @@
 				<i class="far fa-user-unlock fa-2x mb-2"></i>
 				<h3 class="card-title mb-3">Login</h3>
 			</div>
-			<?= csrf_field() ?>
+			<?php echo csrf_field() ?>
 			<div class="mb-3">
-				<label for="userName" class="form-label">User Name</label>
+				<label for="userName" class="form-label">Enter User Name</label>
 				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userName" name="userName" placeholder="numan.naseer.nomi" required />
 			</div>
 			<div class="mb-3">
-				<label for="userPassword" class="form-label">Password</label>
-				<input type="password" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userPassword" name="userPassword" placeholder="NumanNaseerNomi" required />
+				<label for="userPinCode" class="form-label">Enter Pin Code</label>
+				<input type="password" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userPinCode" name="userPinCode" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="046664" required />
 			</div>
+
 			<div class="d-grid">
 				<button type="submit" class="btn btn-outline-primary btn-sm mb-3">Login</button>
 			</div>
