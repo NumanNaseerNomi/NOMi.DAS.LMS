@@ -25,7 +25,7 @@
 					<div>
 						<!-- NOMi - Side Navigation Bar - Start -->
 						<?php if (isLoggedIn()) { ?>
-						<div class="dropdown ms-2" id="preventDropdown">
+						<div class="dropdown ms-2" onclick="prevent();">
 							<a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
 							<div class="dropdown-menu dropdown-menu-dark dropdown-menu-start shadow" aria-labelledby="menuDropdownButton">
 								<!-- <a class="dropdown-item" href="<?php echo base_url('/') ?>"><i class="far fa-home"></i>Home</a> -->
