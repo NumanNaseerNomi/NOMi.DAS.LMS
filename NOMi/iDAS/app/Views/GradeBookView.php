@@ -35,7 +35,7 @@
 					</table>
 					<hr/>
 				</div>
-				<div id="resultSheetChartWrapper"></div>
+				<div id="resultSheetChartWrapper"></div><hr/>
 			</div>
 		</div>
 		<br/>
@@ -188,7 +188,7 @@
 				totalMaxMarks,
 				totalObtainedMarks,
 				totalPercentage.toFixed(),
-				getGradeByMarksPercentage(totalPercentage.toFixed()).grade
+				getGradeByMarks(totalPercentage.toFixed()).grade
 			];
 
 			for (var i = 0; i < cellTextValues.length; i++)
@@ -213,37 +213,6 @@
 			
 			plotChart(chartConfig);
 		}
-	}
-
-	function plotChart(chartConfig)
-	{
-		// chartConfig = {chartWrapper:, chartLabels:, chartData:, chartDataSetLabel:, chartType: 'bar'};
-
-		const data =
-		{
-			labels: chartConfig.chartLabels,
-			datasets:
-			[
-				{
-					label: chartConfig.chartDataSetLabel,
-					data: chartConfig.chartData,
-					backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
-					borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
-					borderWidth: 1
-				}
-			]
-		};
-
-		const config =
-		{
-			type: chartConfig.chartType,
-			data 
-		};
-
-		var chartWrapper = document.getElementById(chartConfig.chartWrapper);
-		chartWrapper.innerHTML = "<canvas></canvas><hr/>";
-
-		new Chart(chartWrapper.getElementsByTagName("canvas"), config);
 	}
 
 	function plotGradingSchemeTable()
@@ -273,7 +242,7 @@
 		table.appendChild(tableBody);
 	}
 
-	function getGradeByMarksPercentage(marks)
+	function getGradeByMarks(marks)
 	{
 		var resultGradingScheme = <?php echo json_encode($resultGradingScheme); ?>;
 
