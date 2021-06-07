@@ -28,7 +28,7 @@
 						<div class="dropdown ms-2" id="preventDropdown">
 							<a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
 							<div class="dropdown-menu dropdown-menu-dark dropdown-menu-start shadow" aria-labelledby="menuDropdownButton">
-								<a class="dropdown-item" href="<?php echo base_url('/') ?>"><i class="far fa-home"></i>Home</a>
+								<!-- <a class="dropdown-item" href="<?php echo base_url('/') ?>"><i class="far fa-home"></i>Home</a> -->
 								<a class="dropdown-item" href="<?php echo base_url('GradeBook'); ?>"><i class="far fa-chart-bar"></i>Grade Book</a>
 								<a class="dropdown-item" href="<?php echo base_url('AccountBook'); ?>"><i class="far fa-file-invoice-dollar"></i>Account Book</a>
 								<a class="dropdown-item" href="<?php echo base_url('TimeTable'); ?>"><i class="far fa-calendar-alt"></i>Time Table</a>
@@ -67,10 +67,10 @@
 							<div class="dropdown">
 								<a title="My TO-DOs" role="button" id="myToDos" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-tasks"></i></a>
 								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myToDos">
-									<a class="dropdown-item" href="">Action</a>
-									<a class="dropdown-item" href="">Another action</a>
+									<a class="dropdown-item" href="">Coming Soon...</a>
+									<!-- <a class="dropdown-item" href="">Another action</a>
 									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="">Something else here</a>
+									<a class="dropdown-item" href="">Something else here</a> -->
 								</div>
 							</div>
 						</div>
@@ -80,10 +80,10 @@
 							<div class="dropdown">
 								<a title="My Notifications" role="button" id="myNotifications" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bell"></i></a>
 								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myNotifications">
-									<a class="dropdown-item" href="">Action</a>
-									<a class="dropdown-item" href="">Another action</a>
+									<a class="dropdown-item" href="">Coming Soon...</a>
+									<!-- <a class="dropdown-item" href="">Another action</a>
 									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="">Something else here</a>
+									<a class="dropdown-item" href="">Something else here</a> -->
 								</div>
 							</div>
 						</div>
