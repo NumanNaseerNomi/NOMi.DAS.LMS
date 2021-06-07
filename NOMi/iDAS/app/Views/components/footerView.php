@@ -4,14 +4,10 @@
       <!-- NOMi - Bootstrap JavaScript File - Start -->
       <script type="text/javascript" src="<?php echo base_url('/assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
       <!-- NOMi - Bootstrap JavaScript File - End -->
-      <script>
-      // Prevents menu from closing when clicked inside
-      document.getElementById("preventDropdown").addEventListener('click', function (event)
-      {
-        event.stopPropagation();
-      });
-      </script>
 
+      <!-- NOMi - iMain JavaScript File - Start -->
+      <script type="text/javascript" src="<?php echo base_url('/assets//js/iMain.js') ?>"></script>
+      <!-- NOMi - iMain JavaScript File - End -->
 
 <!--
 <script>
@@ -59,10 +55,10 @@
     }
   }
 
-  <?php if (isLoggedIn()) { ?>
+  <?php //if (isLoggedIn()) { ?>
     sessionActivityWatcher();
     console.log('logged in');
-  <?php } ?>
+  <?php //} ?>
 </script> -->
     </footer>
     <!-- NOMi - Footer - End -->
