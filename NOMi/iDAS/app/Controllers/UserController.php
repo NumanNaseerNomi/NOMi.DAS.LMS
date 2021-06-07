@@ -46,7 +46,7 @@ class UserController extends BaseController
 				}
 				else
 				{
-					$this->session->setFlashData('danger', 'Incorrect User Name or Password..!');
+					$this->session->setFlashData('danger', 'Incorrect User Name or Pin Code..!');
 					return redirect()->back();
 				}
 	        }
