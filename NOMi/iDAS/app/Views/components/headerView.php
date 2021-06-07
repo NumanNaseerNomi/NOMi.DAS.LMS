@@ -11,9 +11,6 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/plugins/fontAwesome/css/fontAwesomeAll.min.css') ?>">
 		<!-- NOMi - Font Awesome CSS File - End -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/iStyle.css') ?>">
-		<!-- NOMi - Chart.js File - Start -->
-		<script type="text/javascript" src="<?php echo base_url('/assets/plugins/chartJS/js/chart.min.js') ?>"></script>
-		<!-- NOMi - Chart.js File - End -->
 		<title>iDAS LMS</title>
 		<?php $session = session(); ?>
 	</head>
