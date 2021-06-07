@@ -36,7 +36,7 @@ $routes->match(['get', 'post'],'Login', 'UserController::login', ['filter' => 'I
 
 /* NOMi - Side Navigation Bar Routes - Start */
 // $routes->get('/', 'HomeController::index');
-$routes->get('/', 'HomeController::tempComingSoon');
+$routes->get('/', 'GradeBookController::index'); // temp
 $routes->get('GradeBook', 'GradeBookController::index');
 $routes->get('AccountBook', 'HomeController::tempComingSoon');
 $routes->get('TimeTable', 'HomeController::tempComingSoon');
