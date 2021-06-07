@@ -24,14 +24,14 @@ class UserController extends BaseController
 
 		if ($this->request->getMethod() == 'post')
 		{
-			if (! $this->validate(
+			if (!$this->validate(
 				[
 					'userName'		=> ['label' => 'User Name', 'rules' => 'required'],
     				'userPinCode'	=> ['label' => 'User Pin Code', 'rules' => 'required|numeric|exact_length[6]']
 				]))
 	        {
 	        	$validationErrors = (Object)$this->validator->getErrors();
-	        	return redirect()->back();
+	        	return redirect()->back()->withInput();
 	        }
 	        else
 	        {
@@ -47,7 +47,7 @@ class UserController extends BaseController
 				else
 				{
 					$this->session->setFlashData('danger', 'Incorrect User Name or Pin Code..!');
-					return redirect()->back();
+					return redirect()->back()->withInput();
 				}
 	        }
 		}
