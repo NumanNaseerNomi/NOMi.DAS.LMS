@@ -6,7 +6,7 @@ use App\Models\StudentsModel;
 use App\Models\StaffModel;
 use App\Models\ParentsModel;
 
-use App\Models\UserRolesModel;
+// use App\Models\UserRolesModel;
 
 class UserController extends BaseController
 {
