@@ -282,6 +282,7 @@ function disableOnInvalid(inputObj, targerObjs, isTrue = true)
 {
 	var inputObject = document.getElementById(inputObj);
 	var targerObjects = document.getElementsByClassName(targerObjs);
+	
 	for (var i = 0; i < targerObjects.length; i++)
 	{
 		if (isTrue == true)
