@@ -151,7 +151,7 @@
 				{
 					var row = document.createElement("tr");
 					
-					var cellTextValue =
+					var cellTextValues =
 					[
 						resultDetails[i].subjectCode,
 						resultDetails[i].maxMarks,
@@ -166,10 +166,10 @@
 					totalMaxMarks += resultDetails[i].maxMarks;
 					totalObtainedMarks += resultDetails[i].obtainedMarks;
 
-					for (var j = 0; j < cellTextValue.length; j++)
+					for (var j = 0; j < cellTextValues.length; j++)
 					{
 						var cell = document.createElement("td");
-						var cellText = document.createTextNode(cellTextValue[j]);
+						var cellText = document.createTextNode(cellTextValues[j]);
 
 						cell.appendChild(cellText);
 						row.appendChild(cell);
@@ -182,19 +182,19 @@
 			var row = document.createElement("tr");
 			var totalPercentage = (totalObtainedMarks/totalMaxMarks)*100;
 
-			var cellTextValue =
+			var cellTextValues =
 			[
 				"TOTAL",
 				totalMaxMarks,
 				totalObtainedMarks,
 				totalPercentage.toFixed(),
-				""
+				getGradeByMarksPercentage(totalPercentage.toFixed()).grade
 			];
 
-			for (var i = 0; i < cellTextValue.length; i++)
+			for (var i = 0; i < cellTextValues.length; i++)
 			{
 				var cell = document.createElement("th");
-				var cellText = document.createTextNode(cellTextValue[i]);
+				var cellText = document.createTextNode(cellTextValues[i]);
 
 				cell.appendChild(cellText);
 				row.appendChild(cell);
@@ -256,12 +256,12 @@
 		{
 			var row = document.createElement("tr");
 			var percentageRange = resultGradingScheme[i].minMarks + "-" + resultGradingScheme[i].maxMarks;
-			var cellTextValue = [resultGradingScheme[i].grade, percentageRange, resultGradingScheme[i].remarks];
+			var cellTextValues = [resultGradingScheme[i].grade, percentageRange, resultGradingScheme[i].remarks];
 
-			for (var j = 0; j < 3; j++)
+			for (var j = 0; j < cellTextValues.length; j++)
 			{
 				var cell = document.createElement("td");
-				var cellText = document.createTextNode(cellTextValue[j]);
+				var cellText = document.createTextNode(cellTextValues[j]);
 
 				cell.appendChild(cellText);
 				row.appendChild(cell);
@@ -271,6 +271,19 @@
 		}
 
 		table.appendChild(tableBody);
+	}
+
+	function getGradeByMarksPercentage(marks)
+	{
+		var resultGradingScheme = <?php echo json_encode($resultGradingScheme); ?>;
+
+		for (var i = 0; i < resultGradingScheme.length; i++)
+		{
+			if (resultGradingScheme[i].minMarks <= marks && resultGradingScheme[i].maxMarks >= marks)
+			{
+				return resultGradingScheme[i];
+			}
+		}
 	}
 </script>
 <script>
