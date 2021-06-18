@@ -45,7 +45,7 @@
 										</div>
 								</div>  -->
 								<hr class="dropdown-divider"/>
-								<p class="small m-0 text-center"><a class="text-decoration-none" href="https://www.fb.com/numan.naseer.nomi" target="_blank"><strong>NOMi</strong></a> - iDAS.1.0.0</p>
+								<p class="small m-0 text-center"><a class="text-decoration-none" href="https://www.fb.com/numan.naseer.nomi" target="_blank"><strong>NOMi</strong></a> - iDAS.1.0.Beta</p>
 							</div>
 						</div>
 						<?php } ?>
