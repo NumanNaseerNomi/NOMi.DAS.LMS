@@ -167,4 +167,11 @@ class HomeController extends BaseController
 		echo "<h1>Coming Soon...</h1>";
 		echo view('components/FooterView');
 	}
+
+	public function admit()
+	{
+		echo view('components/HeaderView');
+		echo view('components/admissionFormView');
+		echo view('components/FooterView');
+	}
 }

@@ -55,6 +55,14 @@ $routes->get('DiscussionBoard', 'HomeController::tempComingSoon');
 $routes->get('Announcements', 'HomeController::tempComingSoon');
 /* NOMi - Subject Card Routes - End */
 
+
+/* NOMi - Temporary - Start */
+$routes->get('admit', 'HomeController::admit');
+/* NOMi - Temporary - End */
+
+
+
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
