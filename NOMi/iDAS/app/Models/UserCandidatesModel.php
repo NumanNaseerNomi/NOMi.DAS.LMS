@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class UserCandidatesModel extends Model
 {
-	protected $table			= 'UserCandidates';
+	protected $table			= 'userCandidates';
 	protected $returnType		= 'object';
 	// protected $allowedFields	= ['staffID', 'studentsID', 'parentsID'];
 
