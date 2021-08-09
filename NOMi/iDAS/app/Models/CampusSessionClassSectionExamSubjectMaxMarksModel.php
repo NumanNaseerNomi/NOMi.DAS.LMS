@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class CampusSessionClassSectionExamSubjectMaxMarksModel extends Model
 {
-	protected $table			= 'campus_session_class_section_exam_subject_maxmarks';
+	protected $table			= 'campus_session_class_section_exam_subject_maxMarks';
 	protected $returnType		= 'object';
 	// protected $allowedFields	= ['campusSessionClassSectionExamSubjectId', 'maxMarks'];
 
