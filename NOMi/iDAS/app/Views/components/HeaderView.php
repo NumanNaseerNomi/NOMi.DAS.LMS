@@ -26,6 +26,7 @@
 							<a title="Menu" role="button" id="menuDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bars"></i></a>
 							<div class="dropdown-menu dropdown-menu-dark dropdown-menu-start shadow" aria-labelledby="menuDropdownButton">
 								<!-- <a class="dropdown-item" href="<?php echo base_url('/') ?>"><i class="far fa-home"></i>Home</a> -->
+								<a class="dropdown-item" href="<?php echo base_url('MySubjects') ?>"><i class="far fa-books"></i>My Subjects</a>
 								<a class="dropdown-item" href="<?php echo base_url('GradeBook'); ?>"><i class="far fa-chart-bar"></i>Grade Book</a>
 								<a class="dropdown-item" href="<?php echo base_url('AccountBook'); ?>"><i class="far fa-file-invoice-dollar"></i>Account Book</a>
 								<a class="dropdown-item" href="<?php echo base_url('TimeTable'); ?>"><i class="far fa-calendar-alt"></i>Time Table</a>
