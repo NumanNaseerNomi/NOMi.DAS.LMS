@@ -26,8 +26,7 @@ class HomeController extends BaseController
 		{
 			case "student":	//	Student Home Page
 			{
-				$this->studentSubjectCards();
-				break;
+				return redirect()->to(base_url('MySubjects'));
 			}
 			case "parent": // Parents Home Page
 			{
@@ -53,113 +52,113 @@ class HomeController extends BaseController
 		}
 	}
 
-	private function studentSubjectCards()
-	{
-		$usersModel	= new UsersModel();
-		$user	= $usersModel->getUserById($this->session->iDASUser->userId);
+	// private function studentSubjectCards()
+	// {
+	// 	$usersModel	= new UsersModel();
+	// 	$user	= $usersModel->getUserById($this->session->iDASUser->userId);
 
-		$userCandidatesModel = new UserCandidatesModel();
-		$userCandidate = $userCandidatesModel->getUserCandidateById($user->userCandidateId);
-		$studentId = $userCandidate->studentsId;
+	// 	$userCandidatesModel = new UserCandidatesModel();
+	// 	$userCandidate = $userCandidatesModel->getUserCandidateById($user->userCandidateId);
+	// 	$studentId = $userCandidate->studentsId;
 
-		$campusStudentsModel = new CampusStudentsModel();
-		$campusByStudentId = $campusStudentsModel->getCampusByStudentId($studentId);
-		$campusId = $campusByStudentId->campusId;
+	// 	$campusStudentsModel = new CampusStudentsModel();
+	// 	$campusByStudentId = $campusStudentsModel->getCampusByStudentId($studentId);
+	// 	$campusId = $campusByStudentId->campusId;
 
-		$campusSessionsModel = new CampusSessionsModel();
-		$activeCampusSession = $campusSessionsModel->getActiveSessionByCampusId($campusId);
-		$sessionId = $activeCampusSession->sessionId;
+	// 	$campusSessionsModel = new CampusSessionsModel();
+	// 	$activeCampusSession = $campusSessionsModel->getActiveSessionByCampusId($campusId);
+	// 	$sessionId = $activeCampusSession->sessionId;
 
-		$campusSessionClassesModel = new CampusSessionClassesModel();
-		$classesByCampusSessionId = $campusSessionClassesModel->getClassesByCampusSessionId($activeCampusSession->id);
+	// 	$campusSessionClassesModel = new CampusSessionClassesModel();
+	// 	$classesByCampusSessionId = $campusSessionClassesModel->getClassesByCampusSessionId($activeCampusSession->id);
 
-		$campusSessionClassStudentsModel	= new CampusSessionClassStudentsModel();
-		$campusSessionClassesByStudentId	= $campusSessionClassStudentsModel->getCampusSessionClassesByStudentId($studentId);
+	// 	$campusSessionClassStudentsModel	= new CampusSessionClassStudentsModel();
+	// 	$campusSessionClassesByStudentId	= $campusSessionClassStudentsModel->getCampusSessionClassesByStudentId($studentId);
 
-		for ($i = 0; $i < sizeof($classesByCampusSessionId); $i++)
-		{
-			$sessionClasses[$i] = $classesByCampusSessionId[$i]->id;
-		}
+	// 	for ($i = 0; $i < sizeof($classesByCampusSessionId); $i++)
+	// 	{
+	// 		$sessionClasses[$i] = $classesByCampusSessionId[$i]->id;
+	// 	}
 
-		for ($i = 0; $i < sizeof($campusSessionClassesByStudentId); $i++)
-		{
-			$studentClasses[$i] = $campusSessionClassesByStudentId[$i]->campusSessionClassId;
-		}
+	// 	for ($i = 0; $i < sizeof($campusSessionClassesByStudentId); $i++)
+	// 	{
+	// 		$studentClasses[$i] = $campusSessionClassesByStudentId[$i]->campusSessionClassId;
+	// 	}
 
-		for ($i = 0; $i < sizeof($campusSessionClassesByStudentId); $i++)
-		{
-			for ($j = 0; $j < sizeof($classesByCampusSessionId); $j++)
-			{
-				if ($studentClasses[$i] == $sessionClasses[$j])
-				{
-					$classBySessionId = $classesByCampusSessionId[$j];
-				}
-			}
-		}
+	// 	for ($i = 0; $i < sizeof($campusSessionClassesByStudentId); $i++)
+	// 	{
+	// 		for ($j = 0; $j < sizeof($classesByCampusSessionId); $j++)
+	// 		{
+	// 			if ($studentClasses[$i] == $sessionClasses[$j])
+	// 			{
+	// 				$classBySessionId = $classesByCampusSessionId[$j];
+	// 			}
+	// 		}
+	// 	}
 
-		$classId = $classBySessionId->classId;
+	// 	$classId = $classBySessionId->classId;
 
-		$campusSessionClassSectionsModel = new CampusSessionClassSectionsModel();
-		$sectionsByCampusSessionClassId = $campusSessionClassSectionsModel->getSectionsByCampusSessionClassId($classBySessionId->id);
+	// 	$campusSessionClassSectionsModel = new CampusSessionClassSectionsModel();
+	// 	$sectionsByCampusSessionClassId = $campusSessionClassSectionsModel->getSectionsByCampusSessionClassId($classBySessionId->id);
 
-		$campusSessionClassSectionStudentsModel = new CampusSessionClassSectionStudentsModel();
-		$campusSessionClassSectionByStudentId = $campusSessionClassSectionStudentsModel->getCampusSessionClassSectionsByStudentId($studentId);
+	// 	$campusSessionClassSectionStudentsModel = new CampusSessionClassSectionStudentsModel();
+	// 	$campusSessionClassSectionByStudentId = $campusSessionClassSectionStudentsModel->getCampusSessionClassSectionsByStudentId($studentId);
 
-		for ($i = 0; $i < sizeof($sectionsByCampusSessionClassId); $i++)
-		{
-			$classSectionsId[$i] = $sectionsByCampusSessionClassId[$i]->id;
-		}
+	// 	for ($i = 0; $i < sizeof($sectionsByCampusSessionClassId); $i++)
+	// 	{
+	// 		$classSectionsId[$i] = $sectionsByCampusSessionClassId[$i]->id;
+	// 	}
 
-		for ($i = 0; $i < sizeof($campusSessionClassSectionByStudentId); $i++)
-		{
-			$studentSectionsId[$i] = $campusSessionClassSectionByStudentId[$i]->campusSessionClassSectionId;
-		}
+	// 	for ($i = 0; $i < sizeof($campusSessionClassSectionByStudentId); $i++)
+	// 	{
+	// 		$studentSectionsId[$i] = $campusSessionClassSectionByStudentId[$i]->campusSessionClassSectionId;
+	// 	}
 
-		for ($i = 0; $i < sizeof($campusSessionClassSectionByStudentId); $i++)
-		{
-			for ($j = 0; $j < sizeof($sectionsByCampusSessionClassId); $j++)
-			{
-				if ($studentSectionsId[$i] == $classSectionsId[$j])
-				{
-					$sectionByClassId = $sectionsByCampusSessionClassId[$j];
-				}
-			}
-		}
+	// 	for ($i = 0; $i < sizeof($campusSessionClassSectionByStudentId); $i++)
+	// 	{
+	// 		for ($j = 0; $j < sizeof($sectionsByCampusSessionClassId); $j++)
+	// 		{
+	// 			if ($studentSectionsId[$i] == $classSectionsId[$j])
+	// 			{
+	// 				$sectionByClassId = $sectionsByCampusSessionClassId[$j];
+	// 			}
+	// 		}
+	// 	}
 
-		$sectionId = $sectionByClassId->sectionId;
+	// 	$sectionId = $sectionByClassId->sectionId;
 
-		$campusSessionClassSectionSubjectsModel = new CampusSessionClassSectionSubjectsModel();
-		$subjectsByCampusSessionClassSectionId = $campusSessionClassSectionSubjectsModel->getSubjectsByCampusSessionClassSectionId($sectionId);
+	// 	$campusSessionClassSectionSubjectsModel = new CampusSessionClassSectionSubjectsModel();
+	// 	$subjectsByCampusSessionClassSectionId = $campusSessionClassSectionSubjectsModel->getSubjectsByCampusSessionClassSectionId($sectionId);
 
-		$subjectsModel	= new SubjectsModel();
-		$CampusSessionClassSectionSubjectTeachersModel = new CampusSessionClassSectionSubjectTeachersModel();
-		$StaffModel = new StaffModel();
+	// 	$subjectsModel	= new SubjectsModel();
+	// 	$CampusSessionClassSectionSubjectTeachersModel = new CampusSessionClassSectionSubjectTeachersModel();
+	// 	$StaffModel = new StaffModel();
 
-		for ($i = 0; $i < sizeof($subjectsByCampusSessionClassSectionId); $i++)
-		{
-			$staffByCampusSessionClassSectionSubjectId[$i] = $CampusSessionClassSectionSubjectTeachersModel->getStaffByCampusSessionClassSectionSubjectId($subjectsByCampusSessionClassSectionId[$i]->id);
-		}
+	// 	for ($i = 0; $i < sizeof($subjectsByCampusSessionClassSectionId); $i++)
+	// 	{
+	// 		$staffByCampusSessionClassSectionSubjectId[$i] = $CampusSessionClassSectionSubjectTeachersModel->getStaffByCampusSessionClassSectionSubjectId($subjectsByCampusSessionClassSectionId[$i]->id);
+	// 	}
 
-		for ($i = 0; $i < sizeof($subjectsByCampusSessionClassSectionId); $i++)
-		{
-			for ($j = 0; $j < sizeof($staffByCampusSessionClassSectionSubjectId); $j++)
-			{
-				if ($subjectsByCampusSessionClassSectionId[$i]->id == $staffByCampusSessionClassSectionSubjectId[$j]->campusSessionClassSectionSubjectId)
-				{
-					$subjects[$i] = $subjectsModel->getSubjectById($subjectsByCampusSessionClassSectionId[$i]->subjectId);
-					$teachers[$j] = $StaffModel->getStaffById($staffByCampusSessionClassSectionSubjectId[$j]->staffId);
+	// 	for ($i = 0; $i < sizeof($subjectsByCampusSessionClassSectionId); $i++)
+	// 	{
+	// 		for ($j = 0; $j < sizeof($staffByCampusSessionClassSectionSubjectId); $j++)
+	// 		{
+	// 			if ($subjectsByCampusSessionClassSectionId[$i]->id == $staffByCampusSessionClassSectionSubjectId[$j]->campusSessionClassSectionSubjectId)
+	// 			{
+	// 				$subjects[$i] = $subjectsModel->getSubjectById($subjectsByCampusSessionClassSectionId[$i]->subjectId);
+	// 				$teachers[$j] = $StaffModel->getStaffById($staffByCampusSessionClassSectionSubjectId[$j]->staffId);
 
-					$subjectDedails[$i] = [$subjects[$i], $teachers[$j]];
-				}
-			}
-		}
+	// 				$subjectDedails[$i] = [$subjects[$i], $teachers[$j]];
+	// 			}
+	// 		}
+	// 	}
 		
-		$data["subjectDedails"] = $subjectDedails; 
+	// 	$data["subjectDedails"] = $subjectDedails; 
 
-		echo view('components/HeaderView', $data);
-		echo view('components/SubjectCardView');
-		echo view('components/FooterView');
-	}
+	// 	echo view('components/HeaderView', $data);
+	// 	echo view('components/SubjectCardView');
+	// 	echo view('components/FooterView');
+	// }
 
 	public function tempComingSoon()
 	{
@@ -171,7 +170,7 @@ class HomeController extends BaseController
 	public function admit()
 	{
 		echo view('components/HeaderView');
-		echo view('components/admissionFormView');
+		echo view('AdmissionFormView');
 		echo view('components/FooterView');
 	}
 }
