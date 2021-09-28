@@ -2,7 +2,7 @@
   "name": "iDAS LMS",
   "start_url": "/",
   "scope": "/",
-  "display": "minimal-ui",
+  "display": "standalone",
   "background_color": "#212224",
   "theme_color": "#323437",
   "icons":
