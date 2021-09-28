@@ -173,4 +173,11 @@ class HomeController extends BaseController
 		echo view('AdmissionFormView');
 		echo view('components/FooterView');
 	}
+
+	public function offline()
+	{
+		echo view('components/HeaderView');
+		echo view('components/OfflineView');
+		echo view('components/FooterView');
+	}
 }
