@@ -31,12 +31,13 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
+$routes->get('/', 'HomeController::index');
+
 $routes->match(['get', 'post'],'Login', 'UserController::login', ['filter' => 'IfNotLoggedIn']);
 
-
 /* NOMi - Side Navigation Bar Routes - Start */
-$routes->get('/', 'GradeBookController::index'); // temp
-// $routes->get('/', 'HomeController::index');
+// $routes->get('/', 'GradeBookController::index'); // temp
+$routes->get('MySubjects', 'MySubjectsController::index');
 $routes->get('GradeBook', 'GradeBookController::index');
 $routes->get('AccountBook', 'HomeController::tempComingSoon');
 $routes->get('TimeTable', 'HomeController::tempComingSoon');
@@ -54,6 +55,16 @@ $routes->get('HomeWork', 'HomeController::tempComingSoon');
 $routes->get('DiscussionBoard', 'HomeController::tempComingSoon');
 $routes->get('Announcements', 'HomeController::tempComingSoon');
 /* NOMi - Subject Card Routes - End */
+
+
+/* NOMi - Temporary - Start */
+$routes->get('admit', 'HomeController::admit');
+/* NOMi - Temporary - End */
+
+$routes->get('Offline', 'HomeController::offline');
+
+
+
 
 /**
  * --------------------------------------------------------------------

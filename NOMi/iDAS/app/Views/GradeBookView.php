@@ -59,15 +59,17 @@
 				</div>
 			</div>
 		</div>
-<!-- 		<br/>
-		<div class="card">
-			<h4 class="m-3 mb-0"> Final Result Grading Scheme</h4>
+
+		<br/>
+		<!-- <div class="card">
+			<h4 class="m-3 mb-0">Grading Scheme <span class="h6">(Final Result)</span></h4>
 			<hr class="mb-0"/>
 			<div class="card-body">
-				<canvas id="finalResultGradingSchemeChart"></canvas>
+				<div id="finalResultGradingSchemeChartWrapper"></div><hr/>
 			</div>
-		</div>
-		<br/> -->
+		</div> -->
+		<br/>
+
 	</div>
 </div>
 
@@ -130,7 +132,7 @@
 		var resultSheetHeading = classesListOptions[classesListIndex].text + " (" + examsListOptions[examsListIndex].text + ")";
 		resultSheetHeading = document.getElementById("resultSheetHeading").innerHTML = resultSheetHeading;
 
-		var resultDetails = <?php echo json_encode($resultDetails); ?>;
+		var resultDetails = <?php echo json_encode($resultDetails); ?>; //alert(typeof resultDetails);
 
 		if (classesListOptions[classesListIndex].value == "overall")
 		{
@@ -150,21 +152,28 @@
 					resultDetails[i].examId == examsListOptions[examsListIndex].value)
 				{
 					var row = document.createElement("tr");
-					
+
+					var tempPercentage = ((resultDetails[i].obtainedMarks/resultDetails[i].maxMarks)*100);
+					var percentage = Math.round((tempPercentage + Number.EPSILON) * 100) / 100;
+					// alert(typeof percentage);
 					var cellTextValues =
 					[
 						resultDetails[i].subjectCode,
 						resultDetails[i].maxMarks,
 						resultDetails[i].obtainedMarks,
-						resultDetails[i].percentage,
-						resultDetails[i].grade
+						percentage,
+						// ((resultDetails[i].obtainedMarks/resultDetails[i].maxMarks)*100).toFixed(2),
+						// resultDetails[i].percentage,
+						// resultDetails[i].grade
+						getGradeByMarks(Math.round(percentage)).grade
 					];
 
 					chartLabels.push(resultDetails[i].subjectCode);
-					chartData.push(resultDetails[i].percentage);
-
-					totalMaxMarks += resultDetails[i].maxMarks;
-					totalObtainedMarks += resultDetails[i].obtainedMarks;
+					chartData.push(percentage);
+					// chartData.push(resultDetails[i].percentage);
+					
+					totalMaxMarks += Number(resultDetails[i].maxMarks);
+					totalObtainedMarks += Number(resultDetails[i].obtainedMarks);
 
 					for (var j = 0; j < cellTextValues.length; j++)
 					{
@@ -187,8 +196,8 @@
 				"TOTAL",
 				totalMaxMarks,
 				totalObtainedMarks,
-				totalPercentage.toFixed(),
-				getGradeByMarks(totalPercentage.toFixed()).grade
+				Math.round(totalPercentage),
+				getGradeByMarks(Math.round(totalPercentage)).grade
 			];
 
 			for (var i = 0; i < cellTextValues.length; i++)
@@ -212,6 +221,20 @@
 			};
 			
 			plotChart(chartConfig);
+
+// -------------
+			// var chartConfig =
+			// {
+			// 	chartWrapper: "finalResultGradingSchemeChartWrapper",
+			// 	chartLabels: chartLabels,
+			// 	chartData: chartData,
+			// 	chartDataSetLabel: resultSheetHeading + "    Percentage",
+			// 	chartType: 'pie'
+			// };
+			
+			// plotChart(chartConfig);
+// ------------------
+
 		}
 	}
 
@@ -261,3 +284,16 @@
 	plotResultSheet();
 	plotGradingSchemeTable();
 </script>
+<!-- 
+<script>
+	var chartConfigs =
+			{
+				chartWrapper: "finalResultGradingSchemeChartWrapper",
+				chartLabels: "label",
+				chartData: [15, 25],
+				// chartDataSetLabel: resultSheetHeading + "    Percentage",
+				chartType: 'bar'
+			};
+			
+			plotChart(chartConfigs);
+</script> -->
