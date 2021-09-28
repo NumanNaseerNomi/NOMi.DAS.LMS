@@ -61,6 +61,8 @@ $routes->get('Announcements', 'HomeController::tempComingSoon');
 $routes->get('admit', 'HomeController::admit');
 /* NOMi - Temporary - End */
 
+$routes->get('Offline', 'HomeController::offline');
+
 
 
 
