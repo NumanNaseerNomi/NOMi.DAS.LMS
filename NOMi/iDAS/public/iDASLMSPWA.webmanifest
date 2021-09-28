@@ -1,0 +1,22 @@
+{
+    "name": "iDAS LMS",
+    "start_url": "/",
+    "scope": "/",
+    "display": "minimal-ui",
+    "background_color": "#212224",
+    "theme_color": "#323437",
+    "icons":
+    [
+      {
+        "src": "assets/images/iDASLMSLogo192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "assets/images/iDASLMSLogo512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
+  

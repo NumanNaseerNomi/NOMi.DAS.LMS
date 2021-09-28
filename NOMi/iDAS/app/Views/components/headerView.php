@@ -11,6 +11,15 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/plugins/fontAwesome/css/fontAwesomeAll.min.css') ?>">
 		<!-- NOMi - Font Awesome CSS File - End -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/iStyle.css') ?>">
+		<!-- PWA Support - Start -->
+		<link rel="manifest" href="<?php echo base_url('iDASLMSPWA.webmanifest') ?>">
+		<!-- iOS Support - Start -->
+		<link rel="apple-touch-icon" href="<?php echo base_url('assets/images/iDASLMSLogo192x192.png') ?>">
+		<link rel="apple-touch-icon" href="<?php echo base_url('assets/images/iDASLMSLogo512x512.png') ?>">
+		<meta name="apple-mobile-web-app-status-bar" content="#212224">
+		<meta name="theme-color" content="#323437">
+		<!-- iOS Support - End -->
+		<!-- PWA Support - End -->
 		<title>iDAS LMS</title>
 		<?php $session = session(); ?>
 	</head>
