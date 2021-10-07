@@ -8,13 +8,12 @@
 			<?php echo csrf_field() ?>
 			<div class="mb-3">
 				<label for="userName" class="form-label">Enter User Name</label>
-				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userName" name="userName" placeholder="numan.naseer.nomi" required />
+				<input type="text" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userName" name="userName" placeholder="numan.naseer.nomi" oninput="this.value = this.value.toLowerCase()" required />
 			</div>
 			<div class="mb-3">
 				<label for="userPinCode" class="form-label">Enter Pin Code</label>
-				<input type="password" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userPinCode" name="userPinCode" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" placeholder="046664" required />
+				<input type="password" class="form-control form-control-sm bgDarkBlack border-dark fcLightBlack" id="userPinCode" name="userPinCode" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" placeholder="6664" required />
 			</div>
-
 			<div class="d-grid">
 				<button type="submit" class="btn btn-outline-primary btn-sm mb-3">Login</button>
 			</div>
