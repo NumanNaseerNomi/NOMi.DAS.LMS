@@ -196,7 +196,8 @@
 				"TOTAL",
 				totalMaxMarks,
 				totalObtainedMarks,
-				Math.round(totalPercentage),
+				// Math.round(totalPercentage),
+				Math.round((totalPercentage + Number.EPSILON) * 100) / 100,
 				getGradeByMarks(Math.round(totalPercentage)).grade
 			];
 

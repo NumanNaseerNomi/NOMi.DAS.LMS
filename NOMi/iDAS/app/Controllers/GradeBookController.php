@@ -125,7 +125,7 @@ class GradeBookController extends BaseController
 				"classOrder"		=> $class->priorityOrder
 			];
 		}
-// dd($allResultDetails);
+		// dd($allResultDetails);
 		$resultDetailsArrayIndex = 0;
 
 		for ($i = 0; $i < sizeof($allResultDetails); $i++)
@@ -135,6 +135,8 @@ class GradeBookController extends BaseController
 				$resultDetails[$resultDetailsArrayIndex++] = $allResultDetails[$i];
 			}
 		}
+
+		array_multisort(array_column($resultDetails, "subjectCode"), SORT_ASC, $resultDetails);
 
 		$tempClassesList = array_unique(array_column($resultDetails, 'classId'));
 		$classesList = array_intersect_key($resultDetails, $tempClassesList);
@@ -164,7 +166,8 @@ class GradeBookController extends BaseController
 		// dd($finalResultGradingSchemeByClass);
 
 		// $temp = $this->getFinalResultGradingScheme();
-		// dd($temp);
+		
+		// dd($resultDetails);
 
 		$data =
 		[
@@ -173,7 +176,7 @@ class GradeBookController extends BaseController
 			"examsList"				=> $examsList,
 			"resultGradingScheme"	=> $this->getResultGradingScheme()
 		];
-// dd($data);
+			// dd($data);
 		echo view('components/HeaderView', $data);
 		echo view('GradeBookView');
 		echo view('components/FooterView');
