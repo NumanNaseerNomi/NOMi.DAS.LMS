@@ -86,7 +86,7 @@
 						<div class="btn-group me-2">
 							<div class="dropdown">
 								<a title="My Notifications" role="button" id="myNotifications" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bell"></i></a>
-								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myNotifications">
+								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myNotifications">
 									<a class="dropdown-item" href="">Coming Soon...</a>
 									<!-- <a class="dropdown-item" href="">Another action</a>
 									<hr class="dropdown-divider"/>
@@ -99,7 +99,7 @@
 						<div class="btn-group me-2">
 							<div class="dropdown">
 								<a title="My Profile" role="button" id="myProfile" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user"></i></a>
-								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="myProfile">
+								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myProfile">
 									<a class="dropdown-item text-center" href="<?php echo base_url('Profile'); ?>" title="My Profile">
 										<p class="m-0"><?php echo $session->iDASUser->name; ?></p>
 										<p class="small m-0"><?php echo '@' . $session->iDASUser->userName; ?></p>
