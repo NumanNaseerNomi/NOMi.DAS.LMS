@@ -17,7 +17,7 @@
 			<div class="d-grid">
 				<button type="submit" class="btn btn-outline-primary btn-sm mb-3">Login</button>
 			</div>
-			<p class="text-muted m-0">Forgot password? <a href="">Reset</a></p>
+			<p class="text-muted m-0">Forgot Pin Code? <a href="">Reset</a></p>
 		</div>
 	</form>
 </div>
