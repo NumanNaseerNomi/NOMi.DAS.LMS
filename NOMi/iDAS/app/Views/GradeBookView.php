@@ -96,18 +96,50 @@
 
 		var examsListDetail = <?php echo json_encode($examsList); ?>;
 
-	    for (var i = 0; i < examsListDetail.length; i++)
-	    {
-	    	if (classesListOptions.value == examsListDetail[i].classId)
-	    	{
-	    		examsListOptions.options[examsListOptions.options.length] = new Option(examsListDetail[i].examName + " - " + examsListDetail[i].examDescription, examsListDetail[i].examId);
-	    	}
-	    }
+	    // for (var i = 0; i < examsListDetail.length; i++)
+	    // {
+	    // 	if (classesListOptions.value == examsListDetail[i].classId)
+	    // 	{
+	    // 		examsListOptions.options[examsListOptions.options.length] = new Option(examsListDetail[i].examName + " - " + examsListDetail[i].examDescription, examsListDetail[i].examId);
+	    // 	}
+		// 	alert("y i fired");
+	    // }
+
+	    // if (classesListOptions.value == "overall")
+	    // {
+	    // 	examsListOptions.options[examsListOptions.options.length] = new Option("Final Result", "finalResult", true, true);
+	    // }
+
+		// for (var i = 0; i < examsListDetail.length; i++)
+	    // {
+	    // 	if (classesListOptions.value == examsListDetail[i].classId)
+	    // 	{
+	    // 		examsListOptions.options[examsListOptions.options.length] = new Option(examsListDetail[i].examName + " - " + examsListDetail[i].examDescription, examsListDetail[i].examId);
+	    // 	}
+		// 	alert("y i fired");
+	    // }
 
 	    if (classesListOptions.value == "overall")
 	    {
 	    	examsListOptions.options[examsListOptions.options.length] = new Option("Final Result", "finalResult", true, true);
 	    }
+		else
+		{
+			for (var i = 0; i < examsListDetail.length; i++)
+			{
+				if (classesListOptions.value == examsListDetail[i].classId)
+				{
+					examsListOptions.options[examsListOptions.options.length] = new Option(examsListDetail[i].examName + " - " + examsListDetail[i].examDescription, examsListDetail[i].examId);
+				}
+				// alert(examsListOptions.options.length);
+			}
+
+			if (examsListOptions.options.length > 1)
+			{
+				var newOption = new Option("Overall Progress", "overall", true, true);
+				examsListOptions.add(newOption, examsListOptions[0]);
+			}
+		}
 	}
 
 	function plotResultSheet()
@@ -117,8 +149,8 @@
 		var tableBody = table.getElementsByTagName("tbody")[0];
 		tableBody.innerHTML = "";
 		
-		var tfooter = table.getElementsByTagName("tfoot")[0];
-		tfooter.innerHTML = "";
+		var tFooter = table.getElementsByTagName("tfoot")[0];
+		tFooter.innerHTML = "";
 
 		var chartWrapper = document.getElementById("resultSheetChartWrapper");
 		chartWrapper.innerHTML = "";
@@ -132,11 +164,98 @@
 		var resultSheetHeading = classesListOptions[classesListIndex].text + " (" + examsListOptions[examsListIndex].text + ")";
 		resultSheetHeading = document.getElementById("resultSheetHeading").innerHTML = resultSheetHeading;
 
-		var resultDetails = <?php echo json_encode($resultDetails); ?>; //alert(typeof resultDetails);
+		var resultDetails = <?php echo json_encode($resultDetails); ?>;
 
 		if (classesListOptions[classesListIndex].value == "overall")
 		{
 			document.getElementById("classOrSubject").innerHTML = "Class";
+		}
+		else if (examsListOptions[examsListIndex].value == "overall")
+		{
+			document.getElementById("classOrSubject").innerHTML = "Exam";
+			
+			var examsListDetail = <?php echo json_encode($examsList); ?>;
+
+			var totalMaxMarks = totalObtainedMarks = 0;
+			var chartLabels = [];
+			var chartData = [];
+
+			for (var i = 0; i < examsListDetail.length; i++)
+			{
+				var maxMarks = obtainedMarks = 0;
+
+				for (var j = 0; j < resultDetails.length; j++)
+				{
+					if (examsListDetail[i].examId == resultDetails[j].examId)
+					{
+						maxMarks += Number(resultDetails[j].maxMarks);
+						obtainedMarks += Number(resultDetails[j].obtainedMarks);
+					}
+				}
+				
+				var percentage = Math.round((((obtainedMarks/maxMarks)*100) + Number.EPSILON) * 100) / 100;
+				totalMaxMarks += maxMarks;
+				totalObtainedMarks += obtainedMarks;
+
+				chartLabels.push(examsListDetail[i].examName + " - " + examsListDetail[i].examDescription);
+				chartData.push(percentage);
+
+				var cellTextValues =
+				[
+					examsListDetail[i].examName + " - " + examsListDetail[i].examDescription,
+					maxMarks,
+					obtainedMarks,
+					percentage,
+					getGradeByMarks(Math.round(percentage)).grade
+				];
+
+				var row = document.createElement("tr");
+
+				for (var j = 0; j < cellTextValues.length; j++)
+				{
+					var cell = document.createElement("td");
+					var cellText = document.createTextNode(cellTextValues[j]);
+
+					cell.appendChild(cellText);
+					row.appendChild(cell);
+				}
+
+				tableBody.appendChild(row);
+			}
+
+			var row = document.createElement("tr");
+			var totalPercentage = (totalObtainedMarks/totalMaxMarks)*100;
+
+			var cellTextValues =
+			[
+				"TOTAL",
+				totalMaxMarks,
+				totalObtainedMarks,
+				Math.round((totalPercentage + Number.EPSILON) * 100) / 100,
+				getGradeByMarks(Math.round(totalPercentage)).grade
+			];
+
+			for (var i = 0; i < cellTextValues.length; i++)
+			{
+				var cell = document.createElement("th");
+				var cellText = document.createTextNode(cellTextValues[i]);
+
+				cell.appendChild(cellText);
+				row.appendChild(cell);
+			}
+
+			tFooter.appendChild(row);
+			
+			var chartConfig =
+			{
+				chartWrapper: "resultSheetChartWrapper",
+				chartLabels: chartLabels,
+				chartData: chartData,
+				chartDataSetLabel: resultSheetHeading + "    Percentage",
+				chartType: 'bar'
+			};
+			
+			plotChart(chartConfig);
 		}
 		else
 		{
@@ -155,22 +274,18 @@
 
 					var tempPercentage = ((resultDetails[i].obtainedMarks/resultDetails[i].maxMarks)*100);
 					var percentage = Math.round((tempPercentage + Number.EPSILON) * 100) / 100;
-					// alert(typeof percentage);
+					
 					var cellTextValues =
 					[
 						resultDetails[i].subjectCode,
 						resultDetails[i].maxMarks,
 						resultDetails[i].obtainedMarks,
 						percentage,
-						// ((resultDetails[i].obtainedMarks/resultDetails[i].maxMarks)*100).toFixed(2),
-						// resultDetails[i].percentage,
-						// resultDetails[i].grade
 						getGradeByMarks(Math.round(percentage)).grade
 					];
 
 					chartLabels.push(resultDetails[i].subjectCode);
 					chartData.push(percentage);
-					// chartData.push(resultDetails[i].percentage);
 					
 					totalMaxMarks += Number(resultDetails[i].maxMarks);
 					totalObtainedMarks += Number(resultDetails[i].obtainedMarks);
@@ -196,7 +311,6 @@
 				"TOTAL",
 				totalMaxMarks,
 				totalObtainedMarks,
-				// Math.round(totalPercentage),
 				Math.round((totalPercentage + Number.EPSILON) * 100) / 100,
 				getGradeByMarks(Math.round(totalPercentage)).grade
 			];
@@ -210,7 +324,7 @@
 				row.appendChild(cell);
 			}
 
-			tfooter.appendChild(row);
+			tFooter.appendChild(row);
 
 			var chartConfig =
 			{
@@ -223,7 +337,7 @@
 			
 			plotChart(chartConfig);
 
-// -------------
+			// -------------
 			// var chartConfig =
 			// {
 			// 	chartWrapper: "finalResultGradingSchemeChartWrapper",
@@ -234,7 +348,7 @@
 			// };
 			
 			// plotChart(chartConfig);
-// ------------------
+			// ------------------
 
 		}
 	}
@@ -288,13 +402,13 @@
 <!-- 
 <script>
 	var chartConfigs =
-			{
-				chartWrapper: "finalResultGradingSchemeChartWrapper",
-				chartLabels: "label",
-				chartData: [15, 25],
-				// chartDataSetLabel: resultSheetHeading + "    Percentage",
-				chartType: 'bar'
-			};
-			
-			plotChart(chartConfigs);
+	{
+		chartWrapper: "finalResultGradingSchemeChartWrapper",
+		chartLabels: "label",
+		chartData: [15, 25],
+		// chartDataSetLabel: resultSheetHeading + "    Percentage",
+		chartType: 'bar'
+	};
+	
+	plotChart(chartConfigs);
 </script> -->
