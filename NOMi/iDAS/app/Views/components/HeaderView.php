@@ -12,7 +12,7 @@
 		<!-- NOMi - Font Awesome CSS File - End -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/iStyle.css') ?>">
 		<!-- PWA Support - Start -->
-		<link rel="manifest" href="<?php echo base_url('iDASLMSPWA.webmanifest') ?>">
+		<link rel="manifest" href="<?php echo base_url('iDASLMS.webmanifest') ?>">
 		<!-- iOS Support - Start -->
 		<link rel="apple-touch-icon" href="<?php echo base_url('assets/images/iDASLMSLogo192x192.png') ?>">
 		<link rel="apple-touch-icon" href="<?php echo base_url('assets/images/iDASLMSLogo512x512.png') ?>">
