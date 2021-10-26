@@ -8,45 +8,17 @@ class CampusSessionClassSectionExamFinalGradingSchemeModel extends Model
 	protected $returnType		= 'object';
 	// protected $allowedFields	= [''];
 
-    // public function getFinalResultGradingScheme()
-    // {
-    //     $finalResultGradingScheme = $this->get()->getResult();
-
-    //     if ($finalResultGradingScheme)
-    //     {
-    //         return $finalResultGradingScheme;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
-
-    public function getFinalResultGradingSchemeByCampusSessionClassSectionExamId($campus_session_class_section_examId)
+    public function getFinalGradingSchemeByCampusSessionClassSectionExamId($campusSessionClassSectionExamId)
     {
-        $finalResultGradingSchemeByCampusSessionClassSectionExamId = $this->getWhere(['campus_session_class_section_examId' => $campus_session_class_section_examId])->getRow();
+        $finalGradingSchemeByCampusSessionClassSectionExamId = $this->getWhere(['campusSessionClassSectionExamId' => $campusSessionClassSectionExamId])->getRow();
 
-        if ($finalResultGradingSchemeByCampusSessionClassSectionExamId)
+        if ($finalGradingSchemeByCampusSessionClassSectionExamId)
         {
-            return $finalResultGradingSchemeByCampusSessionClassSectionExamId;
+            return $finalGradingSchemeByCampusSessionClassSectionExamId;
         }
         else
         {
             return false;
         }
     }
-
-    // public function getGradeByMarks($marks)
-    // {
-    //     $gradeByMarks = $this->getWhere(['minMarks <=' => $marks, 'maxMarks >=' => $marks])->getRow();
-
-    //     if ($gradeByMarks)
-    //     {
-    //         return $gradeByMarks;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
 }

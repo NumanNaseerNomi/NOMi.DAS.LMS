@@ -14,7 +14,7 @@ use App\Models\ExamsModel;
 use App\Models\CampusSessionClassSectionExamSubjectMaxMarksModel;
 use App\Models\ResultGradingSchemeModel;
 
-// use App\Models\CampusSessionClassSectionExamFinalGradingSchemeModel;
+use App\Models\CampusSessionClassSectionExamFinalGradingSchemeModel;
 
 class GradeBookController extends BaseController
 {
@@ -97,24 +97,13 @@ class GradeBookController extends BaseController
 			$subjectsModel = new SubjectsModel();
 			$resultGradingSchemeModel = new ResultGradingSchemeModel();
 
-			// $obtainedMarks	= round($campusSessionClassSectionExamSubjectStudentsMarks[$i]->marks);
-			// $maxMarks		= round($campusSessionClassSectionExamSubjectMaxMarks->maxMarks);
-			// $percentage		= round(($obtainedMarks/$maxMarks)*100);
-
 			$obtainedMarks	= $campusSessionClassSectionExamSubjectStudentsMarks[$i]->marks;
 			$maxMarks		= $campusSessionClassSectionExamSubjectMaxMarks->maxMarks;
-			// $percentage		= ($obtainedMarks/$maxMarks)*100;
-			// $percentage		= round((($obtainedMarks/$maxMarks)*100), 2);
-			// $grade = $resultGradingSchemeModel->getGradeByMarks($percentage)->grade;
-			// $grades =$grade; echo $grades; //exit();
-			//dd($percentage);
 
 			$allResultDetails[$i] =
 			[
 				"obtainedMarks"		=> $obtainedMarks,
 				"maxMarks"			=> $maxMarks,
-				// "percentage"		=> $percentage,
-				// "grade"				=> $resultGradingSchemeModel->getGradeByMarks($percentage)->grade,
 				"subjectCode"		=> $subjectsModel->getSubjectById($campusSessionClassSectionExamSubject->subjectId)->code,
 				"examId"			=> $campusSessionClassSectionExam->id,
 				"resultDateTime"	=> $campusSessionClassSectionExam->resultDateTime,
@@ -125,7 +114,7 @@ class GradeBookController extends BaseController
 				"classOrder"		=> $class->priorityOrder
 			];
 		}
-		// dd($allResultDetails);
+		
 		$resultDetailsArrayIndex = 0;
 
 		for ($i = 0; $i < sizeof($allResultDetails); $i++)
@@ -146,37 +135,38 @@ class GradeBookController extends BaseController
 		$examsList = array_intersect_key($resultDetails, $tempExamsList);
 		array_multisort(array_column($examsList, "examId"), SORT_ASC, $examsList);
 		
-		// dd($classesList);
-		// dd($examsList);
-		// dd($examsList[0]['examId']);
+		$campusSessionClassSectionExamFinalGradingSchemeModel = new CampusSessionClassSectionExamFinalGradingSchemeModel();
+		$finalGradingScheme = NULL;
 
-		// $campusSessionClassSectionExamFinalGradingSchemeModel = new CampusSessionClassSectionExamFinalGradingSchemeModel();
+		for ($i = 0; $i < sizeof($examsList); $i++)
+		{
+			$isFoundFinalGradingScheme = $campusSessionClassSectionExamFinalGradingSchemeModel->getFinalGradingSchemeByCampusSessionClassSectionExamId($examsList[$i]['examId']);
+			
+			if ($isFoundFinalGradingScheme)
+			{
+				$finalGradingScheme[$i] = 
+				[
+					"examId"		=> $isFoundFinalGradingScheme->campusSessionClassSectionExamId,
+					"percentage"	=> $isFoundFinalGradingScheme->percentage
+				];
+			}
+		}
 
-		// for ($i = 0; $i < sizeof($classesList); $i++)
-		// {
-		// 	for ($j = 0; $j < sizeof($examsList); $j++)
-		// 	{
-		// 		if ($classesList[$i]['classId'] == $examsList[$j]['classId'])
-		// 		{
-		// 			$finalResultGradingSchemeByClass[$i][$j] = $campusSessionClassSectionExamFinalGradingSchemeModel->getFinalResultGradingSchemeByCampusSessionClassSectionExamId($examsList[$j]['examId']);
-		// 		}
-		// 	}
-		// }
-
-		// dd($finalResultGradingSchemeByClass);
-
-		// $temp = $this->getFinalResultGradingScheme();
-		
-		// dd($resultDetails);
+		if ($finalGradingScheme)
+		{
+			$tempFinalGradingScheme = array_intersect_key($examsList, $finalGradingScheme);
+			$finalGradingScheme = array_replace_recursive($tempFinalGradingScheme, $finalGradingScheme);
+		}
 
 		$data =
 		[
 			"resultDetails"			=> $resultDetails,
 			"classesList"			=> $classesList,
 			"examsList"				=> $examsList,
-			"resultGradingScheme"	=> $this->getResultGradingScheme()
+			"resultGradingScheme"	=> $this->getResultGradingScheme(),
+			"finalGradingScheme"	=> $finalGradingScheme
 		];
-			// dd($data);
+		
 		echo view('components/HeaderView', $data);
 		echo view('GradeBookView');
 		echo view('components/FooterView');
