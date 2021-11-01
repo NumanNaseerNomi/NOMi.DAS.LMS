@@ -54,6 +54,15 @@
 												<a class="dropdown-item" href="">--<i class="far fa-language"></i>Action</a>
 										</div>
 								</div>  -->
+								<div class="collapse show">
+									<hr class="dropdown-divider"/>
+									<div class="card border-primary text-center shadow m-2 py-0">
+										<div class="card-body px-2">
+											<p>Install our app to stay connected.</p>
+											<button type="button" class="btn btn-primary btn-sm" id="buttonInstallApp" disabled>Install Now</button>
+										</div>
+									</div>
+								</div>
 								<hr class="dropdown-divider"/>
 								<p class="small m-0 text-center"><a class="text-decoration-none" href="https://www.fb.com/numan.naseer.nomi" target="_blank"><strong>NOMi</strong></a> - iDAS.1.0.Beta</p>
 							</div>
