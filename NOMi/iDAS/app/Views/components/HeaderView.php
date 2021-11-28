@@ -77,53 +77,55 @@
 						</a>
 					</div>
 					<div>
-						<!-- NOMi - My TO-DOs - Start -->
 						<?php if (isLoggedIn()) { ?>
-						<div class="btn-group me-2">
-							<div class="dropdown">
-								<a title="My TO-DOs" role="button" id="myToDos" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-tasks"></i></a>
-								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myToDos">
-									<a class="dropdown-item" href="">Coming Soon...</a>
-									<!-- <a class="dropdown-item" href="">Another action</a>
-									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="">Something else here</a> -->
+							<!-- NOMi - My TO-DOs - Start -->
+							<div class="btn-group me-2">
+								<div class="dropdown">
+									<a title="My TO-DOs" role="button" id="myToDos" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-tasks"></i></a>
+									<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myToDos">
+										<a class="dropdown-item" href="">Coming Soon...</a>
+										<!-- <a class="dropdown-item" href="">Another action</a>
+										<hr class="dropdown-divider"/>
+										<a class="dropdown-item" href="">Something else here</a> -->
+									</div>
 								</div>
 							</div>
-						</div>
-						<!-- NOMi - My TO-DOs - End -->
-						<!-- NOMi - My Notifications - Start -->
-						<div class="btn-group me-2">
-							<div class="dropdown">
-								<a title="My Notifications" role="button" id="myNotifications" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bell"></i></a>
-								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myNotifications">
-									<a class="dropdown-item" href="">Coming Soon...</a>
-									<!-- <a class="dropdown-item" href="">Another action</a>
-									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="">Something else here</a> -->
-								</div>
-							</div>
-						</div>
-						<!-- NOMi - My Notifications - End -->
-						<!-- NOMi - Profile Setting - Start -->
-						<div class="btn-group me-2">
-							<div class="dropdown">
-								<a title="My Profile" role="button" id="myProfile" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user"></i></a>
-								<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myProfile">
-									<a class="dropdown-item text-center" href="<?php echo base_url('Profile'); ?>" title="My Profile">
-										<p class="m-0"><?php echo $session->iDASUser->name; ?></p>
-										<p class="small m-0"><?php echo '@' . $session->iDASUser->userName; ?></p>
-										<!-- <p class="small m-0"><?php //echo $session->iDASUser->userRoleName; ?></p> -->
-										<!-- <p class="m-0">#if std class</p> -->
-									</a>
-									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="<?php echo base_url('Settings'); ?>"><i class="far fa-cogs"></i>Settings</a>
-									<hr class="dropdown-divider"/>
-									<a class="dropdown-item" href="<?php echo base_url('Logout'); ?>"><i class="far fa-power-off"></i>Log Out</a>
-								</div>
-							</div>
-						</div>
+							<!-- NOMi - My TO-DOs - End -->
 						<?php } ?>
-						<!-- NOMi - Profile Setting - End -->
+							<!-- NOMi - My Notifications - Start -->
+							<div class="btn-group me-2">
+								<div class="dropdown">
+									<a title="My Notifications" role="button" id="myNotifications" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-bell"></i></a>
+									<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myNotifications">
+										<a class="dropdown-item" href="">Coming Soon...</a>
+										<!-- <a class="dropdown-item" href="">Another action</a>
+										<hr class="dropdown-divider"/>
+										<a class="dropdown-item" href="">Something else here</a> -->
+									</div>
+								</div>
+							</div>
+							<!-- NOMi - My Notifications - End -->
+						<?php if (isLoggedIn()) { ?>
+							<!-- NOMi - Profile Setting - Start -->
+							<div class="btn-group me-2">
+								<div class="dropdown">
+									<a title="My Profile" role="button" id="myProfile" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user"></i></a>
+									<div class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow" aria-labelledby="myProfile">
+										<a class="dropdown-item text-center" href="<?php echo base_url('Profile'); ?>" title="My Profile">
+											<p class="m-0"><?php echo $session->iDASUser->name; ?></p>
+											<p class="small m-0"><?php echo '@' . $session->iDASUser->userName; ?></p>
+											<!-- <p class="small m-0"><?php //echo $session->iDASUser->userRoleName; ?></p> -->
+											<!-- <p class="m-0">#if std class</p> -->
+										</a>
+										<hr class="dropdown-divider"/>
+										<a class="dropdown-item" href="<?php echo base_url('Settings'); ?>"><i class="far fa-cogs"></i>Settings</a>
+										<hr class="dropdown-divider"/>
+										<a class="dropdown-item" href="<?php echo base_url('Logout'); ?>"><i class="far fa-power-off"></i>Log Out</a>
+									</div>
+								</div>
+							</div>
+							<!-- NOMi - Profile Setting - End -->
+						<?php } ?>
 					</div>
 				</div>
 			</nav>
