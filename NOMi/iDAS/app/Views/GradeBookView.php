@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<br/>
-		<div class="card">
+		<div class="card collapse" id="resultAnalysis">
 			<h4 class="m-3 mb-0" id="resultSheetHeading"></h4>
 			<hr class="mb-0"/>
 			<div class="card-body">
@@ -63,7 +63,7 @@
 		</div>
 
 		<br/>
-		<div class="card">
+		<div class="card collapse" id="finalResultAnalysis">
 			<h4 class="m-3 mb-0">Grading Scheme <span class="h6">(Final Result)</span></h4>
 			<hr class="mb-0"/>
 			<div class="card-body">
@@ -80,13 +80,24 @@
 	{
 		var classesListOptions = document.getElementById("classesList");
 		classesListOptions.length = 0;
-		classesListOptions.options[classesListOptions.options.length] = new Option("Overall Progress", "overall", true, true);
 
 		var classesListDetail = <?php echo json_encode($classesList); ?>;
+		// alert(classesListDetail);
 
-		for (var i = 0; i < classesListDetail.length; i++)
+		if (classesListDetail != null)
 		{
-			classesListOptions.options[classesListOptions.options.length] = new Option(classesListDetail[i].className, classesListDetail[i].classId);
+			if (classesListDetail.length > 1)
+			{
+				classesListOptions.options[classesListOptions.options.length] = new Option("Overall Progress", "overall", true, true);
+			}
+
+			for (var i = 0; i < classesListDetail.length; i++)
+			{
+				classesListOptions.options[classesListOptions.options.length] = new Option(classesListDetail[i].className, classesListDetail[i].classId);
+			}
+
+			var element = document.getElementById("resultAnalysis");
+  			element.classList.remove("collapse");
 		}
 	}
 
@@ -99,36 +110,39 @@
 		var examsListDetail = <?php echo json_encode($examsList); ?>;
 		var finalGradingScheme = <?php echo json_encode($finalGradingScheme); ?>;
 
-	    if (classesListOptions.value == "overall")
-	    {
-	    	examsListOptions.options[examsListOptions.options.length] = new Option("Final Result", "finalResult", true, true);
-	    }
-		else
+		if (classesListOptions.length > 0)
 		{
-			var isFinalResult = false;
-
-			for (var i = 0; i < examsListDetail.length; i++)
+			if (classesListOptions.value == "overall")
 			{
-				if (classesListOptions.value == examsListDetail[i].classId)
+				examsListOptions.options[examsListOptions.options.length] = new Option("Final Result", "finalResult", true, true);
+			}
+			else
+			{
+				var isFinalResult = false;
+
+				for (var i = 0; i < examsListDetail.length; i++)
 				{
-					examsListOptions.options[examsListOptions.options.length] = new Option(examsListDetail[i].examName + " - " + examsListDetail[i].examDescription, examsListDetail[i].examId);
+					if (classesListOptions.value == examsListDetail[i].classId)
+					{
+						examsListOptions.options[examsListOptions.options.length] = new Option(examsListDetail[i].examName + " - " + examsListDetail[i].examDescription, examsListDetail[i].examId);
+					}
+
+					if (finalGradingScheme && finalGradingScheme[0].examId == examsListDetail[i].examId)
+					{
+						isFinalResult = true;
+					}
 				}
 
-				if (finalGradingScheme && finalGradingScheme[0].examId == examsListDetail[i].examId)
+				if (examsListOptions.options.length > 1)
 				{
-					isFinalResult = true;
+					var newOption = new Option("Overall Progress", "overall", true, true);
+					examsListOptions.add(newOption, examsListOptions[0]);
 				}
-			}
-
-			if (examsListOptions.options.length > 1)
-			{
-				var newOption = new Option("Overall Progress", "overall", true, true);
-				examsListOptions.add(newOption, examsListOptions[0]);
-			}
-			
-			if (isFinalResult)
-			{
-				examsListOptions.options[examsListOptions.options.length] = new Option("Final Result", "finalResult", true);
+				
+				if (isFinalResult)
+				{
+					examsListOptions.options[examsListOptions.options.length] = new Option("Final Result", "finalResult", true);
+				}
 			}
 		}
 	}
@@ -252,7 +266,6 @@
 		{
 			document.getElementById("classOrSubject").innerHTML = "Exam";
 			
-			var examsListDetail = <?php echo json_encode($examsList); ?>;
 			var finalGradingScheme = <?php echo json_encode($finalGradingScheme); ?>;
 
 			var totalMaxMarks = totalObtainedMarks = 0;
@@ -268,10 +281,8 @@
 				{
 					if (finalGradingScheme[i].examId == resultDetails[j].examId)
 					{
-						// maxMarks += Number(resultDetails[j].maxMarks);
 						maxMarks += ((Number(resultDetails[j].maxMarks)*finalGradingScheme[i].percentage)/100);
 						obtainedMarks += ((Number(resultDetails[j].obtainedMarks)*finalGradingScheme[i].percentage)/100);
-						// obtainedMarks += Number(resultDetails[j].obtainedMarks);
 					}
 				}
 				
@@ -339,6 +350,9 @@
 			};
 			
 			plotChart(chartConfig);
+
+			var element = document.getElementById("finalResultAnalysis");
+  			element.classList.remove("collapse");
 
 			var chartConfig =
 			{
@@ -473,9 +487,12 @@
 		}
 	}
 </script>
+
 <script>
+	plotGradingSchemeTable();
 	getClassesList();
 	getExamsList();
 	plotResultSheet();
-	plotGradingSchemeTable();
 </script>
+
+
