@@ -61,6 +61,11 @@ class GradeBookController extends BaseController
 
 	private function studentGradeBook()
 	{
+		$resultDetails		= null;
+		$classesList		= null;
+		$examsList			= null;
+		$finalGradingScheme	= null;
+		
 		$usersModel	= new UsersModel();
 		$user = $usersModel->getUserById($this->session->iDASUser->userId);
 
@@ -71,91 +76,95 @@ class GradeBookController extends BaseController
 		$campusSessionClassSectionExamSubjectStudentsMarksModel = new CampusSessionClassSectionExamSubjectStudentsMarksModel();
 		$campusSessionClassSectionExamSubjectStudentsMarks = $campusSessionClassSectionExamSubjectStudentsMarksModel->getCampusSessionClassSectionExamSubjectMarksByStudentId($studentId);
 
-		for ($i = 0; $i < sizeof($campusSessionClassSectionExamSubjectStudentsMarks); $i++)
+		if ($campusSessionClassSectionExamSubjectStudentsMarks)
 		{
-			$campusSessionClassSectionExamSubjectsModel = new CampusSessionClassSectionExamSubjectsModel();
-			$campusSessionClassSectionExamSubject = $campusSessionClassSectionExamSubjectsModel->getCampusSessionClassSectionExamSubjectById($campusSessionClassSectionExamSubjectStudentsMarks[$i]->campusSessionClassSectionExamSubjectId);
-
-			$campusSessionClassSectionExamsModel = new CampusSessionClassSectionExamsModel();
-			$campusSessionClassSectionExam = $campusSessionClassSectionExamsModel->getCampusSessionClassSectionExamById($campusSessionClassSectionExamSubject->campusSessionClassSectionExamId);
-
-			$campusSessionClassSectionsModel = new CampusSessionClassSectionsModel();
-			$campusSessionClassSection = $campusSessionClassSectionsModel->getCampusSessionClassSectionById($campusSessionClassSectionExam->campusSessionClassSectionId);
-
-			$examsModel = new ExamsModel();
-			$exam = $examsModel->getExamById($campusSessionClassSectionExam->examId);
-
-			$campusSessionClassesModel = new CampusSessionClassesModel();
-			$campusSessionClass = $campusSessionClassesModel->getCampusSessionClassById($campusSessionClassSection->campusSessionClassId);
-
-			$classesModel = new ClassesModel();
-			$class = $classesModel->getClassById($campusSessionClass->classId);
-
-			$campusSessionClassSectionExamSubjectMaxMarksModel = new CampusSessionClassSectionExamSubjectMaxMarksModel();
-			$campusSessionClassSectionExamSubjectMaxMarks = $campusSessionClassSectionExamSubjectMaxMarksModel->getMaxMarksByCampusSessionClassSectionExamSubjectId($campusSessionClassSectionExamSubject->id);
-
-			$subjectsModel = new SubjectsModel();
-			$resultGradingSchemeModel = new ResultGradingSchemeModel();
-
-			$obtainedMarks	= $campusSessionClassSectionExamSubjectStudentsMarks[$i]->marks;
-			$maxMarks		= $campusSessionClassSectionExamSubjectMaxMarks->maxMarks;
-
-			$allResultDetails[$i] =
-			[
-				"obtainedMarks"		=> $obtainedMarks,
-				"maxMarks"			=> $maxMarks,
-				"subjectCode"		=> $subjectsModel->getSubjectById($campusSessionClassSectionExamSubject->subjectId)->code,
-				"examId"			=> $campusSessionClassSectionExam->id,
-				"resultDateTime"	=> $campusSessionClassSectionExam->resultDateTime,
-				"examDescription"	=> $campusSessionClassSectionExam->description,
-				"examName"			=> $exam->name,
-				"classId"			=> $class->id,
-				"className"			=> $class->class,
-				"classOrder"		=> $class->priorityOrder
-			];
-		}
-		
-		$resultDetailsArrayIndex = 0;
-
-		for ($i = 0; $i < sizeof($allResultDetails); $i++)
-		{
-			if ($allResultDetails[$i]['resultDateTime'] <= date("Y-m-d H:i:s"))
+			for ($i = 0; $i < sizeof($campusSessionClassSectionExamSubjectStudentsMarks); $i++)
 			{
-				$resultDetails[$resultDetailsArrayIndex++] = $allResultDetails[$i];
-			}
-		}
+				$campusSessionClassSectionExamSubjectsModel = new CampusSessionClassSectionExamSubjectsModel();
+				$campusSessionClassSectionExamSubject = $campusSessionClassSectionExamSubjectsModel->getCampusSessionClassSectionExamSubjectById($campusSessionClassSectionExamSubjectStudentsMarks[$i]->campusSessionClassSectionExamSubjectId);
 
-		array_multisort(array_column($resultDetails, "subjectCode"), SORT_ASC, $resultDetails);
+				$campusSessionClassSectionExamsModel = new CampusSessionClassSectionExamsModel();
+				$campusSessionClassSectionExam = $campusSessionClassSectionExamsModel->getCampusSessionClassSectionExamById($campusSessionClassSectionExamSubject->campusSessionClassSectionExamId);
 
-		$tempClassesList = array_unique(array_column($resultDetails, 'classId'));
-		$classesList = array_intersect_key($resultDetails, $tempClassesList);
-		array_multisort(array_column($classesList, "classOrder"), SORT_ASC, $classesList);
+				$campusSessionClassSectionsModel = new CampusSessionClassSectionsModel();
+				$campusSessionClassSection = $campusSessionClassSectionsModel->getCampusSessionClassSectionById($campusSessionClassSectionExam->campusSessionClassSectionId);
 
-		$tempExamsList = array_unique(array_column($resultDetails, 'examId'));
-		$examsList = array_intersect_key($resultDetails, $tempExamsList);
-		array_multisort(array_column($examsList, "examId"), SORT_ASC, $examsList);
-		
-		$campusSessionClassSectionExamFinalGradingSchemeModel = new CampusSessionClassSectionExamFinalGradingSchemeModel();
-		$finalGradingScheme = NULL;
+				$examsModel = new ExamsModel();
+				$exam = $examsModel->getExamById($campusSessionClassSectionExam->examId);
 
-		for ($i = 0; $i < sizeof($examsList); $i++)
-		{
-			$isFoundFinalGradingScheme = $campusSessionClassSectionExamFinalGradingSchemeModel->getFinalGradingSchemeByCampusSessionClassSectionExamId($examsList[$i]['examId']);
-			
-			if ($isFoundFinalGradingScheme)
-			{
-				$finalGradingScheme[$i] = 
+				$campusSessionClassesModel = new CampusSessionClassesModel();
+				$campusSessionClass = $campusSessionClassesModel->getCampusSessionClassById($campusSessionClassSection->campusSessionClassId);
+
+				$classesModel = new ClassesModel();
+				$class = $classesModel->getClassById($campusSessionClass->classId);
+
+				$campusSessionClassSectionExamSubjectMaxMarksModel = new CampusSessionClassSectionExamSubjectMaxMarksModel();
+				$campusSessionClassSectionExamSubjectMaxMarks = $campusSessionClassSectionExamSubjectMaxMarksModel->getMaxMarksByCampusSessionClassSectionExamSubjectId($campusSessionClassSectionExamSubject->id);
+
+				$subjectsModel = new SubjectsModel();
+
+				$obtainedMarks	= $campusSessionClassSectionExamSubjectStudentsMarks[$i]->marks;
+				$maxMarks		= $campusSessionClassSectionExamSubjectMaxMarks->maxMarks;
+
+				$allResultDetails[$i] =
 				[
-					"examId"		=> $isFoundFinalGradingScheme->campusSessionClassSectionExamId,
-					"percentage"	=> $isFoundFinalGradingScheme->percentage
+					"obtainedMarks"		=> $obtainedMarks,
+					"maxMarks"			=> $maxMarks,
+					"subjectCode"		=> $subjectsModel->getSubjectById($campusSessionClassSectionExamSubject->subjectId)->code,
+					"examId"			=> $campusSessionClassSectionExam->id,
+					"resultDateTime"	=> $campusSessionClassSectionExam->resultDateTime,
+					"examDescription"	=> $campusSessionClassSectionExam->description,
+					"examName"			=> $exam->name,
+					"classId"			=> $class->id,
+					"className"			=> $class->class,
+					"classOrder"		=> $class->priorityOrder
 				];
 			}
-		}
 
-		if ($finalGradingScheme)
-		{
-			$tempFinalGradingScheme = array_intersect_key($examsList, $finalGradingScheme);
-			$finalGradingScheme = array_replace_recursive($tempFinalGradingScheme, $finalGradingScheme);
+			$resultDetailsArrayIndex = 0;
+
+			for ($i = 0; $i < sizeof($allResultDetails); $i++)
+			{
+				if ($allResultDetails[$i]['resultDateTime'] <= date("Y-m-d H:i:s"))
+				{
+					$resultDetails[$resultDetailsArrayIndex++] = $allResultDetails[$i];
+				}
+			}
+
+			array_multisort(array_column($resultDetails, "subjectCode"), SORT_ASC, $resultDetails);
+			$tempClassesList = array_unique(array_column($resultDetails, 'classId'));
+			$classesList = array_intersect_key($resultDetails, $tempClassesList);
+			array_multisort(array_column($classesList, "classOrder"), SORT_ASC, $classesList);
+
+			$tempExamsList = array_unique(array_column($resultDetails, 'examId'));
+			$examsList = array_intersect_key($resultDetails, $tempExamsList);
+			array_multisort(array_column($examsList, "examId"), SORT_ASC, $examsList);
+
+			$tempAllExamsList = array_unique(array_column($allResultDetails, 'examId'));
+			$allExamsList = array_intersect_key($allResultDetails, $tempAllExamsList);
+			array_multisort(array_column($allExamsList, "examId"), SORT_ASC, $allExamsList);
+
+			$campusSessionClassSectionExamFinalGradingSchemeModel = new CampusSessionClassSectionExamFinalGradingSchemeModel();
+
+			for ($i = 0; $i < sizeof($allExamsList); $i++)
+			{
+				$isFoundFinalGradingScheme = $campusSessionClassSectionExamFinalGradingSchemeModel->getFinalGradingSchemeByCampusSessionClassSectionExamId($allExamsList[$i]['examId']);
+				
+				if ($isFoundFinalGradingScheme)
+				{
+					$finalGradingScheme[$i] = 
+					[
+						"examId"		=> $isFoundFinalGradingScheme->campusSessionClassSectionExamId,
+						"percentage"	=> $isFoundFinalGradingScheme->percentage
+					];
+				}
+			}
+
+			if ($finalGradingScheme)
+			{
+				$tempFinalGradingScheme = array_intersect_key($allExamsList, $finalGradingScheme);
+				$finalGradingScheme = array_replace_recursive($tempFinalGradingScheme, $finalGradingScheme);
+			}
 		}
 
 		$data =
