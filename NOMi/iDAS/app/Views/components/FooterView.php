@@ -3,15 +3,11 @@
     <!-- Footer - Start -->
     <footer>
       <!-- NOMi - Bootstrap JavaScript File - Start -->
-      <script type="text/javascript" src="<?php echo base_url('/assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+      <script src="<?php echo base_url('/assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
       <!-- NOMi - Bootstrap JavaScript File - End -->
 
-      <!-- NOMi - Chart.js File - Start -->
-      <script type="text/javascript" src="<?php echo base_url('/assets/plugins/chartJS/chart.min.js') ?>"></script>
-      <!-- NOMi - Chart.js File - End -->
-
       <!-- NOMi - iMain JavaScript File - Start -->
-      <script type="text/javascript" src="<?php echo base_url('/assets/js/iMain.js') ?>"></script>
+      <script src="<?php echo base_url('/assets/js/iMain.js') ?>"></script>
       <!-- NOMi - iMain JavaScript File - End -->
 
 <!--
