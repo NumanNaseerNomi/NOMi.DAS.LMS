@@ -32,11 +32,11 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'HomeController::index');
+// $routes->get('/', 'GradeBookController::index'); // temp
 
 $routes->match(['get', 'post'],'Login', 'UserController::login', ['filter' => 'IfNotLoggedIn']);
 
 /* NOMi - Side Navigation Bar Routes - Start */
-// $routes->get('/', 'GradeBookController::index'); // temp
 $routes->get('MySubjects', 'MySubjectsController::index');
 $routes->get('GradeBook', 'GradeBookController::index');
 $routes->get('AccountBook', 'HomeController::tempComingSoon');
