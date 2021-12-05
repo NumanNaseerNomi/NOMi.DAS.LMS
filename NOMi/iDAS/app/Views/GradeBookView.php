@@ -20,7 +20,7 @@
 			<hr class="mb-0"/>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-dark table-sm table-striped table-hover text-center" id="resultSheetTable">
+					<table class="table table-dark table-sm table-striped table-hover text-center align-middle" id="resultSheetTable">
 						<thead>
 							<tr class="align-middle">
 								<th scope="col" id="classOrSubject">Class/Subjects</th>
@@ -48,7 +48,7 @@
 				<div class="table-responsive">
 					<table class="table table-dark table-sm table-striped table-hover text-center" id="resultGradingSchemeTable">
 						<thead>
-							<tr class=" align-middle">
+							<tr class="align-middle">
 								<th scope="col">Grade</th>
 								<th scope="col">Percentage</th>
 								<th scope="col">Remarks</th>
