@@ -59,7 +59,7 @@
 									<div class="card border-primary text-center shadow m-2 py-0">
 										<div class="card-body px-2">
 											<p>Install our app to stay connected.</p>
-											<button type="button" class="btn btn-primary btn-sm" id="buttonInstallApp" disabled>Install Now</button>
+											<!-- <button type="button" class="btn btn-primary btn-sm" id="buttonInstallApp" disabled>Install Now</button> -->
 										</div>
 									</div>
 								</div>
