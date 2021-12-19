@@ -172,6 +172,7 @@ class GradeBookController extends BaseController
 			"resultDetails"			=> $resultDetails,
 			"classesList"			=> $classesList,
 			"examsList"				=> $examsList,
+			"allExamsList"			=> $allExamsList,
 			"resultGradingScheme"	=> $this->getResultGradingScheme(),
 			"finalGradingScheme"	=> $finalGradingScheme
 		];

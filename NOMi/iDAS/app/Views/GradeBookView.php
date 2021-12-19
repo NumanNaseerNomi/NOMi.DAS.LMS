@@ -35,6 +35,11 @@
 					</table>
 					<hr/>
 				</div>
+				<div id="ClockTickingDiv" class="text-center collapse" >
+					<h2>Result Time</h2>
+					<h4>THE CLOCK IS TICKING..! GET READY.</h4>
+					<h2 id="ClockTicking"></h2>
+				</div>
 				<div id="resultSheetChartWrapper"></div><hr/>
 			</div>
 		</div>
@@ -74,3 +79,4 @@
 <script src="<?php echo base_url('/assets/plugins/chartJS/chart.min.js') ?>"></script>
 <script src="<?php echo base_url('/assets/plugins/chartJS/plotChart.js') ?>"></script>
 <?php require FCPATH.'/assets/js/studentGradeBook.js.php'; ?>
+<script src="<?php echo base_url('/assets/plugins/countdown.min.js') ?>"></script>

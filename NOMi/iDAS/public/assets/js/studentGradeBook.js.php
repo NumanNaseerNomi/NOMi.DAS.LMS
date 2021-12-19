@@ -36,18 +36,33 @@
 			}
 			else
 			{
-				var examsListDetail = <?php echo json_encode($examsList); ?>;
+				// var examsListDetail = <?php echo json_encode($examsList); ?>;
+				var allExamsListDetail = <?php echo json_encode($allExamsList); ?>;
+				
 				var finalGradingScheme = <?php echo json_encode($finalGradingScheme); ?>;
 				var isFinalResult = false;
 
-				for (var i = 0; i < examsListDetail.length; i++)
+				let dateTimeNow = new Date();
+				let comingResults = new Array;
+
+				for (var i = 0; i < allExamsListDetail.length; i++)
 				{
-					if (classesListOptions.value == examsListDetail[i].classId)
+					if (classesListOptions.value == allExamsListDetail[i].classId)
 					{
-						examsListOptions.options[examsListOptions.options.length] = new Option(examsListDetail[i].examName + " - " + examsListDetail[i].examDescription, examsListDetail[i].examId);
+						let resultDateTime = new Date(allExamsListDetail[i].resultDateTime);
+
+						if (resultDateTime < dateTimeNow)
+						{
+							examsListOptions.options[examsListOptions.options.length] = new Option(allExamsListDetail[i].examName + " - " + allExamsListDetail[i].examDescription, allExamsListDetail[i].examId);
+						}
+						else
+						{
+							let newOption = new Option(allExamsListDetail[i].examName + " - " + allExamsListDetail[i].examDescription, allExamsListDetail[i].examId);
+							comingResults.push(newOption);
+						}
 					}
 
-					if (finalGradingScheme && finalGradingScheme[0].examId == examsListDetail[i].examId)
+					if (finalGradingScheme && finalGradingScheme[0].examId == allExamsListDetail[i].examId)
 					{
 						isFinalResult = true;
 					}
@@ -57,6 +72,11 @@
 				{
 					var newOption = new Option("Overall Progress", "overall", true, true);
 					examsListOptions.add(newOption, examsListOptions[0]);
+				}
+
+				for(let i = 0; i < comingResults.length; i++)
+				{
+					examsListOptions.options[examsListOptions.options.length] = comingResults[i];
 				}
 				
 				if (isFinalResult)
@@ -94,6 +114,7 @@
 			resultSheetHeading = document.getElementById("resultSheetHeading").innerHTML = resultSheetHeading;
 
 			var resultDetails = <?php echo json_encode($resultDetails); ?>;
+
 			document.getElementById("finalResultAnalysis").classList.add("collapse");
 
 			if (classesListOptions[classesListIndex].value == "overall")
@@ -291,7 +312,33 @@
 			}
 			else
 			{
-				document.getElementById("classOrSubject").innerHTML = "Subject";
+				var allExamsListDetail = <?php echo json_encode($allExamsList); ?>;
+				document.getElementById("ClockTickingDiv").classList.add("collapse");
+
+				for (var i = 0; i < allExamsListDetail.length; i++)
+				{
+					let resultDateTime = new Date(allExamsListDetail[i].resultDateTime);
+					
+					if ((allExamsListDetail[i].examId == examsListOptions[examsListIndex].value) && (resultDateTime > new Date()))
+					{
+						document.getElementById("ClockTickingDiv").classList.remove("collapse");
+
+						let x = setInterval(function()
+						{
+							document.getElementById("ClockTicking").innerHTML = countdown(resultDateTime) + "<br/><h6> ("+ resultDateTime + ")</h6>";
+	
+							if (new Date() > resultDateTime)
+							{
+								clearInterval(x);
+								document.getElementById("ClockTicking").innerHTML = "Announced <br> Refresh Page";
+							}
+						}, 1000);
+						
+						return;
+					}
+				}
+				
+				document.getElementById("classOrSubject").innerHTML = "Subjects";
 
 				var totalMaxMarks = totalObtainedMarks = 0;
 				var chartLabels = [];
