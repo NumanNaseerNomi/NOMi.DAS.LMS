@@ -244,7 +244,8 @@
 					[
 						finalGradingScheme[i].examName + " - " + finalGradingScheme[i].examDescription,
 						maxMarks,
-						obtainedMarks,
+						// obtainedMarks,
+						Math.round((obtainedMarks + Number.EPSILON) * 100) / 100,
 						percentage,
 						getGradeByMarks(Math.round(percentage)).grade
 					];
@@ -270,7 +271,8 @@
 				[
 					"TOTAL",
 					totalMaxMarks,
-					totalObtainedMarks,
+					// totalObtainedMarks,
+					Math.round((totalObtainedMarks + Number.EPSILON) * 100) / 100,
 					Math.round((totalPercentage + Number.EPSILON) * 100) / 100,
 					getGradeByMarks(Math.round(totalPercentage)).grade
 				];
