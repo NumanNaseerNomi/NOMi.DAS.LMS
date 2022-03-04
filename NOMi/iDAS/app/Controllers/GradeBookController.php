@@ -146,13 +146,15 @@ class GradeBookController extends BaseController
 
 			$campusSessionClassSectionExamFinalGradingSchemeModel = new CampusSessionClassSectionExamFinalGradingSchemeModel();
 
+			$finalGradingSchemeIndex = 0;
+
 			for ($i = 0; $i < sizeof($allExamsList); $i++)
 			{
 				$isFoundFinalGradingScheme = $campusSessionClassSectionExamFinalGradingSchemeModel->getFinalGradingSchemeByCampusSessionClassSectionExamId($allExamsList[$i]['examId']);
 				
 				if ($isFoundFinalGradingScheme)
 				{
-					$finalGradingScheme[$i] = 
+					$finalGradingScheme[$finalGradingSchemeIndex++] =
 					[
 						"examId"		=> $isFoundFinalGradingScheme->campusSessionClassSectionExamId,
 						"percentage"	=> $isFoundFinalGradingScheme->percentage
@@ -162,8 +164,26 @@ class GradeBookController extends BaseController
 
 			if ($finalGradingScheme)
 			{
-				$tempFinalGradingScheme = array_intersect_key($allExamsList, $finalGradingScheme);
-				$finalGradingScheme = array_replace_recursive($tempFinalGradingScheme, $finalGradingScheme);
+				$gradingIndex = 0;
+				for ($i = 0; $i < sizeof($finalGradingScheme); $i++)
+				{
+					for ($j = 0; $j < sizeof($allExamsList); $j++)
+					{
+						if ($finalGradingScheme[$i]['examId'] == $allExamsList[$j]['examId'])
+						{
+							$finalGradingSchemePush[$gradingIndex++] = 
+							[
+								"examId"		=> $finalGradingScheme[$i]['examId'],
+								"percentage"	=> $finalGradingScheme[$i]['percentage'],
+								"examName"		=> $allExamsList[$j]['examName'],
+								"examDescription"	=> $allExamsList[$j]['examDescription'],
+								"resultDateTime"	=> $allExamsList[$j]['resultDateTime']
+							];
+						}
+					}
+				}
+
+				$finalGradingScheme = $finalGradingSchemePush;
 			}
 		}
 
